@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HomePage.css'
 
 import slide1 from '../public/colosseum.jpg';
@@ -28,6 +29,11 @@ export default function HomePage() {
 
   const [index, setIndex] = useState(0);
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/Selector");
+  }
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex(prev => (prev + 1) % slides.length);
@@ -48,7 +54,7 @@ export default function HomePage() {
 
             <div className="dropdown">
               
-              <a className="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a className="btn btn-secondary dropdown-toggle bg-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Menu
               </a>
 
@@ -58,9 +64,9 @@ export default function HomePage() {
               </div>
                 
               <ul className="dropdown-menu p-0">
-                <li><a className="dropdown-item" href="#">Roma</a></li>
-                <li><a className="dropdown-item" href="#">Eiffel Tower</a></li>
-                <li><a className="dropdown-item" href="#">Lausanne</a></li>
+                <li><a className="dropdown-item" onClick={handleClick}>Roma</a></li>
+                <li><a className="dropdown-item" onClick={handleClick} href="#">Eiffel Tower</a></li>
+                <li><a className="dropdown-item" onClick={handleClick} href="#">Lausanne</a></li>
               </ul>
             </div>
 
