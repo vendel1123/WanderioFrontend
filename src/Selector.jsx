@@ -22,7 +22,7 @@ export default function Selector() {
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
                 </div>
                 <div>
-                    <li><img src={avatar} alt="" onClick={() => navigate("/avatar")} /></li>
+                    <li><img src={avatar} alt="" onClick={() => navigate("/profile")} /></li>
                     <li><img src={cart} alt="" onClick={() => navigate("/cart")} /></li>
                 </div>
             </ul>
@@ -38,15 +38,13 @@ export default function Selector() {
 
                     <div className="field">
                         <label>Select Destination</label>
-                        <input type="text" placeholder="France, Paris" />
+                        <input style={{width: 300}} type="text" placeholder="France, Paris" />
                     </div>
 
                     <div className="field">
-                        <label> Select dates</label>
-                        <input type="date" placeholder="Sep 18" />
+                        <label > Select dates</label>
+                        <input style={{width: 300}} type="date" placeholder="Sep 18" />
                     </div>
-
-
 
                     <button> Search Now</button>
                 </div>
@@ -63,17 +61,9 @@ export default function Selector() {
                     <li>Easy Booking & Cancellation</li>
 
                     <li><img src={information} alt="" /></li>
-                    <li>Most Popular Website around the world</li>
-
-
-
-
-
-
-
-
-                
+                    <li>Most Popular Website around the world</li>        
             </div>
+            <button className="Line"></button>
         </div>
     )
 }

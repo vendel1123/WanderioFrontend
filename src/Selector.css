@@ -104,3 +104,14 @@
 .footer ul{
     list-style-type: none;
 }
+
+
+.Line{
+    width: 85%;
+    padding: 2px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 3%;
+}
