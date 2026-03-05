@@ -11,8 +11,6 @@
     margin-bottom: 20px;
 }
 
-
-
 .nav li {
     float: right;
     margin: 10px 10px 0px 10px;
@@ -44,6 +42,10 @@
 .selectorWords{
     margin: auto 0;
     font-weight: 650;
+}
+
+.selectorWords, p{
+    background-color: transparent;
 }
 
 
@@ -113,5 +115,4 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    margin-top: 3%;
 }

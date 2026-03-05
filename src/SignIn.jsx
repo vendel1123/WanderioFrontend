@@ -1,46 +1,50 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import logo from './assets/world.png'
-import {login} from './user.js'
+import { login, whoami } from './user.js'
 
 import InputMezo from './components/InputMezo'
 
 import './SignIn.css'
 
-function SignIn() {
- const navigate = useNavigate();
+function SignIn({}) {
+  const navigate = useNavigate();
 
- const [hiba, setHiba] = useState('')
- const [uzenet, setUzenet] = useState('')
+  const [hiba, setHiba] = useState('')
+  const [uzenet, setUzenet] = useState('')
 
- const [email, setEmail] = useState('')
- const [psw, setPsw] = useState('')
+  const [email, setEmail] = useState('')
+  const [psw, setPsw] = useState('')
 
- async function onLogin(){
-  setHiba('')
-  setUzenet('')
-  if (!email || !psw) {
+  const [user,setUser] = useState(null)
+
+  async function onLogin() {
+    setHiba('')
+    setUzenet('')
+    if (!email || !psw) {
       return setHiba('Minden mezot tolts ki')
-  }
+    }
 
-  try {
+    try {
       const data = await login(email, psw)
-      if(data.error){
-          setHiba(data.error)
+      if (data.error) {
+        setHiba(data.error)
       }
       setUzenet(data.message)
-      setTimeout(()=> navigate('/homePage'), 600)
+      setTimeout(() => navigate('/homePage'), 600)
 
-  } catch (err) {
+    } catch (err) {
       setHiba('Nem sikerult bejelentkezni')
-  }
+    }
 
-}
+  }
   const handleClick = () => {
     navigate("/SignUp");
   };
+  
+
   return (
     <div className='containerLogin'>
 
@@ -55,8 +59,8 @@ function SignIn() {
         {hiba && <div className='alert alert-danger'>{hiba}</div>}
         {uzenet && <div className='alert alert-success'>{uzenet}</div>}
 
-        <InputMezo label='Email' type='email' placeholder='example@example.hu' value={email} setValue={setEmail}/>
-        <InputMezo label='Jelszo' type='password' placeholder='*****' value={psw} setValue={setPsw}/>
+        <InputMezo label='Email' type='email' placeholder='example@example.hu' value={email} setValue={setEmail} />
+        <InputMezo label='Jelszo' type='password' placeholder='*****' value={psw} setValue={setPsw} />
 
         <p>Forgot password?</p>
 
