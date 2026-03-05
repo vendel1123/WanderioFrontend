@@ -15,7 +15,7 @@ export default function Selector() {
 
     const navigate = useNavigate()
     return (
-        <div>
+        <>
             <ul className="nav" style={{borderBottom: "2px solid gray"}}>
                 <div className="selectorLogo">
                     <li><p>Wanderio</p></li>
@@ -64,6 +64,6 @@ export default function Selector() {
                     <li>Most Popular Website around the world</li>        
             </div>
             <button className="Line"></button>
-        </div>
+        </>
     )
 }

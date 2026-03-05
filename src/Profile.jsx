@@ -1,17 +1,36 @@
+import { useState,useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import logo from './assets/world.png'
  import edit from './assets/edit.png'
  import lock from './assets/lock.png'
-import logout from './assets/logout.png'
+import logoutImg from './assets/logout.png'
 
 import './Profile.css'
 
+import { logout, whoami } from './user'
+
 export default function Profile() {
+
+    const navigate = useNavigate()
+
+    const [user,setUser] = useState(null)
+    const [userError, setUserError] = useState(null)
+
+    async function onLogout(){
+        const data =  await logout()
+
+        if(data.error){
+            return setUserError(data.error)
+        }
+        setUser(null)
+        navigate('/')
+    }
 
     return (
         <>
             <div className='signUpLogo'>
-                <img src='' alt="WanderioLogo" title='WanderioLogo' />
+                <img src={logo} alt="WanderioLogo" title='WanderioLogo' />
                 <p>Wanderio</p>
             </div>
 
@@ -25,7 +44,7 @@ export default function Profile() {
                     }}>László Béla</p>
                     <p style={{color: 'gray'}}>laszlob@gmail.com</p>
                 </div>
-                <button className='line'></button>
+                <button className='line'  style={{padding:1}}></button>
 
                 <div className='editProfile'>
                     <img style={{ margin: 0 }} src={edit} alt="editProfile" />
@@ -37,10 +56,10 @@ export default function Profile() {
                     <button> Password change</button>
                 </div>
 
-                <button className='line'></button>
+                <button className='line' style={{padding:1}}></button>
 
-                <div className='editProfile'>
-                    <img style={{ margin: 0 }} src={logout} alt="lock" />
+                <div className='editProfile' onClick={onLogout}>
+                    <img style={{ margin: 0 }} src={logoutImg} alt="lock" />
                     <button>Logout</button>
                 </div>
 
