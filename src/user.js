@@ -1,6 +1,6 @@
 import { backIn } from "framer-motion"
 
-const BACKEND_URL = 'http://127.0.0.1:4000/api/users'
+const BACKEND_URL = '/users'
 
 export async function register(email, username, psw) {
     const res = await fetch(`${BACKEND_URL}/register`, {
