@@ -46,7 +46,7 @@ export default function Selector() {
                         <input style={{width: 300}} type="date" placeholder="Sep 18" />
                     </div>
 
-                    <button onClick={()=>navigate('/')}> Search Now</button>
+                    <button onClick={()=>navigate('/Booking')}> Search Now</button>
                 </div>
             </div>
 

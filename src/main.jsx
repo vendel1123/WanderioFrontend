@@ -10,6 +10,7 @@ import HomePage from './HomePage.jsx'
 import Selector from './Selector.jsx';
 import Profile from './Profile.jsx';
 import Cart from './Cart.jsx'
+import Booking from './Booking.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')).render(
       <Route path='/selector' element={<Selector/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/cart' element={<Cart/>}/>
+      <Route path='/booking' element={<Booking/>}/>
 
 
     </Routes>
