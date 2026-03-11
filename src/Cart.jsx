@@ -9,7 +9,6 @@ import lock from "../src/assets/lock.png"
 import test from "../src/assets/signUpimg.jpg"
 
 import './Cart.css'
-import { div } from "framer-motion/client"
 
 export default function Cart() {
 
@@ -64,22 +63,23 @@ export default function Cart() {
                                     marginRight: '12%'
                                 }}>Your shopping cart</h3>
 
-                                <div className="shoppingCart" >
-                                    <div className="row row-cols-md-3 rounded" style={{ justifyContent: 'left' }}>
-                                        <div>
-                                            <div className="card h-100">
-                                                <img src={test} className="card-img-top m-0" alt="..." />
-                                                <div className="card-body">
-                                                    <h5 className="card-title" style={{ color: '#336699' }}>Versailles Palace</h5>
-                                                    <p className="card-text">Versailles is a famous royal palace near Paris, known for its beautiful gardens and grand halls.</p>
-                                                </div>
-                                                <div className="card-footer" style={{ backgroundColor: '#CCEDD8' }}>
+                                <div className="card mb-3" style={{maxWidth:"540px"}}>
+                                    <div className="row g-0">
+                                        <div className="col-md-4">
+                                            <img style={{objectFit:'cover'}} src={test} className="img-fluid w-100 h-100 m-0 rounded-start" alt="..." />
+                                        </div>
+                                        <div className="col-md-8 ">
+                                            <div className="card-body">
+                                            <h5 className="card-title" style={{ color: '#336699' }}>Versailles Palace</h5>
+                                            <p className="card-text">Versailles is a famous royal palace near Paris, known for its beautiful gardens and grand halls.</p>
+                                        </div>
+                                        </div>
+                                        <div className="card-footer" style={{ backgroundColor: '#CCEDD8' }}>
                                                     <small className="text-body-secondary">Total 17 USD</small>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div >
@@ -118,17 +118,41 @@ export default function Cart() {
                 )}
 
                 {section === "flights" && (
-                    <div>
-                        <h3>sdad</h3>
-                        <p>sdad</p>
+                    <div className="card mb-3" style={{maxWidth:"540px"}}>
+                    <div className="row g-0">
+                        <div className="col-md-4">
+                            <img style={{objectFit:'cover'}} src={test} className="img-fluid w-100 h-100 m-0 rounded-start" alt="..." />
+                        </div>
+                        <div className="col-md-8 ">
+                            <div className="card-body">
+                            <h5 className="card-title" style={{ color: '#336699' }}>London</h5>
+                            <p className="card-text">United Kingdom</p>
+                        </div>
+                        </div>
+                        <div className="card-footer" style={{ backgroundColor: '#CCEDD8' }}>
+                                    <small className="text-body-secondary">Total 17 USD</small>
+                        </div>
                     </div>
+                </div>
                 )}
 
                 {section === "hotels" && (
-                    <div>
-                        <h3>sdad</h3>
-                        <p>sdad</p>
+                    <div className="card mb-3" style={{maxWidth:"540px"}}>
+                    <div className="row g-0">
+                        <div className="col-md-4">
+                            <img style={{objectFit:'cover'}} src={test} className="img-fluid w-100 h-100 m-0 rounded-start" alt="..." />
+                        </div>
+                        <div className="col-md-8 ">
+                            <div className="card-body">
+                            <h5 className="card-title" style={{ color: '#336699' }}>Versailles Palace hotel</h5>
+                            <p className="card-text">Versailles is a famous royal palace near Paris, known for its beautiful gardens and grand halls.</p>
+                        </div>
+                        </div>
+                        <div className="card-footer" style={{ backgroundColor: '#CCEDD8' }}>
+                                    <small className="text-body-secondary">Total 17 USD</small>
+                        </div>
                     </div>
+                </div>
                 )}
 
             </div>

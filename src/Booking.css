@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.hole h1{
+    display: flex;
+    justify-content: center;
+    color: #336699;
+}
+
+.carousel-wrapper {
+    width: 40%;     
+    margin: 40px auto; 
+  }
+  
+  .carousel-item img {
+    height: 400px;    
+
+    object-fit: cover; 
+  }
+
+.description{
+    display: flex;
+    flex-direction: row;
+}
+
+.description, img{
+    margin: 0;
+}
