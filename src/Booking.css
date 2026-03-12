@@ -1,31 +1,317 @@
-*{
+* {
     box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.hole h1{
+.hole h1 {
     display: flex;
     justify-content: center;
     color: #336699;
 }
 
 .carousel-wrapper {
-    width: 40%;     
-    margin: 40px auto; 
-  }
-  
-  .carousel-item img {
-    height: 400px;    
+    width: 40%;
+    margin: 40px auto;
+}
 
-    object-fit: cover; 
-  }
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
 
-.description{
+.description {
     display: flex;
     flex-direction: row;
+    gap: 10px;
+    height: 80px;
 }
 
-.description, img{
+
+.left {
+    width: 25%;
+}
+
+.right {
+    width: 30%;
+}
+
+
+.whole {
+    margin-left: 3%;
+    margin-top: 2%;
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.whole img {
+    height: 35px;
+    width: 35px;
+}
+
+.whole p {
+    text-align: justify;
+}
+
+.whole h3 {
+    color: #336699;
+}
+
+.summary {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.flights {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.hotels {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.right button {
+    width: 50%;
+    background-color: #0E9C39;
+    padding: 2px;
+
+}
+
+
+.summaryChoices div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2%;
+}
+
+.summaryChoices img {
     margin: 0;
 }
+
+.summaryChoices p {
+    margin-bottom: 0;
+}
+
+.informations {
+    margin-left: 3%;
+    margin-top: 2%;
+}
+
+.accommodation img {
+    margin: 0;
+}
+
+.accommodation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accommodation p {
+    width: 20%;
+}
+
+.guarantee {
+    margin-left: 3%;
+    margin-top: 2%;
+}
+
+.guarantee img {
+    margin: 0;
+}
+
+.guarantee div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.guaranteeDice {
+
+    border: solid 2px #336699;
+    border-radius: 1rem;
+    margin: 3%;
+    padding: 1%;
+    width: 50%;
+    margin: 30px auto;
+}
+
+.guaranteeDice .guaranteeDiceItem {
+    display: flex;
+    margin-top: 1%;
+}
+
+.guaranteeDice img {
+    margin: 0;
+    height: 35px;
+    width: 35px;
+}
+
+.guaranteeDice div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+.attractions img {
+    margin: 0;
+}
+
+.attractions div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    margin: 1rem;
+}
+
+.hotels {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* button */
+
+/* From Uiverse.io by cssbuttons-io */
+
+.divBtn{
+    display: flex;
+    justify-content: center;
+}
+
+.divBtn button {
+    --color: #336699;
+    font-family: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+
+.divBtn button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.divBtn button:hover {
+    color: #fff;
+}
+
+.divBtn button:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+
+.divBtn button:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+.divBtn button:active:before {
+    background: #336699;
+    transition: background 0s;
+}
+
+.footers{
+    background-color: #336699;
+}
+
+.selectorLogos{
+    display: flex;
+    flex-direction: row;
+    margin-left: 1%;
+    margin-bottom: 1%;
+}
+
+.selectorLogos li{
+    margin-top: 2%;
+    list-style-type: none;
+}
+
+.selectorLogos p{
+    font-size: 2rem;
+    font-weight: bold;
+    align-items: center;
+    margin: 0;
+}
+
+.texts p{
+    margin: 0;
+    margin-left: 2%;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.texts h4{
+    margin-left: 2%;
+    font-weight: bold;
+}
+
+.travels {
+    display: flex;
+    margin-bottom: 3%;
+}
+
+.contact{
+    margin-left: 40%;
+}
+
+.contact p{
+    margin: 0;
+    margin-left: 2%;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contact h4{
+    margin-left: 2%;
+    font-weight: bold;
+}
+
+.footerBtn{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+    padding: 2px;
+    background-color: #000D5E;
+}
+
+.last{
+    margin-top: 3%;
+}
+
+
