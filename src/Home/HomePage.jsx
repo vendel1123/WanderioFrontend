@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css'
 
-import slide1 from '../public/colosseum.jpg';
-import slide2 from '../public/Lausanne.jpg';
-import slide3 from '../public/eiffelTower.jpg';
+import slide1 from '../assets/colosseum.jpg';
+import slide2 from '../assets/Lausanne.jpg';
+import slide3 from '../assets/eiffelTower.jpg';
 
-import logo from './assets/world.png'
+import logo from '../assets/world.png'
 
 const slides = [
   {

@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import logo from './assets/world.png'
-import InputMezo from './components/InputMezo';
+import logo from '../assets/world.png'
+import InputMezo from '../components/InputMezo.jsx';
 
-import {register, login} from './user.js'
+import {register, login} from '../user.js'
 import './SignUp.css'
 
 

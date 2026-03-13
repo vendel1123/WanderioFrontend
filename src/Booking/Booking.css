@@ -70,6 +70,7 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 .hotels {
@@ -77,6 +78,7 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 .right button {
@@ -168,13 +170,14 @@
     margin: 0;
 }
 
-.attractions div {
+.attractions{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    
 }
 
 .card {
-    margin: 1rem;
+    margin: 2rem;
 }
 
 .hotels {

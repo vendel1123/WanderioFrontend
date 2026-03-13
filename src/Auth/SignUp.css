@@ -5,7 +5,7 @@
     }
 
     .containerSignUp{
-        background-image: url('./assets/signUpimg.jpg');
+        background-image: url('../assets/signUpimg.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;

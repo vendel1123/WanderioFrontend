@@ -1,14 +1,14 @@
 import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import logo from './assets/world.png'
- import edit from './assets/edit.png'
- import lock from './assets/lock.png'
-import logoutImg from './assets/logout.png'
+import logo from '../assets/world.png'
+ import edit from '../assets/edit.png'
+ import lock from '../assets/lock.png'
+import logoutImg from '../assets/logout.png'
 
 import './Profile.css'
 
-import { logout, whoami } from './user'
+import { logout, whoami } from '../user'
 
 export default function Profile() {
 

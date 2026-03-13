@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom"
 
-import cart from "../src/assets/cart.png"
-import avatar from "../src/assets/avatar.png"
-import logo from "../src/assets/world.png"
-import tourist from "../src/assets/tourist.png"
-import verified from "../src/assets/verified.png"
-import checklist from "../src/assets/checklist.png"
-import information from "../src/assets/information.png"
+import cart from "../assets/cart.png"
+import avatar from "../assets/avatar.png"
+import logo from "../assets/world.png"
+import tourist from "../assets/tourist.png"
+import verified from "../assets/verified.png"
+import checklist from "../assets/checklist.png"
+import information from "../assets/information.png"
 
 
 import './Selector.css'
