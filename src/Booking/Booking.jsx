@@ -4,17 +4,17 @@ import { useState, useEffect } from 'react'
 import './Booking.css'
 
 
-import cart from "../src/assets/cart.png"
-import avatar from "../src/assets/avatar.png"
-import logo from "../src/assets/world.png"
+import cart from "../assets/cart.png"
+import avatar from "../assets/avatar.png"
+import logo from "../assets/world.png"
 
-import information from "./assets/BookingImgs/information.png"
-import summary from "./assets/BookingImgs/summary.png"
-import support from "./assets/BookingImgs/support.png"
-import vip from "./assets/BookingImgs/vip.png"
-import verified from './assets/verified.png'
+import information from "../assets/BookingImgs/information.png"
+import summary from "../assets/BookingImgs/summary.png"
+import support from "../assets/BookingImgs/support.png"
+import vip from "../assets/BookingImgs/vip.png"
+import verified from '../assets/verified.png'
 
-import test from '../src/assets/signInImg.jpg'
+import test from '../assets/signInImg.jpg'
 
 export default function Booking() {
 
@@ -76,12 +76,12 @@ export default function Booking() {
                     </div>
 
                     <div className='summary'>
-                        <div className='flights'>
+                        <div className='flights' onClick={()=>navigate('/flights')}>
                             <img src={vip} alt="" />
                             <p>Flights</p>
                         </div>
 
-                        <div className='hotels'>
+                        <div className='hotels' onClick={()=>navigate('/hotels')}>
                             <img src={vip} alt="" />
                             <p>Hotels</p>
                         </div>
@@ -214,7 +214,7 @@ export default function Booking() {
                 marginLeft: '3%',
                 fontStyle: 'italic',
                 marginTop: '5%',
-                marginBottom: '5%',
+                marginBottom: '2%',
                 color: '#336699',
                 display: 'flex',
                 justifyContent: 'center'
@@ -223,30 +223,35 @@ export default function Booking() {
             <div className='attractions'>
 
                 <div>
-                    <div className="card" style={{ width: '18rem' }}>
+                    <div className="card" style={{ width: '20rem' }}>
                         <img src={test} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <p className="card-text">Louvre Museum - Exclusive Guided Tour (Reserved Entry Included)</p>
                         </div>
                     </div>
 
-                    <div className="card" style={{ width: '18rem' }}>
+                    <div className="card" style={{ width: '20rem' }}>
                         <img src={test} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <p className="card-text">Versailles Palace and Gardens Tour from Paris.</p>
                         </div>
                     </div>
                 </div>
-
+                <div className="card" style={{ width: '20rem' }}>
+                        <img src={test} className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <p className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
+                        </div>
+                    </div>
                 <div>
-                    <div className="card" style={{ width: '18rem' }}>
+                    <div className="card" style={{ width: '20rem' }}>
                         <img src={test} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <p className="card-text">Paris Prestige Dinner Cruise from Eiffel Tower Area</p>
                         </div>
                     </div>
 
-                    <div className="card" style={{ width: '18rem' }}>
+                    <div className="card" style={{ width: '20rem' }}>
                         <img src={test} className="card-img-top" alt="..." />
                         <div className="card-body">
                             <p className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
@@ -254,7 +259,12 @@ export default function Booking() {
                     </div>
 
                 </div>
-
+                <div className="card" style={{ width: '20rem' }}>
+                        <img src={test} className="card-img-top" alt="..." />
+                        <div className="card-body">
+                            <p className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
+                        </div>
+                    </div>
             </div>
 
             <h2 style={{

@@ -2,11 +2,11 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import logo from "../src/assets/world.png"
-import verified from "../src/assets/verified.png"
-import card from "../src/assets/money.png"
-import lock from "../src/assets/lock.png"
-import test from "../src/assets/signUpimg.jpg"
+import logo from "../assets/world.png"
+import verified from "../assets/verified.png"
+import card from "../assets/money.png"
+import lock from "../assets/lock.png"
+import test from "../assets/signUpimg.jpg"
 
 import './Cart.css'
 

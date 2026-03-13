@@ -80,7 +80,7 @@
 } 
 
 .containerLogin{
-    background-image: url('./assets/signInImg.jpg');
+    background-image: url('../assets/signInImg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center; 

@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import logo from './assets/world.png'
-import { login, whoami } from './user.js'
+import logo from '../assets/world.png'
+import { login, whoami } from '../user.js'
 
-import InputMezo from './components/InputMezo'
+import InputMezo from '../components/InputMezo'
 
 import './SignIn.css'
 
