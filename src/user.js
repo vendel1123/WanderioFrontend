@@ -1,5 +1,3 @@
-import { backIn } from "framer-motion"
-
 const BACKEND_URL = '/users'
 
 export async function register(email, username, psw) {
@@ -36,29 +34,45 @@ export async function login(email, psw) {
     return data
 }
 
-export async function logout(){
-    const res = await fetch(`${BACKEND_URL}/logout`,{
-        method:'POST',
-        credentials:'include'
+export async function logout() {
+    const res = await fetch(`${BACKEND_URL}/logout`, {
+        method: 'POST',
+        credentials: 'include'
     })
-    if(!res.ok){
+    if (!res.ok) {
         const data = await res.json()
-        return {error: data?.error}
+        return { error: data?.error }
     }
 
     return await res.json()
 }
 
 
-export async function whoami(){
+export async function whoami() {
     const res = await fetch(`${BACKEND_URL}/whoami`, {
-        method:'GET',
-        credentials:'include'
+        method: 'GET',
+        credentials: 'include'
     })
 
-    if(!res.ok){
+    if (!res.ok) {
         const data = await res.json()
-        return {error: data?.error}
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+export async function flight() {
+    const res = await fetch(`${BACKEND_URL}/flights`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData)
+    })
+    const data = await res.json()
+    if(!res.ok){
+        throw new Error(data.error)
     }
 
     return await res.json()
