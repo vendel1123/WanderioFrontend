@@ -9,121 +9,143 @@ import './Flights.css'
 
 export default function Flights() {
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    const [formData, setFormData] = useState({
+  const [hiba, setHiba] = useState('')
+  const [uzenet, setUzenet] = useState('')
+
+  const [formData, setFormData] = useState({
+    airlineId: "",
+    starting: "",
+    arivval: "",
+    price: "",
+    departure: "",
+    destination: ""
+  })
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await fl()
+  }
+
+  async function fl() {
+    setHiba('')
+    setUzenet('')
+    try {
+      const data = await flight(formData)
+      if (data.error) {
+        setHiba(data.error)
+      }
+      setUzenet(data.message)
+      setTimeout(() => navigate('/cart'), 600)
+
+      setFormData({
         airlineId: "",
         starting: "",
         arivval: "",
         price: "",
         departure: "",
         destination: ""
-    })
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: <e className="target value"></e>
-        })
+      })
+    } catch (err) {
+      alert('Hiba:' + err.message)
     }
+  }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-    }
+  return (
+    <div className="fullscreen">
+      <div className="flightDiv">
+        <h2 style={{
+          margin: '0 auto',
+          fontStyle: 'italic',
+          color: 'white',
+          fontWeight: 'bold'
 
-    async function fl() {
-        try {
-            const data = await flight()
+        }}>Create a plane ticket</h2>
+        <form onSubmit={handleSubmit}>
+          {/* Légitársaság */}
+          <select
+            name="airlineId"
+            value={formData.airlineId}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Choose an airlines</option>
+            <option value="1">Wizz Air</option>
+            <option value="2">Ryanair</option>
+            <option value="3">Lufthansa</option>
+            <option value="4">KLM</option>
+            <option value="5">Emirates</option>
+          </select>
 
-            setTimeout(() => navigate('/cart'), 600)
+          {/* Indulás */}
+          <input
+            type="datetime-local"
+            name="starting"
+            value={formData.starting}
+            onChange={handleChange}
+            required
+          />
 
-            setFormData({
-                airlineId: "",
-                starting: "",
-                arivval: "",
-                price: "",
-                departure: "",
-                destination: ""
-            })
-        } catch (err) {
-            alert('Ismeretlen hiba:' + err.message)
-        }
-    }
+          {/* Érkezés */}
+          <input
+            type="datetime-local"
+            name="arivval"
+            value={formData.arivval}
+            onChange={handleChange}
+            required
+          />
 
+          {/* Ár */}
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            placeholder="Price (USD)"
+            required
+          />
 
+          {/* Indulási város */}
+          <input
+            type="text"
+            name="departure"
+            value={formData.departure}
+            onChange={handleChange}
+            placeholder="Departure city"
+            required
+          />
 
+          {/* Célállomás */}
+          <input
+            type="text"
+            name="destination"
+            value={formData.destination}
+            onChange={handleChange}
+            placeholder="Destination city"
+            required
+          />
 
-    return (
-        <div style={{maxWidth:"600px", margin:"0 auto"}}>
-            <h2>Repülőjegy létrehozása</h2>
-            <form onSubmit={handleSubmit}>
-        {/* Légitársaság */}
-        <select
-          name="airlineId"
-          value={formData.airlineId}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Válassz légitársaságot</option>
-          <option value="1">Wizz Air</option>
-          <option value="2">Ryanair</option>
-          <option value="3">Lufthansa</option>
-          <option value="4">KLM</option>
-        </select>
+          {hiba && <div className='alert alert-danger'>{hiba}</div>}
+          {uzenet && <div className='alert alert-success'>{uzenet}</div>}
 
-        {/* Indulás */}
-        <input
-          type="datetime-local"
-          name="starting"
-          value={formData.starting}
-          onChange={handleChange}
-          required
-        />
+          <button type="submit" >Create</button>
+        </form>
 
-        {/* Érkezés */}
-        <input
-          type="datetime-local"
-          name="arrival"
-          value={formData.arrival}
-          onChange={handleChange}
-          required
-        />
+      </div>
 
-        {/* Ár */}
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-          placeholder="Ár"
-          required
-        />
+      <div className="warning">
 
-        {/* Indulási város */}
-        <input
-          type="text"
-          name="departure"
-          value={formData.departure}
-          onChange={handleChange}
-          placeholder="Indulási város"
-          required
-        />
+        <p>Please ensure that all your travel documents, including a valid passport and any required visas, are in order and meet the entry requirements of your destination country. Be advised that any subsequent modifications to your booking may incur additional service fees and fare differences, subject to the specific terms and conditions of the operating airline.</p>
+      </div>
 
-        {/* Célállomás */}
-        <input
-          type="text"
-          name="destination"
-          value={formData.destination}
-          onChange={handleChange}
-          placeholder="Célállomás"
-          required
-        />
-
-        <button type="submit" onClick={()=> fl()}>🚀 Létrehozás</button>
-      </form>
-
-
-
-        </div>
-    )
+    </div>
+  )
 }

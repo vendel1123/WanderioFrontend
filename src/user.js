@@ -1,4 +1,6 @@
 const BACKEND_URL = '/users'
+const BACKEND_FLIGHTSURL = '/flights'
+
 
 export async function register(email, username, psw) {
     const res = await fetch(`${BACKEND_URL}/register`, {
@@ -62,8 +64,8 @@ export async function whoami() {
     return await res.json()
 }
 
-export async function flight() {
-    const res = await fetch(`${BACKEND_URL}/flights`, {
+export async function flight(formData) {
+    const res = await fetch(`${BACKEND_FLIGHTSURL}/createflight`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
@@ -75,5 +77,5 @@ export async function flight() {
         throw new Error(data.error)
     }
 
-    return await res.json()
+    return data
 }
