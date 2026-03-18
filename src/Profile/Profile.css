@@ -1,79 +1,126 @@
-
-body{
-    margin:0;
+body {
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Logo felül */
-.signUpLogo{
-    position:absolute;
-    top:25px;
-    left:40px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    color:black;
-    font-size:1.3rem;
-    font-weight:500;
+.signUpLogo {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
     margin-bottom: 20%;
 }
 
 
-.signUpLogo img{
-    width:50px;
-    height:50px;
+.signUpLogo img {
+    width: 50px;
+    height: 50px;
 }
 
 /* Profile card */
-.profileContainer{
+.profileContainer {
     width: 30%;
-    background:#f1f1f1;
-    border-radius:20px;
-    padding:30px;
-    margin:auto;
-    margin-top:120px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    background: #f1f1f1;
+    border-radius: 20px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 120px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Name section */
-.profileName{
-    margin-bottom:10px;
+.profileName {
+    margin-bottom: 10px;
 }
 
 /* Divider line */
-.line{
-    width:100%;
-    background:#4c6f96;
-    border:none;
-    margin:20px 0;
+.line {
+    width: 100%;
+    background: #4c6f96;
+    border: none;
+    margin: 20px 0;
 }
 
 /* Button rows */
-.editProfile{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    background:#d9d9d9;
-    padding:12px 15px;
-    border-radius:12px;
-    margin-top:12px;
+.editProfile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #d9d9d9;
+    padding: 12px 15px;
+    border-radius: 12px;
+    margin-top: 2%;
     cursor: pointer;
 }
 
-.editProfile img{
-    width:22px;
-    height:22px;
+.editProfile img {
+    width: 22px;
+    height: 22px;
 }
 
-.editProfile button{
-    border:none;
-    background:transparent;
-    font-size:0.95rem;
-    cursor:pointer;
+.editProfile button {
+    border: none;
+    background: transparent;
+    font-size: 0.95rem;
+    cursor: pointer;
 }
 
 /* Hover effect */
-.editProfile:hover{
-    background:#cfcfcf;
-    transition:0.2s;
+.editProfile:hover {
+    background: #cfcfcf;
+    transition: 0.2s;
+}
+
+.editingNameDiv{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.editingNameDiv input {
+    height: 3rem;
+    border-radius: 0.75rem;
+    border: solid 1px;
+    width: 40%;
+}
+
+.editingNameDiv button{
+    width: 40%;
+}
+
+.editingNameDiv button:hover{
+    transition: 1s;
+    background-color: black;
+    color: #fff;
+    border-radius: 0.75rem;
+}
+
+.editingPasswordDiv button{
+    display: flex;
+    margin: 2% auto;
+}
+
+.editingPasswordDiv button:hover{
+    transition: 1s;
+    background-color: black;
+    color: #fff;
+    border-radius: 0.75rem;
+}
+
+.editDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.editDiv input{
+    height: 3rem;
+    border-radius: 0.75rem;
+    border: solid 1px;
+    width: 40%;
 }

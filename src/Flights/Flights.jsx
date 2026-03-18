@@ -3,6 +3,7 @@ import { useState } from "react"
 
 import { flight } from '../user.js'
 
+import letter from "../assets/letter-i.png"
 import logo from "../assets/world.png"
 
 import './Flights.css'
@@ -44,7 +45,7 @@ export default function Flights() {
         setHiba(data.error)
       }
       setUzenet(data.message)
-      setTimeout(() => navigate('/cart'), 600)
+      setTimeout(() => navigate('/cart'), 800)
 
       setFormData({
         airlineId: "",
@@ -61,6 +62,11 @@ export default function Flights() {
 
   return (
     <div className="fullscreen">
+      <div className="selectorLogoss">
+        <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
+        <li><p>Wanderio</p></li>
+
+      </div>
       <div className="flightDiv">
         <h2 style={{
           margin: '0 auto',
@@ -68,7 +74,7 @@ export default function Flights() {
           color: 'white',
           fontWeight: 'bold'
 
-        }}>Create a plane ticket</h2>
+        }}>Search a plane ticket</h2>
         <form onSubmit={handleSubmit}>
           {/* Légitársaság */}
           <select
@@ -142,7 +148,11 @@ export default function Flights() {
       </div>
 
       <div className="warning">
-
+        <img src={letter} alt="information" style={{
+          marginBottom: '0px',
+          marginRight: '0.5rem',
+          height: '2rem'
+        }} />
         <p>Please ensure that all your travel documents, including a valid passport and any required visas, are in order and meet the entry requirements of your destination country. Be advised that any subsequent modifications to your booking may incur additional service fees and fare differences, subject to the specific terms and conditions of the operating airline.</p>
       </div>
 

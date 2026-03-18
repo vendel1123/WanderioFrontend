@@ -5,6 +5,20 @@
     font-family: "Open Sans", sans-serif;
 }
 
+.selectorLogoss{
+    display: flex;
+    margin: 1rem;
+}
+
+.selectorLogoss li{
+    list-style-type: none;
+}
+.selectorLogoss p{
+    font-weight: bold;
+    font-size: 2rem;
+    color: black;
+}
+
 .fullscreen{
     background-color: #003B95;
     max-height: 50%;
@@ -65,3 +79,5 @@
     text-align: justify;
     margin: 0;
 }
+
+

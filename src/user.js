@@ -1,3 +1,5 @@
+import { backIn } from "framer-motion"
+
 const BACKEND_URL = '/users'
 const BACKEND_FLIGHTSURL = '/flights'
 
@@ -77,5 +79,49 @@ export async function flight(formData) {
         throw new Error(data.error)
     }
 
+    return data
+}
+
+export async function pswchange(psw, newPsw){
+    const res = await fetch(`${BACKEND_URL}/pswchange`,{
+        method:'PUT',
+        credentials: 'include',
+        headers:{
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            psw,
+            newPsw
+        })
+    })
+    const data = await res.json()
+    return data
+}
+
+export async function namechange(username){
+    const res = await fetch (`${BACKEND_URL}/namechange`,{
+        method:'PUT',
+        credentials:'include',
+        headers:{
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({username})
+    })
+
+    return res.json()
+}
+
+
+export async function emailchange(email){
+    const res = await fetch(`${BACKEND_URL}/emailchange`,{
+        method:'PUT',
+        credentials:'include',
+        headers:{
+            "Content-Type": "application/json",
+        },
+        body:JSON.stringify({email})
+    })
+
+    const data = await res.json()
     return data
 }
