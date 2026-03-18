@@ -31,6 +31,7 @@ function SignIn({}) {
       const data = await login(email, psw)
       if (data.error) {
         setHiba(data.error)
+        return 
       }
       setUzenet(data.message)
       setTimeout(() => navigate('/homePage'), 600)
