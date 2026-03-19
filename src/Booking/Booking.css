@@ -4,6 +4,9 @@
     margin: 0;
     padding: 0;
 }
+.hole{
+    background-color: #f8f9fa;
+}
 
 .hole h1 {
     display: flex;
@@ -11,39 +14,68 @@
     color: #336699;
 }
 
-.carousel-wrapper {
-    width: 40%;
-    margin: 40px auto;
-}
 
 .carousel-item img {
     height: 500px;
     object-fit: cover;
 }
 
+.carousel-control-prev{
+    margin-left: 20%;
+}
+
+.carousel-control-next{
+    margin-right: 20%;
+}
+
 .description {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    height: 80px;
+    height: 70px;
 }
 
+.nav{
+    background-color: white;
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
 
 .left {
-    width: 25%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .right {
-    width: 30%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.right button {
+    width: 100%;
+    background-color: #0E9C39;
+    padding: 2px;
+    margin-bottom: 2%;
+}
+
+.left button {
+    width: 100%;
+    background-color: #0E9C39;
+    padding: 2px;
+    margin-bottom: 2%;
 }
 
 
 .whole {
-    margin-left: 3%;
+
     margin-top: 2%;
-    display: flex;
     gap: 40px;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .whole img {
@@ -57,37 +89,99 @@
 
 .whole h3 {
     color: #336699;
+    margin: 0;
 }
 
 .summary {
     display: flex;
-    flex-direction: row;
-    gap: 3rem;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.summary img{
+    margin: 0;
 }
 
 .flights {
     display: flex;
+    justify-content: left;
     flex-direction: row;
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                background-color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.flights:hover{
+    transform: translateY(-8px);
+    border-color: #336699;
+    background-color: rgb(236, 233, 233);
+}
+
+.flights p{
+    margin: 0;
 }
 
 .hotels {
     display: flex;
+    justify-content: left;
     flex-direction: row;
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                background-color 0.3s ease;
+    border: 2px solid transparent;
 }
 
-.right button {
-    width: 50%;
-    background-color: #0E9C39;
-    padding: 2px;
-
+.hotels:hover{
+    transform: translateY(-8px);
+    border-color: #336699;
+    background-color: rgb(236, 233, 233);
 }
 
+.hotels p{
+    margin: 0;
+}
+
+.bookNowDiv{
+    margin-top: 5%;
+}
+
+.bookNowDiv button{
+    background-color: white;
+    border: 1px solid rgb(95, 89, 89);
+    padding: 8px;
+    transition: transform 0.3s ease,
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.bookNowDiv button:hover{
+    transform: translateY(-8px);
+    background-color: rgb(236, 226, 226);
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+
+
+.summaryChoices{
+    padding: 10px;
+    border-left: 5px solid #336699;
+    border-radius: 1rem;
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
 
 .summaryChoices div {
     display: flex;
@@ -102,6 +196,7 @@
 
 .summaryChoices p {
     margin-bottom: 0;
+    font-weight: 600;
 }
 
 .informations {
@@ -180,10 +275,6 @@
     margin: 2rem;
 }
 
-.hotels {
-    display: flex;
-    justify-content: space-around;
-}
 
 /* button */
 

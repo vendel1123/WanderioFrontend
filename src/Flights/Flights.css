@@ -21,8 +21,8 @@
 
 .fullscreen{
     background-color: #003B95;
-    max-height: 50%;
-    min-width: 100vw;
+    height: 50%;
+    width: 100vw;
     margin: 0;
     position: absolute;
     top: 0;
@@ -34,7 +34,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 50%;
+    width: 50%;
     margin: 10% auto;
     background-color: #336699;
     padding: 2rem;
@@ -78,6 +78,27 @@
 .warning p{
     text-align: justify;
     margin: 0;
+}
+
+@media (max-width: 1093px) {
+
+    .flightDiv{
+        width: 90%;
+    }
+
+    .flightDiv select, .flightDiv input{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .warning{
+        margin-bottom: 200px;
+    }
+    .warning p{
+        font-size: small;
+    }
 }
 
 

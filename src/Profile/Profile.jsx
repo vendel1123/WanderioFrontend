@@ -103,7 +103,7 @@ export default function Profile() {
     }
 
     return (
-        <>
+        <div className='profileWhole'>
             <div className='signUpLogo'>
                 <img src={logo} alt="WanderioLogo" title='WanderioLogo' />
                 <p>Wanderio</p>
@@ -200,6 +200,6 @@ export default function Profile() {
                 {userError && <p style={{ color: 'red' }}>{userError}</p>}
 
             </div>
-        </>
+        </div>
     )
 }

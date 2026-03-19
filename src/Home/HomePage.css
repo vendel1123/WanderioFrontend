@@ -3,7 +3,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-      font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .hero-slide {
@@ -38,7 +38,7 @@
   max-width: 500px;
 }
 
-.dropdown{
+.dropdown {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
@@ -46,10 +46,11 @@
   color: black;
   font-size: 2rem;
   font-weight: 650;
-  font-style: italic; 
+  font-style: italic;
   margin-top: -10%;
 }
-.dropdown a{ 
+
+.dropdown a {
   padding: 1rem;
   background-color: transparent;
 }
@@ -76,19 +77,18 @@ button.secondary {
   border: 1px solid white;
 }
 
-.slide-text1{
+.slide-text1 {
   position: relative;
   margin-left: 70%;
   margin-top: -20%;
-  font-size: clamp(0.2rem, 3vw, 2rem);
+  font-size: clamp(0.75rem, 3vw, 2rem);
   color: white;
   font-style: italic;
 }
 
-.slide-text2{
+.slide-text2 {
   position: relative;
-  margin-top: 70%;
-  font-size: clamp(0.2rem, 3vw, 2rem);
+  font-size: clamp(0.75rem, 3vw, 2rem);
   gap: 30px;
 }
 
@@ -97,11 +97,18 @@ button.secondary {
   .dropdown {
     margin-top: -10%;
   }
-  .dropdown img{
+
+  .dropdown img {
     height: 3rem;
   }
-  .dropdown p{
+
+  .dropdown p {
     font-size: 1.5rem;
+  }
+
+  .slide-text2 {
+    margin-top: 80%;
+      width: 50%;
   }
 
 }
@@ -112,6 +119,7 @@ button.secondary {
     opacity: 0;
     transform: translateY(-40%);
   }
+
   to {
     opacity: 1;
     transform: translateY(-50%);

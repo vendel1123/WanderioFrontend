@@ -75,7 +75,7 @@ export default function Flights() {
           fontWeight: 'bold'
 
         }}>Search a plane ticket</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
           {/* Légitársaság */}
           <select
             name="airlineId"

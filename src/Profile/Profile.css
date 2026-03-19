@@ -3,6 +3,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.profileWhole{
+    background-color: #0c4eb1;
+    height: 100%;
+    width: 100vw;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 /* Logo felül */
 .signUpLogo {
     position: absolute;
@@ -25,11 +35,11 @@ body {
 
 /* Profile card */
 .profileContainer {
-    width: 30%;
+    width: 35%;
     background: #f1f1f1;
     border-radius: 20px;
     padding: 30px;
-    margin: auto;
+    margin: 0 auto;
     margin-top: 120px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -123,4 +133,12 @@ body {
     border-radius: 0.75rem;
     border: solid 1px;
     width: 40%;
+}
+
+@media (max-width: 977px) {
+    .profileContainer{
+        width: 90%;
+        padding: 20px;
+        margin-top: 100px;
+    }
 }
