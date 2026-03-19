@@ -39,13 +39,13 @@ export default function Booking() {
             <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-item active" data-bs-interval="10000">
-                        <img src={test} className="d-block w-100 m-0" alt="..." />
+                        <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
                     </div>
                     <div className="carousel-item" data-bs-interval="2000">
-                        <img src={logo} className="d-block w-100 m-0" alt="..." />
+                        <img src={logo} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
                     </div>
                     <div className="carousel-item">
-                        <img src={test} className="d-block w-100 m-0" alt="..." />
+                        <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
                     </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -58,12 +58,14 @@ export default function Booking() {
                 </button>
             </div>
 
-            <div className='whole' style={{ marginRight: '20%' }}>
+            <div className='whole' >
                 <div className="left">
                     <div id='description' className='description'>
                         <img src={information} alt="" />
                         <h3>Description</h3>
                     </div>
+
+                    <button></button>
                     <p>
                         Paris, often called the City of Light, is the capital of France and one of the world's most iconic cities. Known for its art, fashion, history, and romance, Paris is home to landmarks like the Eiffel Tower, the Louvre Museum, and the Notre-Dame Cathedral. The city is also famous for its charming cafés, scenic Seine River, and beautiful architecture that blends tradition with modernity.
                     </p>
@@ -73,8 +75,9 @@ export default function Booking() {
                     <div className='description'>
                         <img src={summary} alt="Summarry" />
                         <h3>Summary</h3>
-                    </div>
 
+                    </div>
+                    <button></button>
                     <div className='summary'>
                         <div className='flights' onClick={()=>navigate('/flights')}>
                             <img src={vip} alt="" />
@@ -87,7 +90,12 @@ export default function Booking() {
                         </div>
                     </div>
 
-                    <button></button>
+
+                    <div className='bookNowDiv'>
+                        <button>Book now</button>
+                    </div>
+
+
 
                     <div className='summaryChoices'>
                         <div>
@@ -101,12 +109,13 @@ export default function Booking() {
                             <p>Best price guarantee</p>
                         </div>
 
-                        <div>
+                        <div style={{marginBottom:'0px'}}>
                             <img src={vip} alt="" />
                             <p>Free parking</p>
                         </div>
 
                     </div>
+
 
                 </div>
 

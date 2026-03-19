@@ -16,7 +16,7 @@ export default function Selector() {
     const navigate = useNavigate()
     return (
         <>
-            <ul className="nav" style={{borderBottom: "2px solid gray"}}>
+            <ul className="nav" style={{ borderBottom: "2px solid gray" }}>
                 <div className="selectorLogo">
                     <li><p>Wanderio</p></li>
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
@@ -38,30 +38,43 @@ export default function Selector() {
 
                     <div className="field">
                         <label>Select Destination</label>
-                        <input style={{width: 300}} type="text" placeholder="France, Paris" />
+                        <input style={{ width: '100%' }} type="text" placeholder="France, Paris" />
                     </div>
 
                     <div className="field">
                         <label > Select dates</label>
-                        <input style={{width: 300}} type="date" placeholder="Sep 18" />
+                        <input style={{ width: '100%' }} type="date" placeholder="Sep 18" />
                     </div>
 
-                    <button onClick={()=>navigate('/Booking')}> Search Now</button>
+                    <button onClick={() => navigate('/Booking')}> Search Now</button>
                 </div>
             </div>
 
             <div className="footer">
+                <div className="footerDiv">
+                <div>
                     <li><img src={tourist} alt="" /></li>
                     <li>Largest Selection of Travel Services</li>
+                </div>
 
+                <div>
                     <li><img src={verified} alt="" /></li>
                     <li>Best price Guarantee</li>
+                </div>
+                </div>
 
+                <div className="footerDiv">
+                <div>
                     <li><img src={checklist} alt="" /></li>
                     <li>Easy Booking & Cancellation</li>
+                </div>
 
+                <div>
                     <li><img src={information} alt="" /></li>
-                    <li>Most Popular Website around the world</li>        
+                    <li>Most Popular Website around the world</li> 
+                </div>
+                </div>
+
             </div>
             <button className="Line"></button>
         </>

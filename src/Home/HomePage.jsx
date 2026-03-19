@@ -71,11 +71,11 @@ export default function HomePage() {
             </div>
 
             <div className="slide-text2">
-              <p>{slide.text2}</p>
+              <p style={{marginTop:'90%'}}>{slide.text2}</p>
             </div>
           </div>
           <div className="slide-text1">
-              <p>{slide.text1}</p>
+              <p >{slide.text1}</p>
             </div>
         </div>
       ))}
