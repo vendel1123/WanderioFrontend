@@ -59,23 +59,20 @@
 .right button {
     width: 100%;
     background-color: #0E9C39;
-    padding: 2px;
+    padding: 1.5px;
     margin-bottom: 2%;
 }
 
 .left button {
     width: 100%;
     background-color: #0E9C39;
-    padding: 2px;
+    padding: 1.5px;
     margin-bottom: 2%;
 }
 
 
 .whole {
-
     margin-top: 2%;
-    gap: 40px;
-    justify-content: center;
 }
 
 .whole img {
@@ -219,8 +216,15 @@
 }
 
 .guarantee {
-    margin-left: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
     margin-top: 2%;
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    padding: 2rem;
+    border-radius: 1rem;
 }
 
 .guarantee img {
@@ -234,17 +238,15 @@
 }
 
 .guaranteeDice {
-
     border: solid 2px #336699;
     border-radius: 1rem;
     margin: 3%;
-    padding: 1%;
+    padding: 2%;
     width: 50%;
     margin: 30px auto;
 }
 
 .guaranteeDice .guaranteeDiceItem {
-    display: flex;
     margin-top: 1%;
 }
 
@@ -254,10 +256,32 @@
     width: 35px;
 }
 
-.guaranteeDice div {
+.guaranteeDice {
+    display: flex;
+    flex-direction: column;
+}
+
+.guaranteeDiceItem{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    background-color: #d3d8dbfb ;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.guaranteeDiceItem:hover{
+    transform: translateY(-8px);
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+
+.guaranteeDiceItem p{
+    margin-bottom: 0px;
+    margin-left: 0.5rem;
+    font-weight: 650;
 }
 
 
@@ -267,13 +291,26 @@
 
 .attractions{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    
 }
 
-.card {
-    margin: 2rem;
+.attractions .card{
+    margin: 3% auto; 
+    border-radius: 1.5rem;
 }
+
+.grayLine{
+    width: 100%;
+    padding: 1px;
+    background-color: rgb(214, 212, 212);
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+
+
 
 
 /* button */

@@ -15,6 +15,7 @@ import vip from "../assets/BookingImgs/vip.png"
 import verified from '../assets/verified.png'
 
 import test from '../assets/signInImg.jpg'
+import { correctBorderRadius } from 'framer-motion'
 
 export default function Booking() {
 
@@ -79,12 +80,12 @@ export default function Booking() {
                     </div>
                     <button></button>
                     <div className='summary'>
-                        <div className='flights' onClick={()=>navigate('/flights')}>
+                        <div className='flights' onClick={() => navigate('/flights')}>
                             <img src={vip} alt="" />
                             <p>Flights</p>
                         </div>
 
-                        <div className='hotels' onClick={()=>navigate('/hotels')}>
+                        <div className='hotels' onClick={() => navigate('/hotels')}>
                             <img src={vip} alt="" />
                             <p>Hotels</p>
                         </div>
@@ -109,7 +110,7 @@ export default function Booking() {
                             <p>Best price guarantee</p>
                         </div>
 
-                        <div style={{marginBottom:'0px'}}>
+                        <div style={{ marginBottom: '0px' }}>
                             <img src={vip} alt="" />
                             <p>Free parking</p>
                         </div>
@@ -122,20 +123,20 @@ export default function Booking() {
 
             </div>
             <h1 id='guide' style={{
-                justifyContent: 'left',
-                marginLeft: '3%',
+                justifyContent: 'center',
                 fontStyle: 'italic',
-                marginTop: '10%'
+                marginTop: '10%',
+                marginBottom: '10%'
             }}>How it works</h1>
-            <div className='whole' style={{ marginRight: '20%' }}>
+            <div className='whole'>
 
                 <div className="left">
                     <div className='description'>
                         <img src={information} alt="" />
                         <h3>Secure your accommodation</h3>
                     </div>
-                    <p>
-                        Secure your place to stay instantly on Paris's most trusted travel marketplace. As soon as you reserve, we lock in your room to help you make the most of your trip.You'll get the best price and a secure payment system that protects your information.</p>
+                    <button></button>
+                    <p style={{ marginBottom: '3%' }}>Secure your place to stay instantly on Paris's most trusted travel marketplace. As soon as you reserve, we lock in your room to help you make the most of your trip.You'll get the best price and a secure payment system that protects your information.</p>
                 </div>
 
                 <div className="right">
@@ -143,24 +144,23 @@ export default function Booking() {
                         <img src={summary} alt="Summarry" />
                         <h3>Get instant confirmation</h3>
                     </div>
-                    <p style={{ width: '60%' }}>
+                    <button></button>
+                    <p style={{ marginBottom: '1%' }}>
                         You'll receive your booking confirmation and a detailed summary immediately after checkout, including check-in time, property address, and contact details. Enjoy peace of mind and get exactly what you booked—or your money back. No surprises, no hidden fees.
                     </p>
-
-
                 </div>
 
             </div>
 
-            <div className='whole' style={{ marginRight: '20%' }}>
+            <div className='whole' >
 
                 <div className="left">
                     <div className='description'>
                         <img src={information} alt="" />
                         <h3>Get access to the VIP Club</h3>
                     </div>
-                    <p>
-                        Booking with us gives you access to the Guide to Paris VIP Club, where you'll enjoy priority service, special perks, and exclusive discounts for amazing savings on your trip at Paris's top restaurants, shops, and local favorites.</p>
+                    <button></button>
+                    <p style={{ marginBottom: '3%' }}>Booking with us gives you access to the Guide to Paris VIP Club, where you'll enjoy priority service, special perks, and exclusive discounts for amazing savings on your trip at Paris's top restaurants, shops, and local favorites.</p>
                 </div>
 
                 <div className="right">
@@ -168,52 +168,49 @@ export default function Booking() {
                         <img src={summary} alt="Summarry" />
                         <h3>Stay with confidence</h3>
                     </div>
-                    <p style={{ width: '60%' }}>
-                        From check-in to check-out, we're here to support your stay. Whatever you need, whenever you need it, we're just seconds away, 24/7—ready to help you enjoy every moment of your time in Paris.</p>
-
+                    <button></button>
+                    <p style={{ marginBottom: '3%' }}>From check-in to check-out, we're here to support your stay. Whatever you need, whenever you need it, we're just seconds away, 24/7—ready to help you enjoy every moment of your time in Paris.</p>
 
                 </div>
 
             </div>
 
             <div className='guarantee'>
-                <div>
+                <div style={{ marginBottom: '2%' }}>
                     <img src={summary} alt="" />
                     <h2 style={{
                         color: '#336699',
                         ontStyle: 'italic',
                     }}>We guarantee</h2>
                 </div>
-                <p>
-                    Your trip is protected, personalized, and priced right. No surprises, no stress.
-                </p>
+                <p>Your trip is protected, personalized, and priced right. No surprises, no stress.</p>
             </div>
 
             <div className='guaranteeDice'>
-                <div>
-                    <div className='guaranteeDiceItem' >
-                        <img src={summary} alt="" />
-                        <p>Free cancellation & full refund
-                        </p>
-                    </div>
 
-                    <div className='guaranteeDiceItem'>
-                        <img src={summary} alt="" />
-                        <p>Best price always guaranteed</p>
-                    </div>
+                <div className='guaranteeDiceItem' >
+                    <img src={summary} alt="" />
+                    <p>Free cancellation & full refund
+                    </p>
                 </div>
 
-                <div>
-                    <div className='guaranteeDiceItem' >
-                        <img src={summary} alt="" />
-                        <p>Unlimited changes and support</p>
-                    </div>
-
-                    <div className='guaranteeDiceItem'>
-                        <img src={summary} alt="" />
-                        <p>0% booking & credit card fees</p>
-                    </div>
+                <div className='guaranteeDiceItem'>
+                    <img src={summary} alt="" />
+                    <p>Best price always guaranteed</p>
                 </div>
+
+
+
+                <div className='guaranteeDiceItem' >
+                    <img src={summary} alt="" />
+                    <p>Unlimited changes and support</p>
+                </div>
+
+                <div className='guaranteeDiceItem'>
+                    <img src={summary} alt="" />
+                    <p>0% booking & credit card fees</p>
+                </div>
+
 
 
             </div>
@@ -231,49 +228,51 @@ export default function Booking() {
 
             <div className='attractions'>
 
-                <div>
-                    <div className="card" style={{ width: '20rem' }}>
-                        <img src={test} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <p className="card-text">Louvre Museum - Exclusive Guided Tour (Reserved Entry Included)</p>
-                        </div>
-                    </div>
-
-                    <div className="card" style={{ width: '20rem' }}>
-                        <img src={test} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <p className="card-text">Versailles Palace and Gardens Tour from Paris.</p>
-                        </div>
+                <div className="card" style={{ width: '50%' }}>
+                    <img style={{
+                        borderRadius: '1.5rem',
+                        borderEndStartRadius: '0',
+                        borderBottomRightRadius: '0'
+                    }} src={test} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <p style={{ fontWeight: 'bold' }} className="card-text">Louvre Museum - Exclusive Guided Tour (Reserved Entry Included)</p>
+                        <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
+                        <button className='grayLine'></button>
+                        <p style={{marginBottom:'0'}}><strong>$28</strong></p>
+                        <p style={{ color: 'gray' }}>per person</p>
                     </div>
                 </div>
-                <div className="card" style={{ width: '20rem' }}>
-                        <img src={test} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <p className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
-                        </div>
-                    </div>
-                <div>
-                    <div className="card" style={{ width: '20rem' }}>
-                        <img src={test} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <p className="card-text">Paris Prestige Dinner Cruise from Eiffel Tower Area</p>
-                        </div>
-                    </div>
 
-                    <div className="card" style={{ width: '20rem' }}>
-                        <img src={test} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <p className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
-                        </div>
+                <div className="card" style={{ width: '50%' }}>
+                    <img style={{
+                        borderRadius: '1.5rem',
+                        borderEndStartRadius: '0',
+                        borderBottomRightRadius: '0'
+                    }} src={test} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <p style={{ fontWeight: 'bold' }} className="card-text">Versailles Palace and Gardens Tour from Paris.</p>
+                        <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
+                        <button className='grayLine'></button>
+                        <p style={{marginBottom:'0'}}><strong>$28</strong></p>
+                        <p style={{ color: 'gray' }}>per person</p>
                     </div>
-
                 </div>
-                <div className="card" style={{ width: '20rem' }}>
-                        <img src={test} className="card-img-top" alt="..." />
-                        <div className="card-body">
-                            <p className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
-                        </div>
+
+                <div className="card" style={{ width: '50%' }}>
+                    <img style={{
+                        borderRadius: '1.5rem',
+                        borderEndStartRadius: '0',
+                        borderBottomRightRadius: '0'
+                    }} src={test} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <p style={{ fontWeight: 'bold' }} className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
+                        <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
+                        <button className='grayLine'></button>
+                        <p style={{marginBottom:'0'}}><strong>$28</strong></p>
+                        <p style={{color:'gray'}}>per person</p>
                     </div>
+                </div>
+
             </div>
 
             <h2 style={{
@@ -287,7 +286,12 @@ export default function Booking() {
                 justifyContent: 'center'
             }}>Hotels</h2>
 
-            <div className='hotels'>
+            <div className='hotels' style={{
+                width: '80%',
+                display: 'flex',
+                justifyContent: 'center',
+                margin: '0 auto'
+            }}>
 
                 <div className="card mb-3" style={{ maxWidth: "540px" }}>
                     <div className="row g-0">
@@ -347,22 +351,23 @@ export default function Booking() {
                         <p style={{ marginBottom: '0' }}>Privacy policy</p>
                     </div>
 
-                    
+
                 </div>
 
                 <div className='dsa'>
-                <button className='footerBtn'></button>
+                    <button className='footerBtn'></button>
                 </div>
 
                 <div className='last'>
-                    <p style={{margin:'0',
-                        color:'black',
-                        fontWeight:'bold'
+                    <p style={{
+                        margin: '0',
+                        color: 'black',
+                        fontWeight: 'bold'
                     }}> Copyrights © 2025 Wanderio - All rights reserved</p>
                 </div>
 
             </div>
-           
+
 
         </div>
     )
