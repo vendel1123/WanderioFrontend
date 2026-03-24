@@ -8,7 +8,8 @@
 .hotelPage .selectorLogo{
     display: flex;
     list-style-type: none;
-    margin: 1%;
+
+
 }
 
 .hotelPage h3{
@@ -26,4 +27,43 @@
 .book{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.book button{
+    background-color: lightgray;
+    transition: background-color 0.3s ease,
+                transform 0.3s ease,
+                border 0.3s ease;
+}
+
+.book button:hover{
+    transform: translateY(-5px);
+    background-color: rgb(191, 190, 190);
+    border: solid 1px;
+}
+
+.grayP{
+    color: lightgray;
+}
+
+.boldP{
+    font-weight: 650;
+}
+
+.grayLine{
+    margin: 1rem 0;
+}
+
+.back{
+    padding: 1rem;
+    margin: 1rem;
+    background-color: lightgray;
+    transition: background-color 0.3s ease,
+                color 0.3s ease;
+}
+
+.back:hover{
+    background-color: black;
+    color: white;
 }
