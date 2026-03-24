@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hotelPage .selectorLogo{
+    display: flex;
+    list-style-type: none;
+    margin: 1%;
+}
+
+.hotelPage h3{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    color: #336699;
+    font-weight: 650;
+}
+
+.card p{
+    margin: 0;
+}
+
+.book{
+    display: flex;
+    justify-content: space-between;
+}

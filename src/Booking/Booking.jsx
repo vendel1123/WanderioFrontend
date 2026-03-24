@@ -93,7 +93,7 @@ export default function Booking() {
 
 
                     <div className='bookNowDiv'>
-                        <button>Book now</button>
+                        <button onClick={() => navigate('/hotels')}>Book now</button>
                     </div>
 
 
@@ -289,8 +289,9 @@ export default function Booking() {
             <div className='hotels' style={{
                 width: '80%',
                 display: 'flex',
-                justifyContent: 'center',
-                margin: '0 auto'
+                justifyContent: 'space-evenly',
+                margin: '0 auto',
+
             }}>
 
                 <div className="card mb-3" style={{ maxWidth: "540px" }}>
@@ -326,11 +327,11 @@ export default function Booking() {
             </div>
 
             <div className='divBtn'>
-                <button>See More</button>
+                <button onClick={() => navigate('/hotels')}>See More</button>
             </div>
 
             <div className='footers'>
-                <div className="selectorLogos" >
+                <div className="selectorLogos" style={{marginLeft:'5%'}}>
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
                     <li><p>Wanderio</p></li>
                 </div>
