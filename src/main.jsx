@@ -13,6 +13,7 @@ import Cart from './Cart/Cart.jsx'
 import Booking from './Booking/Booking.jsx';
 import Flights from './Flights/Flights.jsx';
 import Hotels from './Hotels/Hotels.jsx'
+import HotelBook from './Hotels/HotelBook.jsx';
 
 
 
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')).render(
       <Route path='/booking' element={<Booking/>}/>
       <Route path='/flights' element={<Flights/>}/>
       <Route path='/hotels' element={<Hotels/>}/>
+      <Route path='/hotelBook' element={<HotelBook/>}/>
 
 
     </Routes>

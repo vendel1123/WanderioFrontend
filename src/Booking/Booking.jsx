@@ -116,8 +116,6 @@ export default function Booking() {
                         </div>
 
                     </div>
-
-
                 </div>
 
 
@@ -238,7 +236,7 @@ export default function Booking() {
                         <p style={{ fontWeight: 'bold' }} className="card-text">Louvre Museum - Exclusive Guided Tour (Reserved Entry Included)</p>
                         <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
                         <button className='grayLine'></button>
-                        <p style={{marginBottom:'0'}}><strong>$28</strong></p>
+                        <p style={{ marginBottom: '0' }}><strong>$28</strong></p>
                         <p style={{ color: 'gray' }}>per person</p>
                     </div>
                 </div>
@@ -253,7 +251,7 @@ export default function Booking() {
                         <p style={{ fontWeight: 'bold' }} className="card-text">Versailles Palace and Gardens Tour from Paris.</p>
                         <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
                         <button className='grayLine'></button>
-                        <p style={{marginBottom:'0'}}><strong>$28</strong></p>
+                        <p style={{ marginBottom: '0' }}><strong>$28</strong></p>
                         <p style={{ color: 'gray' }}>per person</p>
                     </div>
                 </div>
@@ -268,8 +266,8 @@ export default function Booking() {
                         <p style={{ fontWeight: 'bold' }} className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
                         <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
                         <button className='grayLine'></button>
-                        <p style={{marginBottom:'0'}}><strong>$28</strong></p>
-                        <p style={{color:'gray'}}>per person</p>
+                        <p style={{ marginBottom: '0' }}><strong>$28</strong></p>
+                        <p style={{ color: 'gray' }}>per person</p>
                     </div>
                 </div>
 
@@ -331,7 +329,7 @@ export default function Booking() {
             </div>
 
             <div className='footers'>
-                <div className="selectorLogos" style={{marginLeft:'5%'}}>
+                <div className="selectorLogos" style={{ marginLeft: '5%' }}>
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
                     <li><p>Wanderio</p></li>
                 </div>
