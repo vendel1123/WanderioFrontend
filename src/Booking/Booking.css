@@ -300,6 +300,16 @@
     border-radius: 1.5rem;
 }
 
+.card{
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.card:hover{
+    transform: translateY(-8px);
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+
 .grayLine{
     width: 100%;
     padding: 1px;
@@ -395,6 +405,10 @@
     font-weight: bold;
     align-items: center;
     margin: 0;
+}
+
+.texts{
+    margin-left: 5%;
 }
 
 .texts p{

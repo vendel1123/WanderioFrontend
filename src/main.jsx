@@ -12,6 +12,7 @@ import Profile from './Profile/Profile.jsx';
 import Cart from './Cart/Cart.jsx'
 import Booking from './Booking/Booking.jsx';
 import Flights from './Flights/Flights.jsx';
+import Hotels from './Hotels/Hotels.jsx'
 
 
 
@@ -26,6 +27,7 @@ createRoot(document.getElementById('root')).render(
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/booking' element={<Booking/>}/>
       <Route path='/flights' element={<Flights/>}/>
+      <Route path='/hotels' element={<Hotels/>}/>
 
 
     </Routes>
