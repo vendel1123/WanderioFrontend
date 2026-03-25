@@ -48,3 +48,49 @@
 .detail div p{
     margin: 0;
 }
+
+.bookNow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5% auto;
+    background-color: rgb(244,244,244);
+    padding: 2rem;
+    width: 60%;
+    border-radius: 2rem;
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+
+.bookNow h2{
+    font-weight: bold;
+}
+
+
+.bookNow input{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    border: 1px solid;
+}
+
+.bookNowBtn{
+    padding: 0.5rem;
+    margin: 1rem 0;
+    transition: transform 0.3s ease,
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.bookNowBtn:hover{
+    transform: translateY(-5px);
+    background-color: rgb(244,244,244);
+    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+}
+
+.info{
+    margin-top: 1rem;
+}
+
+.info p{
+    color: gray;
+}
