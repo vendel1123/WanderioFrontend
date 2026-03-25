@@ -19,9 +19,9 @@ export default function Cart() {
     const [section, setSection] = useState("payment")
 
     return (
-        <>
+        <div className="cart">
             <div className='signUpLog'>
-                <img src={logo} alt="WanderioLogo" title='WanderioLogo' />
+                <img src={logo} alt="WanderioLogo" title='WanderioLogo' style={{width:'3rem', height:'3rem'}} />
                 <p>Wanderio</p>
             </div>
 
@@ -55,28 +55,49 @@ export default function Cart() {
                 {section === "payment" && (
                     <>
                         <div>
-                            <div>
-                                <h3 style={{
-                                    textAlign: 'left',
-                                    color: '#336699',
-                                    marginBottom: '1.5rem',
-                                    marginRight: '12%'
-                                }}>Your shopping cart</h3>
+                            <h3 style={{
+                                textAlign: 'center',
+                                color: '#336699',
+                                fontWeight: 'bold'
+                            }}>Your Shopping Cart</h3>
+                            <div className="paymentwhite">
+                                <div className="payment">
+                                    <div className="name">
+                                        <img src={test} alt="" style={{
+                                            height: '80px',
+                                            width: '80px',
+                                            borderRadius: '1rem',
+                                            margin:'0'
+                                        }} />
+                                        <div className="nameDiv">
+                                            <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
+                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
+                                        </div>
+                                    </div>
 
-                                <div className="card mb-3" style={{maxWidth:"540px"}}>
-                                    <div className="row g-0">
-                                        <div className="col-md-4">
-                                            <img style={{objectFit:'cover'}} src={test} className="img-fluid w-100 h-100 m-0 rounded-start" alt="..." />
+                                    <div className="paymentDivBtn">
+                                        <p style={{ fontWeight: 'bold' }}>$17</p>
+                                        <button className="paymentButton" >Remove</button>
+                                    </div>
+                                </div>
+
+                                <div className="payment">
+                                    <div className="name">
+                                        <img src={test} alt="" style={{
+                                            height: '80px',
+                                            width: '80px',
+                                            borderRadius: '1rem',
+                                            margin:'0'
+                                        }} />
+                                        <div className="nameDiv">
+                                            <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
+                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
                                         </div>
-                                        <div className="col-md-8 ">
-                                            <div className="card-body">
-                                            <h5 className="card-title" style={{ color: '#336699' }}>Versailles Palace</h5>
-                                            <p className="card-text">Versailles is a famous royal palace near Paris, known for its beautiful gardens and grand halls.</p>
-                                        </div>
-                                        </div>
-                                        <div className="card-footer" style={{ backgroundColor: '#CCEDD8' }}>
-                                                    <small className="text-body-secondary">Total 17 USD</small>
-                                        </div>
+                                    </div>
+
+                                    <div className="paymentDivBtn">
+                                        <p style={{ fontWeight: 'bold' }}>$17</p>
+                                        <button className="paymentButton" >Remove</button>
                                     </div>
                                 </div>
 
@@ -118,44 +139,159 @@ export default function Cart() {
                 )}
 
                 {section === "flights" && (
-                    <div className="card mb-3" style={{maxWidth:"540px"}}>
-                    <div className="row g-0">
-                        <div className="col-md-4">
-                            <img style={{objectFit:'cover'}} src={test} className="img-fluid w-100 h-100 m-0 rounded-start" alt="..." />
+                    <>
+                        <div>
+                            <h3 style={{
+                                textAlign: 'center',
+                                color: '#336699',
+                                fontWeight: 'bold'
+                            }}>Your Shopping Cart</h3>
+                            <div className="paymentwhite">
+
+
+
+                                <div className="payment">
+                                    <div className="name">
+                                        <img src={test} alt="" style={{
+                                            height: '80px',
+                                            width: '80px',
+                                            borderRadius: '1rem'
+                                        }} />
+                                        <div className="nameDiv">
+                                            <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
+                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="paymentDivBtn">
+                                        <p style={{ fontWeight: 'bold' }}>$17</p>
+                                        <button className="paymentButton" >Remove</button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                        <div className="col-md-8 ">
-                            <div className="card-body">
-                            <h5 className="card-title" style={{ color: '#336699' }}>London</h5>
-                            <p className="card-text">United Kingdom</p>
+                        <div >
+
+                            {showPayment && (
+                                <div className="paymentOverlay">
+                                    <div className="paymentDt">
+                                        <div className="adat">
+                                            <input type="text" id="kartyaSzam" name="kartyaSzam" placeholder="Kártyaszám" />
+                                        </div>
+
+                                        <div className="adat">
+                                            <input type="text" id="kartyaNev" name="kartyaNev" placeholder="Kártyabirtokos neve" />
+                                        </div>
+
+                                        <div id="kettozes">
+                                            <div className="adat">
+                                                <input type="text" id="cvc" name="cvc" placeholder="CVC/CCV Kód" />
+                                            </div>
+                                            <div className="adat">
+                                                <input type="datetime" id="lejarat" name="lejarat" placeholder="HH/ÉÉ" />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <input type="checkbox" id="kartyaMentese" name="kartyaMentese" />
+                                            <label htmlFor="kartyaMentese">Kártya mentése a könnyebb fizetéshez</label>
+                                        </div>
+                                        <button type="button" id="gomb" className="paymentBtn" onClick={() => navigate('/selector')}>Purchase</button>
+
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                        </div>
-                        <div className="card-footer" style={{ backgroundColor: '#CCEDD8' }}>
-                                    <small className="text-body-secondary">Total 17 USD</small>
-                        </div>
-                    </div>
-                </div>
+                    </>
                 )}
 
                 {section === "hotels" && (
-                    <div className="card mb-3" style={{maxWidth:"540px"}}>
-                    <div className="row g-0">
-                        <div className="col-md-4">
-                            <img style={{objectFit:'cover'}} src={test} className="img-fluid w-100 h-100 m-0 rounded-start" alt="..." />
+                    <>
+                        <div>
+                            <h3 style={{
+                                textAlign: 'center',
+                                color: '#336699',
+                                fontWeight: 'bold'
+                            }}>Your Shopping Cart</h3>
+                            <div className="paymentwhite">
+                                <div className="payment">
+                                    <div className="name">
+                                        <img src={test} alt="" style={{
+                                            height: '80px',
+                                            width: '80px',
+                                            borderRadius: '1rem'
+                                        }} />
+                                        <div className="nameDiv">
+                                            <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
+                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="paymentDivBtn">
+                                        <p style={{ fontWeight: 'bold' }}>$17</p>
+                                        <button className="paymentButton" >Remove</button>
+                                    </div>
+                                </div>
+
+                                <div className="payment">
+                                    <div className="name">
+                                        <img src={test} alt="" style={{
+                                            height: '80px',
+                                            width: '80px',
+                                            borderRadius: '1rem'
+                                        }} />
+                                        <div className="nameDiv">
+                                            <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
+                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="paymentDivBtn">
+                                        <p style={{ fontWeight: 'bold' }}>$17</p>
+                                        <button className="paymentButton" >Remove</button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                        <div className="col-md-8 ">
-                            <div className="card-body">
-                            <h5 className="card-title" style={{ color: '#336699' }}>Versailles Palace hotel</h5>
-                            <p className="card-text">Versailles is a famous royal palace near Paris, known for its beautiful gardens and grand halls.</p>
+                        <div >
+
+                            {showPayment && (
+                                <div className="paymentOverlay">
+                                    <div className="paymentDt">
+                                        <div className="adat">
+                                            <input type="text" id="kartyaSzam" name="kartyaSzam" placeholder="Kártyaszám" />
+                                        </div>
+
+                                        <div className="adat">
+                                            <input type="text" id="kartyaNev" name="kartyaNev" placeholder="Kártyabirtokos neve" />
+                                        </div>
+
+                                        <div id="kettozes">
+                                            <div className="adat">
+                                                <input type="text" id="cvc" name="cvc" placeholder="CVC/CCV Kód" />
+                                            </div>
+                                            <div className="adat">
+                                                <input type="datetime" id="lejarat" name="lejarat" placeholder="HH/ÉÉ" />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <input type="checkbox" id="kartyaMentese" name="kartyaMentese" />
+                                            <label htmlFor="kartyaMentese">Kártya mentése a könnyebb fizetéshez</label>
+                                        </div>
+                                        <button type="button" id="gomb" className="paymentBtn" onClick={() => navigate('/selector')}>Purchase</button>
+
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                        </div>
-                        <div className="card-footer" style={{ backgroundColor: '#CCEDD8' }}>
-                                    <small className="text-body-secondary">Total 17 USD</small>
-                        </div>
-                    </div>
-                </div>
+                    </>
                 )}
 
             </div>
+
 
             <div className="bottomButtons">
                 <div>
@@ -172,6 +308,8 @@ export default function Cart() {
                 </button>
             </div>
 
+            <button className="grayLine"></button>
+
             <div className="link">
                 <p style={{
                     color: '#A8A8A8',
@@ -181,6 +319,6 @@ export default function Cart() {
                     info@wanderio.com</a>
             </div>
 
-        </>
+        </div>
     )
 }

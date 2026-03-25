@@ -123,8 +123,8 @@ export default function Booking() {
             <h1 id='guide' style={{
                 justifyContent: 'center',
                 fontStyle: 'italic',
-                marginTop: '10%',
-                marginBottom: '10%'
+                marginTop: '5%',
+                marginBottom: '5%'
             }}>How it works</h1>
             <div className='whole'>
 

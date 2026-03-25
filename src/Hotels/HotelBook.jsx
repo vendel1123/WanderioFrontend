@@ -14,8 +14,8 @@ export default function HotelBook() {
         <div className='hotelBookPage'>
             <div className="nav">
                 <div className="selectorLogo">
-                    <li><p>Wanderio</p></li>
-                    <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
+                    <li><p style={{ margin: '0' }}>Wanderio</p></li>
+                    <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' style={{ margin: '0' }} /></li>
                 </div>
                 <button className='back' onClick={() => navigate('/hotels')}>← Back</button>
             </div>
@@ -69,16 +69,23 @@ export default function HotelBook() {
                     <p className='grayP'>SIZE</p>
                     <p>28 m²</p>
                 </div>
-                <div>
-                    <p className='grayP'>BED TYPE</p>
-                    <p>1 King Bed</p>
-                </div>
-            
             </div>
 
-            <div className="amenities">
-                <h5>Amenities</h5>
-                <button className="grayLineH"></button>
+            <div className="bookNow">
+                <h2>$89</h2>
+                <small>per night</small>
+
+                <input type="date" />
+                <input type="date" />
+
+                <button className='bookNowBtn'>Book Now</button>
+
+                <button className='grayLineH'></button>
+                <div className="info">
+                    <p>✓ Free cancellation</p>
+                    <p>✓ Instant confirmation</p>
+                    <p>✓ Best price guaranteed</p>
+                </div>
 
             </div>
         </div>
