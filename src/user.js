@@ -1,5 +1,3 @@
-import { backIn } from "framer-motion"
-
 const BACKEND_URL = '/users'
 const BACKEND_FLIGHTSURL = '/flights'
 
@@ -124,4 +122,19 @@ export async function emailchange(email){
 
     const data = await res.json()
     return data
+}
+
+//get all users
+export async function getAllUsers() {
+    const res = await fetch(`${BACKEND_URL}/admin/alluser`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return {error:data?.error}
+    }
+
+    return await res.json()
 }
