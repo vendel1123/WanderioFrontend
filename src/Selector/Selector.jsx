@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
+
+import { getAllCities } from "../user"
 
 import cart from "../assets/cart.png"
 import avatar from "../assets/avatar.png"
@@ -10,10 +13,44 @@ import information from "../assets/information.png"
 
 
 import './Selector.css'
+import { b, option } from "framer-motion/client"
 
 export default function Selector() {
 
     const navigate = useNavigate()
+
+    const [hiba, setHiba] = useState('')
+    const [uzenet, setUzenet] = useState('')
+
+    const [selectedCity, setSelectedCity] = useState("")
+
+    const [cities, setCities] = useState([])
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+    useEffect(()=> {
+        getAllCities()
+        .then(data=> {
+            setCities(data)
+            setIsLoading(false)
+        })
+        .catch(err=> {
+            console.error("Hiba a varosok lekeresekor")
+            setError("A varosok listajat nem sikerult betolteni", err)
+            setIsLoading(false)
+        })
+    }, [])
+
+    const handleSearch = () => {
+        if (selectedCity) {
+            navigate(`/booking/${selectedCity}`)
+        } else {
+            alert("Please select a destination")
+        }
+
+    }
+
     return (
         <>
             <ul className="nav" style={{ borderBottom: "2px solid gray" }}>
@@ -37,13 +74,16 @@ export default function Selector() {
                 <div className="destination">
 
                     <div className="field">
-                        <label>Select Destination</label>
-                        <input style={{ width: '100%' }} type="text" placeholder="France, Paris" />
-                    </div>
-
-                    <div className="field">
-                        <label > Select dates</label>
-                        <input style={{ width: '100%' }} type="date" placeholder="Sep 18" />
+                        <label style={{ fontWeight: 'bold' }}>Select Destination</label>
+                        <select value={selectedCity} onChange={(e)=> setSelectedCity(e.target.value)} className="fieldSelector" disabled= {isLoading || error}>
+                            <option value="">{isLoading ? "Cities loading...": "Choose a city"}</option>
+                            {error && <option disabled>{error}</option>}
+                            {!isLoading && !error && cities.map(city => (
+                                <option key={city.cityID} value={city.cityID}>
+                                    {city.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
 
                     <button onClick={() => navigate('/Booking')}> Search Now</button>
@@ -52,27 +92,27 @@ export default function Selector() {
 
             <div className="footer">
                 <div className="footerDiv">
-                <div>
-                    <li><img src={tourist} alt="" /></li>
-                    <li>Largest Selection of Travel Services</li>
-                </div>
+                    <div>
+                        <li><img src={tourist} alt="" /></li>
+                        <li>Largest Selection of Travel Services</li>
+                    </div>
 
-                <div>
-                    <li><img src={verified} alt="" /></li>
-                    <li>Best price Guarantee</li>
-                </div>
+                    <div>
+                        <li><img src={verified} alt="" /></li>
+                        <li>Best price Guarantee</li>
+                    </div>
                 </div>
 
                 <div className="footerDiv">
-                <div>
-                    <li><img src={checklist} alt="" /></li>
-                    <li>Easy Booking & Cancellation</li>
-                </div>
+                    <div>
+                        <li><img src={checklist} alt="" /></li>
+                        <li>Easy Booking & Cancellation</li>
+                    </div>
 
-                <div>
-                    <li><img src={information} alt="" /></li>
-                    <li>Most Popular Website around the world</li> 
-                </div>
+                    <div>
+                        <li><img src={information} alt="" /></li>
+                        <li>Most Popular Website around the world</li>
+                    </div>
                 </div>
 
             </div>
