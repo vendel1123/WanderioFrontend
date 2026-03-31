@@ -19,9 +19,6 @@ export default function Selector() {
 
     const navigate = useNavigate()
 
-    const [hiba, setHiba] = useState('')
-    const [uzenet, setUzenet] = useState('')
-
     const [selectedCity, setSelectedCity] = useState("")
 
     const [cities, setCities] = useState([])
@@ -86,7 +83,7 @@ export default function Selector() {
                         </select>
                     </div>
 
-                    <button onClick={() => navigate('/Booking')}> Search Now</button>
+                    <button onClick={handleSearch} disabled={!selectedCity}> Search Now</button>
                 </div>
             </div>
 

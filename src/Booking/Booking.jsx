@@ -1,5 +1,7 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+
+import { getCityDetails } from '../user'
 
 import './Booking.css'
 
@@ -15,11 +17,47 @@ import vip from "../assets/BookingImgs/vip.png"
 import verified from '../assets/verified.png'
 
 import test from '../assets/signInImg.jpg'
-import { correctBorderRadius } from 'framer-motion'
 
 export default function Booking() {
 
     const navigate = useNavigate()
+
+    const { id } = useParams()
+
+    const [cityData, setCityData] = useState(null)
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+    useEffect(() => {
+
+        if (!id) {
+            setIsLoading(false)
+            setError("Nincs megadva a varos azonositoja")
+            return
+        }
+
+        setIsLoading(true)
+        setError(null)
+
+        getCityDetails(id)
+            .then(data => {
+                setCityData(data)
+                setIsLoading(false)
+            })
+            .catch(err => {
+                console.error(`hiba az ${id} azonositoju varos lekeresekor`, err)
+                setError(err.message || "A varos adatait nem sikerult betolteni ")
+                setIsLoading(false)
+            })
+
+
+    }, [id])
+
+    if (isLoading) {
+        return <div style={{ textAlign: 'center', marginTop: '50px' }}><h1>Adatok betoltese</h1></div>
+    }
+
 
     return (
         <div className='hole'>
@@ -36,18 +74,23 @@ export default function Booking() {
                 </div>
             </ul>
 
-            <h1>Paris</h1>
+            <h1>{cityData.name}</h1>
             <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
+                    {cityData.images && cityData.images.lenght > 0 ? cityData.images.map((imgSrc, index) => (
+                        <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                            <img src={imgSrc} className='d-block w-50 mx-auto mb-0 rounded-5' alt={`${cityData.name} nezet ${index + 1}`} />
+                        </div>
+                    ))
+                        : (
+                            <div className='carousel-item active'>
+                                <p>Nincsenek kepek a varoshoz</p>
+                            </div>
+                        )}
                     <div className="carousel-item active" data-bs-interval="10000">
                         <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
                     </div>
-                    <div className="carousel-item" data-bs-interval="2000">
-                        <img src={logo} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
-                    </div>
-                    <div className="carousel-item">
-                        <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
-                    </div>
+
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -67,9 +110,7 @@ export default function Booking() {
                     </div>
 
                     <button></button>
-                    <p>
-                        Paris, often called the City of Light, is the capital of France and one of the world's most iconic cities. Known for its art, fashion, history, and romance, Paris is home to landmarks like the Eiffel Tower, the Louvre Museum, and the Notre-Dame Cathedral. The city is also famous for its charming cafés, scenic Seine River, and beautiful architecture that blends tradition with modernity.
-                    </p>
+                    <p>{cityData.description || "Nincsenek kepek ehez a varoshoz"}</p>
                 </div>
 
                 <div className="right">
@@ -226,50 +267,19 @@ export default function Booking() {
 
             <div className='attractions'>
 
-                <div className="card" style={{ width: '50%' }}>
-                    <img style={{
-                        borderRadius: '1.5rem',
-                        borderEndStartRadius: '0',
-                        borderBottomRightRadius: '0'
-                    }} src={test} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <p style={{ fontWeight: 'bold' }} className="card-text">Louvre Museum - Exclusive Guided Tour (Reserved Entry Included)</p>
-                        <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
-                        <button className='grayLine'></button>
-                        <p style={{ marginBottom: '0' }}><strong>$28</strong></p>
-                        <p style={{ color: 'gray' }}>per person</p>
+                {cityData.attractions && cityData.attractions.map(attraction => (
+                    <div key={attraction.attractionID} className="card" style={{ width: '50%' }}>
+                        {/* <img src={...} /> Itt lehetne az attrakció képe, ha lenne a DB-ben */}
+                        <div className="card-body">
+                            <p style={{ fontWeight: 'bold' }}>{attraction.name}</p>
+                            <p>{attraction.description}</p>
+                            <button className='grayLine'></button>
+                            <p style={{ marginBottom: '0' }}><strong>${attraction.price}</strong></p>
+                            <p style={{ color: 'gray' }}>per person</p>
+                        </div>
                     </div>
-                </div>
+                ))}
 
-                <div className="card" style={{ width: '50%' }}>
-                    <img style={{
-                        borderRadius: '1.5rem',
-                        borderEndStartRadius: '0',
-                        borderBottomRightRadius: '0'
-                    }} src={test} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <p style={{ fontWeight: 'bold' }} className="card-text">Versailles Palace and Gardens Tour from Paris.</p>
-                        <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
-                        <button className='grayLine'></button>
-                        <p style={{ marginBottom: '0' }}><strong>$28</strong></p>
-                        <p style={{ color: 'gray' }}>per person</p>
-                    </div>
-                </div>
-
-                <div className="card" style={{ width: '50%' }}>
-                    <img style={{
-                        borderRadius: '1.5rem',
-                        borderEndStartRadius: '0',
-                        borderBottomRightRadius: '0'
-                    }} src={test} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <p style={{ fontWeight: 'bold' }} className="card-text">Montmartre Hidden Gems and Scenic Highlights Walking Tour</p>
-                        <p>Skip the line access to the Eiffel tower with timed entry during golden hour sunset viewing.</p>
-                        <button className='grayLine'></button>
-                        <p style={{ marginBottom: '0' }}><strong>$28</strong></p>
-                        <p style={{ color: 'gray' }}>per person</p>
-                    </div>
-                </div>
 
             </div>
 
@@ -289,38 +299,20 @@ export default function Booking() {
                 display: 'flex',
                 justifyContent: 'space-evenly',
                 margin: '0 auto',
-
             }}>
-
-                <div className="card mb-3" style={{ maxWidth: "540px" }}>
-                    <div className="row g-0">
-                        <div className="col-md-4">
-                            <img style={{ objectFit: 'cover' }} src={test} className="img-fluid w-100 h-100 m-0 rounded-start" alt="..." />
-                        </div>
-                        <div className="col-md-8 ">
-                            <div className="card-body">
-                                <h5 className="card-title" style={{ color: '#336699' }}> Palazzo Olivia</h5>
-                                <p className="card-text">Versailles is a famous royal palace near Paris, known for its beautiful gardens and grand halls.</p>
+                {cityData.hotels && cityData.hotels.map(hotel => (
+                    <div key={hotel.hotelID} className="card mb-3" style={{ maxWidth: "540px" }}>
+                        <div className="row g-0">
+                            {/* <img src={...} /> Itt lehetne a hotel képe */}
+                            <div className="col-md-8">
+                                <div className="card-body">
+                                    <h5 className="card-title" style={{ color: '#336699' }}>{hotel.name}</h5>
+                                    <p className="card-text">{hotel.details}</p>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                </div>
-
-                <div className="card mb-3" style={{ maxWidth: "540px" }}>
-                    <div className="row g-0">
-                        <div className="col-md-4">
-                            <img style={{ objectFit: 'cover' }} src={test} className="img-fluid w-100 h-100 m-0 rounded-start" alt="..." />
-                        </div>
-                        <div className="col-md-8 ">
-                            <div className="card-body">
-                                <h5 className="card-title" style={{ color: '#336699' }}>Timhotel Opéra Blanche Fontaine</h5>
-                                <p className="card-text">Versailles is a famous royal palace near Paris, known for its beautiful gardens and grand halls.</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                ))}
 
             </div>
 
