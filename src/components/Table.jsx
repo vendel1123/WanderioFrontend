@@ -1,37 +1,68 @@
-import Btn from "./Btn"
+import React from 'react';
 
-export default function Table({ data, columns, actions }) {
+export default function Table({ allUsers, onEdit, onDelete }) {
+    // 1. Eset: Ha az adatok még töltenek (null)
+    if (!allUsers) {
+        return (
+            <div className="text-center my-4">
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+
+    // 2. Eset: Ha a lekérdezés sikeres, de üres az adatbázis
+    if (allUsers.length === 0) {
+        return <div className="alert alert-info mt-3">There are no users in the database right now.</div>;
+    }
+
+    // 3. Eset: Van adat, megjelenítjük a táblázatot
     return (
-        <table className="table table-striped table-hover">
-            <thead>
-                <tr className="text-center">
-                    {columns.map((col, index) => (
-                        <th key={index}>{col.header}</th>
-                    ))}
-                    {actions && <th>Actions</th>}
-                </tr>
-            </thead>
-            <tbody>
-                {data?.map((item, rowIndex) => (
-                    <tr key={rowIndex}>
-                        {columns.map((col, colIndex) => (
-                            <td key={colIndex}>{item[col.accessor]}</td>
-                        ))}
-                        {actions && (
-                            <td className="d-flex justify-content-evenly">
-                                {actions.map((action, actionIndex) => (
-                                    <Btn 
-                                        key={actionIndex}
-                                        buttonClass={action.buttonClass} 
-                                        content={action.content} 
-                                        onClick={() => action.onClick(item)} 
-                                    />
-                                ))}
-                            </td>
-                        )}
+        <div className="table-responsive mt-3">
+            <table className="table table-striped table-hover table-bordered align-middle">
+                <thead className="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email address</th>
+                        <th>Role </th>
+                        <th className="text-center">Actions</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
-    )
+                </thead>
+                <tbody>
+                    {allUsers?.map((user) => (
+                        <tr key={user.userID}>
+                            <td>{user.userID}</td>
+                            <td>{user.username}</td>
+                            <td>{user.email}</td>
+                            <td>
+                                {/* Egy kis extra vizualitás: ha admin, más színű a jelvény */}
+                                <span className={`badge ${user.role === 'admin' ? 'bg-danger' : 'bg-secondary'}`}>
+                                    {user.role}
+                                </span>
+                            </td>
+                            <td className="text-center">
+                                {/* Szerkesztés gomb */}
+                                <button 
+                                    className="btn btn-outline-info btn-sm me-2" 
+                                    onClick={() => onEdit(user)}
+                                >
+                                    Modify
+                                </button>
+                                
+                                {/* Törlés gomb */}
+                                <button 
+                                    className="btn btn-outline-danger btn-sm" 
+                                    onClick={() => onDelete(user)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
 }
