@@ -155,9 +155,6 @@ export async function getAllCities() {
     return await res.json()
 }
 
-// @param {string | number} cityId
-
-
 export async function getCityId(cityId) {
     const res = await fetch(`${BACKEND_CITIES_URL}/getcities/${cityId}`)
 
@@ -179,3 +176,4 @@ export async function getCityDetails(cityId){
 
     return await res.json()
 }
+

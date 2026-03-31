@@ -30,7 +30,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/selector' element={<Selector />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/booking' element={<Booking />} />
+          <Route path='/booking/:id' element={<Booking />} />
           <Route path='/flights' element={<Flights />} />
           <Route path='/hotels' element={<Hotels />} />
           <Route path='/hotelBook' element={<HotelBook />} />
