@@ -23,6 +23,10 @@ export default defineConfig({
       '/cities':{
         target:'http://127.0.0.1:4000/api',
         changeOrigin:true
+      },
+      '/hotels':{
+        target:'http://127.0.0.1:4000/api',
+        changeOrigin:true
       }
 
     }
