@@ -1,139 +1,70 @@
-import { useState, useEffect } from "react";
-import { getAllUsers } from "../user";
+import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import Table from "../components/Table";
-import logo from "../assets/world.png"
+import UsersManager from "./UserManager";
 import './Admin.css'
 
+
 export default function Admin() {
-    const { user, onLogut } = useAuth()
-
-    const [allUser, setAllUser] = useState(null)
-    const [allOrders, setAllOrders] = useState(null)
-    const [allHotels, setAllHotels] = useState(null)
-    const [allTickets, setAllTickets] = useState(null)
+    const { user, loading, onLogout } = useAuth();
     
-    const [activeTab, setActiveTab] = useState('users') // 👈 Aktív tab
+    // Állapot, ami tárolja, melyik táblázatot látjuk éppen (alapból a felhasználókat)
+    const [activeTab, setActiveTab] = useState('users'); 
 
-    useEffect(() => {
-        async function loadUsers() {
-            const data = await getAllUsers()
-            if (!data.error) {
-                setAllUser(data)
-            }
-        }
-        loadUsers()
-    }, [])
-
-    // 👇 Oszlop konfigurációk különböző táblákhoz
-    const userColumns = [
-        { header: 'ID', accessor: 'userID' },
-        { header: 'Username', accessor: 'username' },
-        { header: 'Email', accessor: 'email' },
-        { header: 'Role', accessor: 'role' },
-    ]
-
-    const orderColumns = [
-        { header: 'Order ID', accessor: 'orderID' },
-        { header: 'User', accessor: 'userName' },
-        { header: 'Total', accessor: 'total' },
-        { header: 'Status', accessor: 'status' },
-    ]
-
-    const hotelColumns = [
-        { header: 'Hotel ID', accessor: 'hotelID' },
-        { header: 'City ID', accessor: 'cityID' },
-        { header: 'Name', accessor: 'name' },
-        { header: 'Details', accessor: 'details' },
-        { header: 'Address', accessor: 'address' },
-    ]
-
-    const ticketColumns = [
-        { header: 'Flights ID', accessor: 'flightsId' },
-        { header: 'Airline ID', accessor: 'airlineId' },
-        { header: 'Starting time', accessor: 'starting' },
-        { header: 'Arrival time', accessor: 'arivval' },
-        { header: 'Departure City ID', accessor: 'departureCityID' },
-        { header: 'Destination City ID', accessor: 'destinationCityID' },
-    ]
-
-    // 👇 Akciók konfigurációja
-    const actions = [
-        {
-            buttonClass: 'btn btn-sm btn-outline-info px-4',
-            content: 'Szerkesztés',
-            onClick: (item) => handleEdit(item)
-        },
-        {
-            buttonClass: 'btn btn-sm btn-outline-danger px-4',
-            content: 'Törlés',
-            onClick: (item) => handleDelete(item)
-        }
-    ]
-
-    const handleEdit = (item) => {
-        console.log('Edit:', item)
+    if (loading) {
+        return (
+            <div className="container py-5">
+                <div className="spinner-border text-danger"></div>
+            </div>
+        );
     }
 
-    const handleDelete = (item) => {
-        console.log('Delete:', item)
-    }
-
-    // 👇 Renderelés a kiválasztott tab alapján
-    const renderTable = () => {
-        switch(activeTab) {
-            case 'users':
-                return <Table data={allUser} columns={userColumns} actions={actions} />
-            case 'orders':
-                return <Table data={allOrders} columns={orderColumns} actions={actions} />
-            case 'hotels':
-                return <Table data={allHotels} columns={hotelColumns} actions={actions} />
-            case 'tickets':
-                return <Table data={allTickets} columns={ticketColumns} actions={actions} />
-            default:
-                return null
-        }
+    if (!user || user.role !== 'admin') {
+        return <Navigate to='/' />
     }
 
     return (
-        <div>
-            <div className="admin">
-                <div className='signUpLog'>
-                    <img src={logo} alt="WanderioLogo" />
-                    <p>Wanderio</p>
-                </div>
-                
-                <div className="adminNav">
-                    <button 
-                        className={activeTab === 'users' ? 'active' : ''}
-                        onClick={() => setActiveTab('users')}
-                    >
-                        Users
-                    </button>
-                    <button 
-                        className={activeTab === 'orders' ? 'active' : ''}
-                        onClick={() => setActiveTab('orders')}
-                    >
-                        Orders
-                    </button>
-                    <button 
-                        className={activeTab === 'hotels' ? 'active' : ''}
-                        onClick={() => setActiveTab('hotels')}
-                    >
-                        Hotels
-                    </button>
-                    <button 
-                        className={activeTab === 'tickets' ? 'active' : ''}
-                        onClick={() => setActiveTab('tickets')}
-                    >
-                        Tickets
-                    </button>
-                </div>
-
-                <div className="adminTable">
-                    {renderTable()}
-                </div>
+        <div className="container py-4">
+            
+            {/* Fejléc NavBar nélkül, egy egyszerű kijelentkezés gombbal */}
+            <div className="d-flex justify-content-between align-items-center mb-4">
+                <h1>Admin panel</h1>
+                <button className="btn btn-danger" onClick={onLogout}>Logout</button>
             </div>
+
+            {/* Menü gombok a táblázatok közötti váltáshoz */}
+            <div className="d-flex justify-content-center gap-2 mb-4 border-bottom pb-3">
+                <button 
+                    className={`btn ${activeTab === 'users' ? 'btn-primary' : 'btn-outline-primary'}`} 
+                    onClick={() => setActiveTab('users')}
+                >
+                    Users
+                </button>
+                <button  
+                    className={`btn ${activeTab === 'hotels' ? 'btn-primary' : 'btn-outline-primary'}`} 
+                    onClick={() => setActiveTab('hotels')}
+                >
+                    Hotels
+                </button>
+                <button 
+                    className={`btn ${activeTab === 'orders' ? 'btn-primary' : 'btn-outline-primary'}`} 
+                    onClick={() => setActiveTab('orders')}
+                >
+                    Orders
+                </button>
+                <button 
+                    className={`btn ${activeTab === 'flights' ? 'btn-primary' : 'btn-outline-primary'}`} 
+                    onClick={() => setActiveTab('flights')}
+                >
+                    Flights
+                </button>
+            </div>
+
+            {/* Az éppen kiválasztott komponens (táblázat + modal) megjelenítése */}
+            {activeTab === 'users' && <UsersManager />}
+            {/* {activeTab === 'products' && <ProductsManager />} 
+            {activeTab === 'orders' && <OrdersManager />}
+            {activeTab === 'categories' && <CategoriesManager />}*/}
+            
         </div>
-    )
+    );
 }
