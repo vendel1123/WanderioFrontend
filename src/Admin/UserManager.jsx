@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import Table from '../components/Table'; // Saját útvonalad
-import { getAllUsers } from '../user'; // Saját útvonalad
+import Table from '../components/Table'; 
+import { getAllUsers, deleteUser, userEdit } from '../user'; 
 
 export default function UsersManager() {
     const [allUsers, setAllUsers] = useState(null);
@@ -20,16 +20,16 @@ export default function UsersManager() {
             else setErrorAllUsers(data.error);
         }
         loadUsers();
-    }, []);
+    }, [setAllUsers]);
 
     async function handleDelete(user) {
         setErrorAllUsers('');
         if (!window.confirm(`Biztosan torolni akarod a ${user.username} nevu felhasznalot?`)) return;
 
-        const data = await deleteUser(user.user_id);
+        const data = await deleteUser(user.userID);
         if (data.error) return alert(data.error); // Javítva: adta.error kell ide
 
-        setAllUsers(prev => prev.filter(x=> x.user_id !== user.user_id));
+        setAllUsers(prev => prev.filter(x=> x.userID !== user.userID));
     }
 
     async function handleEdit(user) {
@@ -42,14 +42,14 @@ export default function UsersManager() {
         setShowModal(true);
     }
 
-    async function editUser(user_id) {
+    async function editUser(userID) {
         setErrorAllUsers('');
-        const data = await userEdit(user_id, username, email, role);
+        const data = await userEdit(userID, username, email, role);
         
         if (data.error) return alert(data.error);
 
         // Opcionális: frissítheted az allUsers statet is itt, hogy azonnal látszódjon a táblázatban
-        setAllUsers(prev => prev.map(u => u.user_id === user_id ? { ...u, username, email, role } : u));
+        setAllUsers(prev => prev.map(u => u.userID === userID ? { ...u, username, email, role } : u));
         
         setShowModal(false);
         alert('Sikeres modositas');
@@ -79,7 +79,7 @@ export default function UsersManager() {
                             <label>Role: </label>
                             <input type="text" className="form-control mb-3" defaultValue={selectedUser.role} onChange={(e) => setRole(e.target.value)} />
 
-                            <button type="button" className="btn btn-primary mb-2" onClick={()=> editUser(selectedUser.user_id)}>Modify</button>
+                            <button type="button" className="btn btn-primary mb-2" onClick={()=> editUser(selectedUser.userID)}>Modify</button>
                             <button type="button" className="btn btn-secondary" onClick={()=> setShowModal(false)}>Close</button>
                         </div>
                     </div>

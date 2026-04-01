@@ -66,3 +66,4 @@ export default function Table({ allUsers, onEdit, onDelete }) {
         </div>
     );
 }
+
