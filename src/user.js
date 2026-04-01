@@ -1,4 +1,4 @@
-import { b, param } from "framer-motion/client"
+import { b, body, param } from "framer-motion/client"
 
 const BACKEND_URL = '/users'
 const BACKEND_FLIGHTS_URL = '/flights'
@@ -158,7 +158,7 @@ export async function getAllCities() {
 export async function getCityId(cityId) {
     const res = await fetch(`${BACKEND_CITIES_URL}/getcities/${cityId}`)
 
-    if(!res.ok){
+    if (!res.ok) {
         const data = await res.json()
         return { error: data?.error }
     }
@@ -166,10 +166,10 @@ export async function getCityId(cityId) {
     return await res.json()
 }
 
-export async function getCityDetails(cityId){
+export async function getCityDetails(cityId) {
     const res = await fetch(`${BACKEND_CITIES_URL}/detail/${cityId}`)
 
-    if(!res.ok){
+    if (!res.ok) {
         const data = await res.json()
         return { error: data?.error }
     }
@@ -177,3 +177,51 @@ export async function getCityDetails(cityId){
     return await res.json()
 }
 
+// egy user torlese(admin)
+
+export async function deleteUser(userID) {
+    const res = await fetch(`${BACKEND_URL}/admin/deleteuser/${userID}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+// user adatainak modositasa
+
+export async function userEdit(userID, username, email, role) {
+    try {
+        const res = await fetch(`${BACKEND_URL}/admin/modifyuser/${userID}`, {
+            method: 'PUT',
+            credentials: 'include', 
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+  
+            body: JSON.stringify({
+                username, 
+                email,    
+                role   
+            })
+        });
+
+        if (!res.ok) {
+            // Ha nem, megpróbáljuk kiolvasni a szerver hibaüzenetét és hibát dobunk vele.
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(`Hiba a felhasználó módosítása közben: ${errorData.message || res.statusText}`);
+        }
+
+        return await res.json();
+
+    } catch (error) {
+        console.error("userEdit hiba:", error);
+        throw error;
+    }
+}
