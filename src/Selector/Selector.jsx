@@ -13,7 +13,6 @@ import information from "../assets/information.png"
 
 
 import './Selector.css'
-import { b, option } from "framer-motion/client"
 
 export default function Selector() {
 
@@ -72,8 +71,8 @@ export default function Selector() {
 
                     <div className="field">
                         <label style={{ fontWeight: 'bold' }}>Select Destination</label>
-                        <select value={selectedCity} onChange={(e)=> setSelectedCity(e.target.value)} className="fieldSelector" disabled= {isLoading || error}>
-                            <option value="">{isLoading ? "Cities loading...": "Choose a city"}</option>
+                        <select style={{width:'200%'}} value={selectedCity} onChange={(e)=> setSelectedCity(e.target.value)} className="fieldSelector" disabled= {isLoading || error}>
+                            <option  value="">{isLoading ? "Cities loading...": "Choose a city"}</option>
                             {error && <option disabled>{error}</option>}
                             {!isLoading && !error && cities.map(city => (
                                 <option key={city.cityID} value={city.cityID}>
@@ -113,7 +112,7 @@ export default function Selector() {
                 </div>
 
             </div>
-            <button className="Line"></button>
+            <button className="Line" style={{marginTop:'2rem', marginBottom:'2rem'}}></button>
         </>
     )
 }

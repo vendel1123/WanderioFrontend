@@ -32,8 +32,8 @@ createRoot(document.getElementById('root')).render(
           <Route path='/cart' element={<Cart />} />
           <Route path='/booking/:id' element={<Booking />} />
           <Route path='/flights' element={<Flights />} />
-          <Route path='/hotels' element={<Hotels />} />
-          <Route path='/hotelBook' element={<HotelBook />} />
+          <Route path='/hotels/:id' element={<Hotels />} />
+          <Route path='/hotelBook/:id' element={<HotelBook />} />
           <Route path='/admin' element={<Admin />} />
 
         </Routes>

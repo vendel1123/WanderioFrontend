@@ -17,7 +17,7 @@ export default function HotelBook() {
                     <li><p style={{ margin: '0' }}>Wanderio</p></li>
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' style={{ margin: '0' }} /></li>
                 </div>
-                <button className='back' onClick={() => navigate('/hotels')}>← Back</button>
+                <button className='back' onClick={() => navigate(-2)}>← Back</button>
             </div>
 
             <h3>Timhotel Opéra Blanche Fontaine</h3>
