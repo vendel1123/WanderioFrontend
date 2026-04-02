@@ -79,9 +79,6 @@
     border-radius: 1rem;
 }
 
-.fieldSelector option{
-
-}
 
 .destination input {
     padding: 1rem;
@@ -136,6 +133,9 @@
         font-size: 1.2rem;
     }
 
+    .fieldSelector{
+        max-width: 100%;
+    }
     .destination{
         flex-direction: column;
         align-items: stretch;

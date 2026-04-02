@@ -66,7 +66,7 @@ export default function Booking() {
                     <li><p>Wanderio</p></li>
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
                 </div>
-                <div>
+                <div className='selectDiv'>
                     <li><img src={avatar} alt="" onClick={() => navigate("/profile")} /></li>
                     <li style={{ borderRight: "solid 2px grey", }}><img style={{ marginRight: "0.8rem", marginBottom: '5px' }} src={cart} alt="" onClick={() => navigate("/cart")} /></li>
                     <li style={{ borderRight: "solid 2px grey", }}><a href='#description' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px' }}>Description</h3></a></li>
@@ -75,7 +75,7 @@ export default function Booking() {
             </ul>
 
             <h1>{cityData.name}</h1>
-            <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+            <div key={id} id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
                     {cityData.images && cityData.images.lenght > 0 ? cityData.images.map((imgSrc, index) => (
                         <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
@@ -83,13 +83,11 @@ export default function Booking() {
                         </div>
                     ))
                         : (
-                            <div className='carousel-item active'>
-                                <p>Nincsenek kepek a varoshoz</p>
+                            <div className="carousel-item active" data-bs-interval="10000">
+                                <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
                             </div>
                         )}
-                    <div className="carousel-item active" data-bs-interval="10000">
-                        <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
-                    </div>
+
 
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -126,7 +124,7 @@ export default function Booking() {
                             <p>Flights</p>
                         </div>
 
-                        <div className='hotels' onClick={() => navigate('/hotels')}>
+                        <div className='hotels' onClick={() => navigate(`/hotels/${id}`)}>
                             <img src={vip} alt="" />
                             <p>Hotels</p>
                         </div>
@@ -134,7 +132,7 @@ export default function Booking() {
 
 
                     <div className='bookNowDiv'>
-                        <button onClick={() => navigate('/hotels')}>Book now</button>
+                        <button onClick={() => navigate(`/hotels/${id}`)}>Book now</button>
                     </div>
 
 
@@ -268,8 +266,9 @@ export default function Booking() {
             <div className='attractions'>
 
                 {cityData.attractions && cityData.attractions.map(attraction => (
-                    <div key={attraction.attractionID} className="card" style={{ width: '50%' }}>
+                    <div key={attraction.attractionID} className="card" style={{ width: '50%', borderTopLeftRadius: '3rem', borderTopRightRadius: '3rem' }}>
                         {/* <img src={...} /> Itt lehetne az attrakció képe, ha lenne a DB-ben */}
+                        <img style={{ borderTopLeftRadius: '3rem', borderTopRightRadius: '3rem'}} src={attraction.images && attraction.images.lenght > 0 ? attraction.images[0] : test} className='card-img-top' alt={attraction.name} />
                         <div className="card-body">
                             <p style={{ fontWeight: 'bold' }}>{attraction.name}</p>
                             <p>{attraction.description}</p>
@@ -295,16 +294,18 @@ export default function Booking() {
             }}>Hotels</h2>
 
             <div className='hotels' style={{
-                width: '80%',
+                width: '50%',
                 display: 'flex',
-                justifyContent: 'space-evenly',
+                gap: '1.5rem',
                 margin: '0 auto',
             }}>
+
+
                 {cityData.hotels && cityData.hotels.map(hotel => (
-                    <div key={hotel.hotelID} className="card mb-3" style={{ maxWidth: "540px" }}>
-                        <div className="row g-0">
-                            {/* <img src={...} /> Itt lehetne a hotel képe */}
-                            <div className="col-md-8">
+                    <div key={hotel.hotelID} className="card mb-3" style={{ maxWidth: "540px",borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', borderBottomRightRadius:'2rem', borderEndStartRadius:'2rem  ' }}>
+                        <div className="row g-0" style={{ maxWidth: "540px" , height:'400px'}}><img style={{ borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem' }} src={hotel.images && hotel.images.lenght > 0 ? hotel.images[0] : test} alt="" />
+                            <div className="col-md-13">
+                                
                                 <div className="card-body">
                                     <h5 className="card-title" style={{ color: '#336699' }}>{hotel.name}</h5>
                                     <p className="card-text">{hotel.details}</p>
@@ -317,7 +318,7 @@ export default function Booking() {
             </div>
 
             <div className='divBtn'>
-                <button onClick={() => navigate('/hotels')}>See More</button>
+                <button onClick={() => navigate(`/hotels/${id}`)}>See More</button>
             </div>
 
             <div className='footers'>

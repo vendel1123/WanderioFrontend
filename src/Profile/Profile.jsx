@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 import logo from '../assets/world.png'
 import edit from '../assets/edit.png'
@@ -200,6 +200,8 @@ export default function Profile() {
                 {userError && <p style={{ color: 'red' }}>{userError}</p>}
 
             </div>
+
+            <button className='profileBtn' onClick={()=>navigate('/selector')}>← Back</button>
         </div>
     )
 }
