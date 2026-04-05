@@ -14,19 +14,20 @@ export default function Hotels() {
 
     const[hotels, setHotels] = useState([])
     const[cityName,setCityName] = useState('')
+
     const[isLoading, setIsLoading ] = useState(true)
     const[error, setError] = useState(null)
 
-    const {id} = useParams()
+    const { id: cityID } = useParams()
 
     useEffect(()=> {
-        if(!id){
+        if(!cityID){
             setError("City ID is missing.")
             setIsLoading(fasle)
             return
         }
 
-        getCityDetails(id).then(data=>{
+        getCityDetails(cityID).then(data=>{
             setCityName(data.name)
             setHotels(data.hotels)
             setIsLoading(false)
@@ -36,7 +37,7 @@ export default function Hotels() {
             setIsLoading(false)
         })
 
-    }, [id])
+    }, [cityID])
 
     if(isLoading){
         return <div>Loading hotels...</div>
@@ -69,14 +70,14 @@ export default function Hotels() {
                         <p style={{fontWeight: 'bold'}} className="card-text">{hotel.name}</p>
                         <p style={{ margin: '1rem 0' }}>{hotel.details}</p>
                         <p className='grayP'>ROOMS</p>
-                        <p className='boldP'>2 rooms</p>
+                        <p className='boldP'>{hotel.cheapestRoom.typeName} rooms</p>
                         <p className='grayP'>BEDS</p>
-                        <p className='boldP'>1 King</p>
+                        <p className='boldP'>{hotel.cheapestRoom.typeName}</p>
                         <p className='grayP'>GUEST</p>
-                        <p className='boldP'>2 Adults</p>
+                        <p className='boldP'>{hotel.cheapestRoom.guests} Adults</p>
                         <button className='grayLine'></button>
                         <div className="book">
-                            <p style={{ marginBottom: '0' }}><strong>$28/night</strong></p>
+                            <p style={{ marginBottom: '0' }}><strong>${hotel.cheapestRoom.price}/night</strong></p>
                             <button onClick={()=> navigate(`/hotelBook/${hotel.hotelID}`)}>Book</button>
                         </div>
                     </div>

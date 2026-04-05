@@ -1,14 +1,64 @@
+import { useState, useEffect } from 'react'
 
 import logo from '../assets/world.png'
 import test from '../assets/signInImg.jpg'
 
 import './HotelBook.css'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { getHotelDetails } from '../user'
 
 export default function HotelBook() {
 
     const navigate = useNavigate()
+    const { id: hotelID } = useParams()
+
+    const [selectedRoom, setSelectedRoom] = useState(null)
+    const [hotelData, setHotelData] = useState(null)
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
+
+
+
+    useEffect(() => {
+        if (!hotelID) {
+            setError("Hotel ID is missing from URL")
+            setIsLoading(false)
+            return
+        }
+        setIsLoading(true)
+        getHotelDetails(hotelID)
+            .then(data => {
+                setHotelData(data)
+                if (data && data.rooms && data.rooms.length > 0) {
+                    setSelectedRoom(data.rooms[0])
+                }
+                setIsLoading(false)
+            })
+            .catch(err => {
+                console.error('hiba  a hotel datainak lekeresekor', err)
+                setError(err.message)
+                setIsLoading(false)
+            })
+
+    }, [hotelID])
+
+    // const handleBooking = () => {
+
+    // }
+
+    if (isLoading) {
+        return <div>Loading hotel details...</div>
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>
+    }
+
+    if (!hotelData) {
+        return <div>Hotel not found or data is missing</div>
+    }
 
     return (
         <div className='hotelBookPage'>
@@ -20,24 +70,28 @@ export default function HotelBook() {
                 <button className='back' onClick={() => navigate(-2)}>← Back</button>
             </div>
 
-            <h3>Timhotel Opéra Blanche Fontaine</h3>
+            <h3>{hotelData.name}</h3>
 
             <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
-                    <div className="carousel-item active" data-bs-interval="10000">
-                        <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
-                    </div>
-                    <div className="carousel-item" data-bs-interval="2000">
-                        <img src={logo} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
-                    </div>
-                    <div className="carousel-item">
-                        <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="..." />
-                    </div>
+                    {selectedRoom && selectedRoom.images && selectedRoom.images.length > 0 ? (
+                        selectedRoom.images.map((imgSrc, index) => (
+                            <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                                <img src={imgSrc} className='d-block w-50 mx-auto mb-0 rounded-5' alt={`${selectedRoom.typeName} - kép ${index + 1}`} />
+                            </div>
+                        ))
+                    ) : (
+                        <div className='carousel-item active'>
+                            <img src={test} className="d-block w-50 mx-auto mb-0 rounded-5" alt="Placeholder" />
+                        </div>
+                    )}
                 </div>
+
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Previous</span>
                 </button>
+
                 <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="visually-hidden">Next</span>
@@ -48,9 +102,11 @@ export default function HotelBook() {
                 <h5>About this hotel</h5>
                 <button className="grayLineH"></button>
 
-                <p>The Timhotel Opéra Blanche Fontaine is located in the heart of Paris, close to the Moulin Rouge, Montmartre and the Sacré-Cœur Basilica. The hotel has a private indoor parking lot</p>
-                <p>The guest rooms feature air conditioning, flat-screen TV with satellite channels and free Wi-Fi access. A safe is also provided, and some double rooms are suitable for guests with reduced mobility.</p>
-                <p>Breakfast is available at the property. Our staff is dedicated to providing excellent service throughout your stay.</p>
+                {hotelData.details ? (
+                    hotelData.details.split('\n').map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                    ))
+                ) : <p>No description avaible</p>}
             </div>
 
             <div className="detail">
@@ -59,20 +115,20 @@ export default function HotelBook() {
 
                 <div>
                     <p className='grayP'>ROOM Type</p>
-                    <p>Double Room</p>
-                </div>
+                    <p>{selectedRoom.typeName}</p>               
+                 </div>
                 <div>
                     <p className='grayP'>CAPACITY</p>
-                    <p>2 Adults</p>
+                    <p>{selectedRoom.guests} person</p>
                 </div>
                 <div>
                     <p className='grayP'>SIZE</p>
-                    <p>28 m²</p>
+                    <p>{selectedRoom.size} m²</p>
                 </div>
             </div>
 
             <div className="bookNow">
-                <h2>$89</h2>
+                <h2>${selectedRoom.price}</h2>
                 <small>per night</small>
 
                 <input type="date" />
@@ -91,3 +147,5 @@ export default function HotelBook() {
         </div>
     )
 }
+
+
