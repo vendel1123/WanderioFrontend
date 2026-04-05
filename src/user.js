@@ -278,3 +278,16 @@ export async function createHotels(hotelData, imageFiles) {
 
     return data
 }
+
+
+//hotelek lekerese
+
+export async function getHotelDetails(hotelID) {
+    const res = await fetch(`${BACKEND_HOTELS_URL}/details/${hotelID}`)
+        if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
