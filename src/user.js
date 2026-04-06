@@ -291,3 +291,69 @@ export async function getHotelDetails(hotelID) {
 
     return await res.json()
 }
+
+// hotel adatainak a modositasa
+export async function hotelEdit(hotelID, cityID, name, details, address) {
+    try {
+        const res = await fetch(`${BACKEND_HOTELS_URL}updatehotel/${hotelID}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                cityID,
+                name,
+                details,
+                address
+            })
+        });
+
+        if (!res.ok) {
+            // Ha nem, megpróbáljuk kiolvasni a szerver hibaüzenetét és hibát dobunk vele.
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(`Hiba a felhasználó módosítása közben: ${errorData.message || res.statusText}`);
+        }
+
+        return await res.json();
+
+    } catch (error) {
+        console.error("userEdit hiba:", error);
+        throw error;
+    }
+}
+
+// egy hotel torlese(admin)
+
+export async function deleteHotel(hotelID) {
+    const res = await fetch(`${BACKEND_HOTELS_URL}/deletehotel/${hotelID}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+// HOZZÁADVA: Új függvény a kép feltöltéséhez
+export async function uploadHotelImage(hotelID, formData) {
+     const res = await fetch(`${BACKEND_HOTELS_URL}/upload-image/${hotelID}`, {
+        method: 'POST',                    // POST ajánlott képfeltöltésnél
+        credentials: 'include',
+        body: formData
+        // NE tedd bele a Content-Type fejlécet!
+    });
+
+    if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        return { error: data?.error || 'Hiba történt a kép feltöltése közben' };
+    }
+
+    return await res.json();
+}
