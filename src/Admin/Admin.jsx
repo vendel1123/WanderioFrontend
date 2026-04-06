@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import UsersManager from "./UserManager";
+import HotelManager from "./HotelManager";
 import './Admin.css'
 
 
@@ -61,8 +62,8 @@ export default function Admin() {
 
             {/* Az éppen kiválasztott komponens (táblázat + modal) megjelenítése */}
             {activeTab === 'users' && <UsersManager />}
-            {/* {activeTab === 'products' && <ProductsManager />} 
-            {activeTab === 'orders' && <OrdersManager />}
+            {activeTab === 'hotels' && <HotelManager />} 
+            {/* {activeTab === 'orders' && <OrdersManager />} 
             {activeTab === 'categories' && <CategoriesManager />}*/}
             
         </div>
