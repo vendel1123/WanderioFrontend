@@ -1,6 +1,6 @@
-export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage }) {
+export default function TableCities({ allCities }) {
     // 1. Eset: Ha az adatok még töltenek (null)
-    if (!allHotels) {
+    if (!allCities) {
         return (
             <div className="text-center my-4">
                 <div className="spinner-border text-primary" role="status">
@@ -11,8 +11,8 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
     }
 
     // 2. Eset: Ha a lekérdezés sikeres, de üres a lista
-    if (allHotels.length === 0) {
-        return <div className="alert alert-info mt-3">There are no hotels in the database at the moment.</div>;
+    if (allCities.length === 0) {
+        return <div className="alert alert-info mt-3">There are no cities in the database at the moment.</div>;
     }
 
     // 3. Eset: Van adat, megjelenítjük a táblázatot
@@ -22,45 +22,29 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                 <thead className="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Hotel name</th>
-                        <th>City</th>
-                        <th>Hotel address</th>
-                        <th>Details</th>
+                        <th>City name</th>
+                        <th>Country</th>
+                        <th>Description</th>
                         <th className="text-center">Images</th>
                         <th className="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {allHotels?.map((hotel) => (
-                        <tr key={hotel.hotelID}>
-                            <td>{hotel.hotelID}</td>
-                            <td className="fw-bold">{hotel.name}</td>
-                            <td>{hotel.cityname}</td>
-                            <td>{hotel.address}</td>
+                    {allCities?.map((city) => (
+                        <tr key={city.cityID}>
+                            <td>{city.cityID}</td>
+                            <td className="fw-bold">{city.name}</td>
+                            <td>{city.country}</td>
+                            {/* A description szöveg lehet nagyon hosszú, ezért levágjuk 40 karakternél, hogy szép maradjon a táblázat */}
                             <td>
-                                {hotel.details && hotel.details.length > 40
-                                    ? hotel.details.substring(0, 40) + '...'
-                                    : hotel.details}
+                                {city.description && city.description.length > 40
+                                    ? city.description.substring(0, 40) + '...'
+                                    : city.description}
                             </td>
-                            <td className="text-center">
-                                {/* Ha van már képe a hotelnek, jelenítsük meg kis méretben 
-                                {hotel.imageUrl && (
+                             <td className="text-center"> 
+                                {city.hotelImg && city.hotelImg.length > 0 ? (
                                     <img
-                                        src={hotel.imageUrl}
-                                        alt={hotel.name}
-                                        style={{ width: '80px', height: 'auto', display: 'block', margin: '0 auto 5px' }}
-                                    />
-                                )}
-                                <button
-                                    className="btn btn-outline-warning btn-sm"
-                                    onClick={() => onUploadImage(hotel)}
-                                >
-                                    Upload
-                                </button>*/}
-
-                                {hotel.hotelImg && hotel.hotelImg.length > 0 ? (
-                                    <img
-                                        src={hotel.hotelImg}
+                                        src={city.hotelImg}
                                         style={{ width: '80px', height: 'auto', objectFit: 'cover' }}
                                     />
                                 ) : (
@@ -80,17 +64,17 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                                 {/* Szerkesztés gomb */}
                                 <button
                                     className="btn btn-outline-info btn-sm me-2"
-                                    onClick={() => onEdit(hotel)}
+                                    onClick={() => onEdit(city)}
                                 >
-                                    Szerkesztés
+                                    Modify
                                 </button>
 
                                 {/* Törlés gomb */}
                                 <button
                                     className="btn btn-outline-danger btn-sm"
-                                    onClick={() => onDelete(hotel)}
+                                    onClick={() => onDelete(city)}
                                 >
-                                    Törlés
+                                    Delete
                                 </button>
                             </td>
                         </tr>

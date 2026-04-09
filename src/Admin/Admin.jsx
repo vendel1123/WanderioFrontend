@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import UsersManager from "./UserManager";
 import HotelManager from "./HotelManager";
+import CityManager from "./CityManager";
+import RoomManager from "./RoomManager";
+import FlightManager from "./FlightManager";
+
 import './Admin.css'
 
 
@@ -46,6 +50,18 @@ export default function Admin() {
                 >
                     Hotels
                 </button>
+                <button  
+                    className={`btn ${activeTab === 'cities' ? 'btn-primary' : 'btn-outline-primary'}`} 
+                    onClick={() => setActiveTab('cities')}
+                >
+                    Cities
+                </button>
+                <button 
+                    className={`btn ${activeTab === 'rooms' ? 'btn-primary' : 'btn-outline-primary'}`} 
+                    onClick={() => setActiveTab('rooms')}
+                >
+                    Rooms
+                </button>
                 <button 
                     className={`btn ${activeTab === 'orders' ? 'btn-primary' : 'btn-outline-primary'}`} 
                     onClick={() => setActiveTab('orders')}
@@ -63,6 +79,9 @@ export default function Admin() {
             {/* Az éppen kiválasztott komponens (táblázat + modal) megjelenítése */}
             {activeTab === 'users' && <UsersManager />}
             {activeTab === 'hotels' && <HotelManager />} 
+            {activeTab === 'cities' && <CityManager />} 
+            {activeTab === 'rooms' && <RoomManager />} 
+            {activeTab === 'flights' && <FlightManager />} 
             {/* {activeTab === 'orders' && <OrdersManager />} 
             {activeTab === 'categories' && <CategoriesManager />}*/}
             
