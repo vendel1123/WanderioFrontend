@@ -1,4 +1,3 @@
-import { body, i, object, param } from "framer-motion/client"
 
 const BACKEND_URL = '/users'
 const BACKEND_FLIGHTS_URL = '/flights'
@@ -247,13 +246,13 @@ export async function getHotels() {
 // hotel letrehozasa
 
 export async function createHotels(hotelData, imageFiles) {
-    const formData = new formData()
+    const formData = new FormData()
 
     Object.keys(hotelData).forEach(key => {
         formData.append(key, hotelData[key])
     })
 
-    if (imageFiles && imageFiles.lenght > 0) {
+    if (imageFiles && imageFiles.length > 0) {
         imageFiles.forEach(file => {
             formData.append('images', file)
         })
@@ -284,7 +283,7 @@ export async function createHotels(hotelData, imageFiles) {
 
 export async function getHotelDetails(hotelID) {
     const res = await fetch(`${BACKEND_HOTELS_URL}/details/${hotelID}`)
-        if (!res.ok) {
+    if (!res.ok) {
         const data = await res.json()
         return { error: data?.error }
     }
@@ -295,7 +294,7 @@ export async function getHotelDetails(hotelID) {
 // hotel adatainak a modositasa
 export async function hotelEdit(hotelID, cityID, name, details, address) {
     try {
-        const res = await fetch(`${BACKEND_HOTELS_URL}updatehotel/${hotelID}`, {
+        const res = await fetch(`${BACKEND_HOTELS_URL}/updatehotel/${hotelID}`, {
             method: 'PUT',
             credentials: 'include',
             headers: {
@@ -325,6 +324,36 @@ export async function hotelEdit(hotelID, cityID, name, details, address) {
     }
 }
 
+export async function citiesEdit(cityID, name, country) {
+    try {
+        const res = await fetch(`${BACKEND_CITIES_URL}/updatecity/${cityID}`,{
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                cityID,
+                name,
+                country
+            })
+        })
+
+        if (!res.ok) {
+            // Ha nem, megpróbáljuk kiolvasni a szerver hibaüzenetét és hibát dobunk vele.
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(`Hiba a felhasználó módosítása közben: ${errorData.message || res.statusText}`);
+        }
+
+        return await res.json();
+    } catch (err) {
+        console.error("citiesEdit hiba:", error);
+        throw error;
+    }
+}
+
 // egy hotel torlese(admin)
 
 export async function deleteHotel(hotelID) {
@@ -343,7 +372,7 @@ export async function deleteHotel(hotelID) {
 
 // Új függvény a kép feltöltéséhez
 export async function uploadHotelImage(hotelID, formData) {
-     const res = await fetch(`${BACKEND_HOTELS_URL}/upload-image/${hotelID}`, {
+    const res = await fetch(`${BACKEND_HOTELS_URL}/upload-image/${hotelID}`, {
         method: 'POST',                    // POST ajánlott képfeltöltésnél
         credentials: 'include',
         body: formData
