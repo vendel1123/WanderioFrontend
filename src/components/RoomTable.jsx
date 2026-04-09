@@ -1,6 +1,6 @@
-export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage }) {
+export default function TableRooms({ allRooms }) {
     // 1. Eset: Ha az adatok még töltenek (null)
-    if (!allHotels) {
+    if (!allRooms) {
         return (
             <div className="text-center my-4">
                 <div className="spinner-border text-primary" role="status">
@@ -11,8 +11,8 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
     }
 
     // 2. Eset: Ha a lekérdezés sikeres, de üres a lista
-    if (allHotels.length === 0) {
-        return <div className="alert alert-info mt-3">There are no hotels in the database at the moment.</div>;
+    if (allRooms.length === 0) {
+        return <div className="alert alert-info mt-3">There are no rooms in the database at the moment.</div>;
     }
 
     // 3. Eset: Van adat, megjelenítjük a táblázatot
@@ -22,45 +22,41 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                 <thead className="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Hotel name</th>
-                        <th>City</th>
-                        <th>Hotel address</th>
-                        <th>Details</th>
+                        <th>Hotel</th>
+                        <th>Type</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>Guests</th>
+                        <th>Climate</th>
+                        <th>Arrival</th>
+                        <th>Starting</th>
+                        <th>Services</th>
+                        <th>Size</th>
                         <th className="text-center">Images</th>
                         <th className="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {allHotels?.map((hotel) => (
-                        <tr key={hotel.hotelID}>
-                            <td>{hotel.hotelID}</td>
-                            <td className="fw-bold">{hotel.name}</td>
-                            <td>{hotel.cityname}</td>
-                            <td>{hotel.address}</td>
+                    {allRooms?.map((room) => (
+                        <tr key={room.roomId}>
+                            <td>{room.roomId}</td>
+                            <td>{room.hotelID}</td>
+                            <td>{room.available}</td>
+                            <td>{room.price}</td>
+                            <td>{room.guests}</td>
+                            <td>{room.climate}</td>
+                            <td>{room.arrival}</td>
+                            <td>{room.starting}</td>
                             <td>
-                                {hotel.details && hotel.details.length > 40
-                                    ? hotel.details.substring(0, 40) + '...'
-                                    : hotel.details}
+                                {room.services && room.services.length > 40
+                                    ? room.services.substring(0, 40) + '...'
+                                    : room.services}
                             </td>
+                            <td>{room.size}</td>
                             <td className="text-center">
-                                {/* Ha van már képe a hotelnek, jelenítsük meg kis méretben 
-                                {hotel.imageUrl && (
+                                {room.hotelImg && room.hotelImg.length > 0 ? (
                                     <img
-                                        src={hotel.imageUrl}
-                                        alt={hotel.name}
-                                        style={{ width: '80px', height: 'auto', display: 'block', margin: '0 auto 5px' }}
-                                    />
-                                )}
-                                <button
-                                    className="btn btn-outline-warning btn-sm"
-                                    onClick={() => onUploadImage(hotel)}
-                                >
-                                    Upload
-                                </button>*/}
-
-                                {hotel.hotelImg && hotel.hotelImg.length > 0 ? (
-                                    <img
-                                        src={hotel.hotelImg}
+                                        src={room.hotelImg}
                                         style={{ width: '80px', height: 'auto', objectFit: 'cover' }}
                                     />
                                 ) : (
@@ -69,28 +65,31 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                                 <br />
                                 <button
                                     className="btn btn-outline-warning btn-sm mt-2"
-                                    onClick={() => onUploadImage(hotel)}   // ← itt onUploadImage-t használunk!
+                                    onClick={() => onUploadImage(room)}   // ← itt onUploadImage-t használunk!
                                 >
                                     Upload
                                 </button>
 
-                                
+
                             </td>
+                            
+                            {/* A description szöveg lehet nagyon hosszú, ezért levágjuk 40 karakternél, hogy szép maradjon a táblázat */}
+
                             <td className="text-center" style={{ minWidth: '180px' }}>
                                 {/* Szerkesztés gomb */}
                                 <button
                                     className="btn btn-outline-info btn-sm me-2"
-                                    onClick={() => onEdit(hotel)}
+                                    onClick={() => onEdit(room)}
                                 >
-                                    Szerkesztés
+                                    Modify
                                 </button>
 
                                 {/* Törlés gomb */}
                                 <button
                                     className="btn btn-outline-danger btn-sm"
-                                    onClick={() => onDelete(hotel)}
+                                    onClick={() => onDelete(room)}
                                 >
-                                    Törlés
+                                    Delete
                                 </button>
                             </td>
                         </tr>
