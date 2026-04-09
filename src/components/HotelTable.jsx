@@ -1,4 +1,4 @@
-export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage  }) {
+export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage }) {
     // 1. Eset: Ha az adatok még töltenek (null)
     if (!allHotels) {
         return (
@@ -23,7 +23,7 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                     <tr>
                         <th>ID</th>
                         <th>Hotel name</th>
-                        <th>City ID</th>
+                        <th>City</th>
                         <th>Hotel address</th>
                         <th>Details</th>
                         <th className="text-center">Images</th>
@@ -36,7 +36,7 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                             <td>{hotel.hotelID}</td>
                             <td className="fw-bold">{hotel.name}</td>
                             {/* Jelenleg a cityID-t mutatja. Később a backendben (SQL-ben) érdemes lehet összekapcsolni (JOIN) a cities táblával, hogy a város nevét kapd meg! */}
-                            <td>{hotel.cityID}</td>
+                            <td>{hotel.cityname}</td>
                             <td>{hotel.address}</td>
                             {/* A details szöveg lehet nagyon hosszú, ezért levágjuk 50 karakternél, hogy szép maradjon a táblázat */}
                             <td>
@@ -60,10 +60,9 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                                     Upload
                                 </button>*/}
 
-                                {hotel.hotelImages && hotel.hotelImages.length > 0 ? (
+                                {hotel.hotelImg && hotel.hotelImg.length > 0 ? (
                                     <img
-                                        src={hotel.hotelImages[0]}
-                                        alt={hotel.name}
+                                        src={hotel.hotelImg}
                                         style={{ width: '80px', height: 'auto', objectFit: 'cover' }}
                                     />
                                 ) : (
