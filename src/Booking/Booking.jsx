@@ -58,6 +58,8 @@ export default function Booking() {
         return <div style={{ textAlign: 'center', marginTop: '50px' }}><h1>Adatok betoltese</h1></div>
     }
 
+    if (!cityData) return null
+
 
     return (
         <div className='hole'>
@@ -77,7 +79,7 @@ export default function Booking() {
             <h1>{cityData.name}</h1>
             <div key={id} id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
-                    {cityData.images && cityData.images.lenght > 0 ? cityData.images.map((imgSrc, index) => (
+                    {cityData.images && cityData.images.length > 0 ? cityData.images.map((imgSrc, index) => (
                         <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
                             <img src={imgSrc} className='d-block w-50 mx-auto mb-0 rounded-5' alt={`${cityData.name} nezet ${index + 1}`} />
                         </div>
@@ -248,8 +250,6 @@ export default function Booking() {
                     <p>0% booking & credit card fees</p>
                 </div>
 
-
-
             </div>
 
             <h2 style={{
@@ -268,7 +268,7 @@ export default function Booking() {
                 {cityData.attractions && cityData.attractions.map(attraction => (
                     <div key={attraction.attractionID} className="card" style={{ width: '50%', borderTopLeftRadius: '3rem', borderTopRightRadius: '3rem' }}>
                         {/* <img src={...} /> Itt lehetne az attrakció képe, ha lenne a DB-ben */}
-                        <img style={{ borderTopLeftRadius: '3rem', borderTopRightRadius: '3rem'}} src={attraction.images && attraction.images.lenght > 0 ? attraction.images[0] : test} className='card-img-top' alt={attraction.name} />
+                        <img style={{ borderTopLeftRadius: '3rem', borderTopRightRadius: '3rem' }} src={attraction.images && attraction.images.length > 0 ? attraction.images[0] : test} className='card-img-top' alt={attraction.name} />
                         <div className="card-body">
                             <p style={{ fontWeight: 'bold' }}>{attraction.name}</p>
                             <p>{attraction.description}</p>
@@ -294,18 +294,14 @@ export default function Booking() {
             }}>Hotels</h2>
 
             <div className='hotels' style={{
-                width: '50%',
-                display: 'flex',
-                gap: '1.5rem',
-                margin: '0 auto',
+                width: '50%', display: 'flex', gap: '1.5rem', margin: '0 auto', justifyContent: 'center'
             }}>
 
-
                 {cityData.hotels && cityData.hotels.map(hotel => (
-                    <div key={hotel.hotelID} className="card mb-3" style={{ maxWidth: "540px",borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', borderBottomRightRadius:'2rem', borderEndStartRadius:'2rem  ' }}>
-                        <div className="row g-0" style={{ maxWidth: "540px" , height:'400px'}}><img style={{ borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem' }} src={hotel.images && hotel.images.lenght > 0 ? hotel.images[0] : test} alt="" />
-                            <div className="col-md-13">
-                                
+                    <div key={hotel.hotelID} className="card mb-3" style={{ maxWidth: "540px", borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', borderBottomRightRadius: '2rem', borderEndStartRadius: '2rem  ' }}>
+                        <div className="row g-0" style={{ maxWidth: "540px", height: '400px', overflow:'hidden' }}><img style={{ borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', height:'200px' }} src={hotel.images && hotel.images.length > 0 ? hotel.images[0] : test} alt="" />
+                            <div className="col-md-18">
+
                                 <div className="card-body">
                                     <h5 className="card-title" style={{ color: '#336699' }}>{hotel.name}</h5>
                                     <p className="card-text">{hotel.details}</p>
