@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import HotelTable from '../components/HotelTable'
-import { deleteHotel, getHotels, hotelEdit, uploadHotelImage } from '../user';
+import { deleteHotel, getAdHotels, hotelEdit, uploadHotelImage } from '../user';
 
 export default function HotelManager() {
     const [allHotels, setAllHotels] = useState(null);
@@ -16,7 +16,7 @@ export default function HotelManager() {
 
     useEffect(() => {
         async function loadHotels() {
-            const data = await getHotels()
+            const data = await getAdHotels()
             if (!data.error) setAllHotels(data)
             else setErrorallHotels(data)
         }

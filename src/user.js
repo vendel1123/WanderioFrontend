@@ -341,7 +341,7 @@ export async function deleteHotel(hotelID) {
     return await res.json()
 }
 
-// HOZZÁADVA: Új függvény a kép feltöltéséhez
+// Új függvény a kép feltöltéséhez
 export async function uploadHotelImage(hotelID, formData) {
      const res = await fetch(`${BACKEND_HOTELS_URL}/upload-image/${hotelID}`, {
         method: 'POST',                    // POST ajánlott képfeltöltésnél
@@ -356,4 +356,20 @@ export async function uploadHotelImage(hotelID, formData) {
     }
 
     return await res.json();
+}
+
+//admin hotelek lekerese
+export async function getAdHotels() {
+
+    const res = await fetch(`${BACKEND_HOTELS_URL}/admin/getadhotel`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
 }
