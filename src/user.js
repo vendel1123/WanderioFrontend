@@ -3,6 +3,7 @@ const BACKEND_URL = '/users'
 const BACKEND_FLIGHTS_URL = '/flights'
 const BACKEND_CITIES_URL = '/cities'
 const BACKEND_HOTELS_URL = '/hotels'
+const BACKEND_ATTRACTIONS_URL = '/attractions'
 
 
 export async function register(email, username, psw) {
@@ -145,7 +146,11 @@ export async function getAllUsers() {
 //varosok 
 
 export async function getAllCities() {
-    const res = await fetch(`${BACKEND_CITIES_URL}/getcities`)
+    const res = await fetch(`${BACKEND_CITIES_URL}/getcities`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
 
     if (!res.ok) {
         const data = await res.json()
@@ -324,9 +329,11 @@ export async function hotelEdit(hotelID, cityID, name, details, address) {
     }
 }
 
-export async function citiesEdit(cityID, name, country) {
+//cities modositasa
+
+export async function citiesEdit(cityID, name, country, description) {
     try {
-        const res = await fetch(`${BACKEND_CITIES_URL}/updatecity/${cityID}`,{
+        const res = await fetch(`${BACKEND_CITIES_URL}/updatecity/${cityID}`, {
             method: 'PUT',
             credentials: 'include',
             headers: {
@@ -337,7 +344,8 @@ export async function citiesEdit(cityID, name, country) {
             body: JSON.stringify({
                 cityID,
                 name,
-                country
+                country,
+                description
             })
         })
 
@@ -348,7 +356,42 @@ export async function citiesEdit(cityID, name, country) {
         }
 
         return await res.json();
-    } catch (err) {
+    } catch (error) {
+        console.error("citiesEdit hiba:", error);
+        throw error;
+    }
+}
+
+//attraction modositasa 
+
+export async function attractionEdit(attractionID, cityID, name, description, address, price) {
+    try {
+        const res = await fetch(`${BACKEND_ATTRACTIONS_URL}/updateatt/${attractionID}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                attractionID,
+                cityID,
+                name,
+                description,
+                address,
+                price
+            })
+        })
+
+        if (!res.ok) {
+            // Ha nem, megpróbáljuk kiolvasni a szerver hibaüzenetét és hibát dobunk vele.
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(`Hiba a felhasználó módosítása közben: ${errorData.message || res.statusText}`);
+        }
+
+        return await res.json();
+    } catch (error) {
         console.error("citiesEdit hiba:", error);
         throw error;
     }
@@ -387,11 +430,91 @@ export async function uploadHotelImage(hotelID, formData) {
     return await res.json();
 }
 
+//cities kepek feltoltese
+
+export async function uploadCityImage(cityID, formData) {
+    const res = await fetch(`${BACKEND_CITIES_URL}/upload-image/${cityID}`, {
+        method: 'POST',
+        credentials: 'include',
+        body: formData
+    })
+
+    if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        return { error: data?.error || 'Hiba történt a kép feltöltése közben' };
+    }
+
+    return await res.json();
+}
+
+//attraction kepek feltoltese
+
+export async function uploadAttractionImage(attractionID, formData) {
+    const res = await fetch(`${BACKEND_ATTRACTIONS_URL}/upload-image/${attractionID}`, {
+        method: 'POST',
+        credentials: 'include',
+        body: formData
+    })
+
+    if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        return { error: data?.error || 'Hiba történt a kép feltöltése közben' };
+    }
+
+    return await res.json();
+}
+
+//attraction-ok lekerese
+export async function getAllAttraction() {
+    const res = await fetch(`${BACKEND_ATTRACTIONS_URL}/getatt`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
 //admin hotelek lekerese
 export async function getAdHotels() {
 
     const res = await fetch(`${BACKEND_HOTELS_URL}/admin/getadhotel`, {
         method: 'GET',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+//varos torlese
+export async function deleteCities(cityID) {
+    const res = await fetch(`${BACKEND_CITIES_URL}/deletecity/${cityID}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+//attraction torlese 
+
+export async function deleteAttraction(attractionID) {
+    const res = await fetch(`${BACKEND_ATTRACTIONS_URL}/deleteatt/${attractionID}`, {
+        method: 'DELETE',
         credentials: 'include'
     })
 

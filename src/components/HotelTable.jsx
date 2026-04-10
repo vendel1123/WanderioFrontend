@@ -82,7 +82,7 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                                     className="btn btn-outline-info btn-sm me-2"
                                     onClick={() => onEdit(hotel)}
                                 >
-                                    Szerkesztés
+                                    Modify
                                 </button>
 
                                 {/* Törlés gomb */}
@@ -90,7 +90,7 @@ export default function TableHotels({ allHotels, onEdit, onDelete, onUploadImage
                                     className="btn btn-outline-danger btn-sm"
                                     onClick={() => onDelete(hotel)}
                                 >
-                                    Törlés
+                                    Delete
                                 </button>
                             </td>
                         </tr>

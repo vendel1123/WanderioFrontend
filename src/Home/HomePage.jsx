@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css'
 
-import slide1 from '../assets/colosseum.jpg';
-import slide2 from '../assets/Lausanne.jpg';
-import slide3 from '../assets/eiffelTower.jpg';
+import slide1 from '../assets/rome1.jpg';
+import slide2 from '../assets/budapestAttraction3.jpg';
+import slide3 from '../assets/paris2.jpg';
 
 import logo from '../assets/world.png'
 
