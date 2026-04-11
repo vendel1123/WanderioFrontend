@@ -12,7 +12,7 @@ export default function AttractionManager() {
     const [cityID, setCityID] = useState('')
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    const [address, setAddresss] = useState('')
+    const [address, setAddress] = useState('')
     const [price, setPrice] = useState('')
 
     useEffect(() => {
@@ -46,7 +46,7 @@ export default function AttractionManager() {
         setAddress(attraction.address);
         setDescription(attraction.description);
         setPrice(attraction.price)
-        setShowCityModal(true);
+        setShowAttractionModal(true);
     }
 
     async function editAttraction(attractionID) {
@@ -91,8 +91,10 @@ export default function AttractionManager() {
                 setAllAttraction(prev =>
                     prev.map(a => {
                         if (a.attractionID === attraction.attractionID) {
+                            // Biztosítjuk, hogy a meglévő képek tömbje létezzen, ha nem, üres tömböt használunk.
+                            const existingImages = Array.isArray(a.attractionImages) ? a.attractionImages : [];
                             // A meglévő 'cityImages' tömbhöz hozzáfűzzük az újakat.
-                            const updatedImages = [...a.attractionImages, ...newImageUrls];
+                            const updatedImages = [...existingImages, ...newImageUrls];
                             // A 'cityImages' mezőt frissítjük az új, bővített tömbbel.
                             return { ...a, attractionImages: updatedImages };
                         }
@@ -125,6 +127,9 @@ export default function AttractionManager() {
 
                             {/* Javítva: city helyett selectedCity! */}
 
+                            <label>City: </label>
+                            <input type="text" className="form-control mb-2" defaultValue={selectedAttraction.cityID} onChange={(e) => setCityID(e.target.value)} />
+
                             <label>Name: </label>
                             <input type="text" className="form-control mb-2" defaultValue={selectedAttraction.name} onChange={(e) => setName(e.target.value)} />
 
@@ -133,7 +138,7 @@ export default function AttractionManager() {
 
                             <label>Description: </label>
                             <input type="text" className="form-control mb-3" defaultValue={selectedAttraction.description} onChange={(e) => setDescription(e.target.value)} />
-                            
+
                             <label>Price: </label>
                             <input type="text" className="form-control mb-3" defaultValue={selectedAttraction.price} onChange={(e) => setPrice(e.target.value)} />
 

@@ -28,7 +28,11 @@ export default defineConfig({
         target:'http://127.0.0.1:4000/api',
         changeOrigin:true
       },
-      'attractions':{
+      '/attractions':{
+        target:'http://127.0.0.1:4000/api',
+        changeOrigin:true
+      },
+      '/rooms':{
         target:'http://127.0.0.1:4000/api',
         changeOrigin:true
       }

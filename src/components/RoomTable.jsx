@@ -40,7 +40,8 @@ export default function TableRooms({ allRooms }) {
                     {allRooms?.map((room) => (
                         <tr key={room.roomId}>
                             <td>{room.roomId}</td>
-                            <td>{room.hotelID}</td>
+                            <td>{room.hotelName}</td>
+                            <td>{room.type}</td>
                             <td>{room.available}</td>
                             <td>{room.price}</td>
                             <td>{room.guests}</td>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import FlightTable from '../components/FlightTable'
-import { getAllCities } from '../user';
+import { getAdFlights, flightEdit, deleteFlight } from '../user';
 
-export default function CityManager() {
+export default function FlightManager() {
     const [allFlights, setAllFlights] = useState(null);
     const [errorAllFlights, setErrorAllFlights] = useState('');
 
@@ -13,12 +13,14 @@ export default function CityManager() {
     const [starting, setStarting] = useState('')
     const [arivval, setArivval] = useState('')
     const [price, setPrice] = useState('')
-    const [departureCity , setDepartureCity ] = useState('')
-    const [destinationCity, setDestinationCity] = useState('')
+    const [departureCityID , setDepartureCityID ] = useState('')
+    const [destinationCityID, setDestinationCityID] = useState('')
 
     useEffect(() => {
         async function loadFlights() {
-            const data = await getAllCities()
+            const data = await getAdFlights()
+            console.log(data);
+            
             if (!data.error) setAllFlights(data)
             else setErrorAllFlights(data)
         }
@@ -30,10 +32,10 @@ export default function CityManager() {
         setErrorAllFlights('')
         if (!window.confirm(`Are you sure you want to delete this hotel: ${flight.flightsId} ?`)) return
    
-        const data = await deleteHotel(flight.flightsId)
+        const data = await deleteFlight(flight.flightsId)
         if (data.error) return alert(data.error)
 
-        setAllFlights(prev => prev.filter(x => x.flight !== flight.flightsId))
+        setAllFlights(prev => prev.filter(x => x.flightsId !== flight.flightsId))
     }
 
     async function handleEdit(flight) {
@@ -44,60 +46,20 @@ export default function CityManager() {
         setStarting(flight.starting);
         setArivval(flight.arivval);
         setPrice(flight.price);
-        setDepartureCity(flight.departureCity);
-        setDestinationCity(flight.setDestinationCity);
+        setDepartureCityID(flight.departureCityID);
+        setDestinationCityID(flight.destinationCityID);
         setShowFlightModal(true);
     }
 
-    async function edit(flightsId) {
+    async function editFlight(flightsId) {
         setErrorAllFlights('')
-        const data = await hotelEdit(flightsId, country, description)
+        const data = await flightEdit(flightsId, airlineId, starting, arivval, price, departureCityID, destinationCityID)
 
         if (data.error) return alert(data.error);
         
-        setAllFlights(prev=> prev.map(f=> f.flightsId === flightsId ? {...f,  country, description} : c))
+        setAllFlights(prev=> prev.map(f=> f.flightsId === flightsId ? {...f, airlineId, starting, arivval, price, departureCityID, destinationCityID} : f))
         setShowFlightModal(false)
         alert('Sikeres modositas')
-    }
-
-    // HOZZÁADVA: Az új képfeltöltést kezelő függvény
-    async function handleImageUpload(flight) {
-        // 1. Létrehozunk egy rejtett file input elemet
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = 'image/*'; // Csak képeket engedélyezünk
-
-        // 2. Figyeljük, ha a felhasználó kiválasztott egy fájlt
-        input.onchange = async (e) => {
-            const file = e.target.files[0];
-            if (!file) {
-                return; // Nem választott semmit
-            }
-
-            // 3. FormData-t használunk a fájl küldéséhez
-            const formData = new FormData();
-            formData.append('image', file); // A 'image' kulcsnak meg kell egyeznie a backend oldali multer beállítással!
-
-            // 4. Meghívjuk az API-t a hotel ID-jával és a fájl adataival
-            const data = await uploadHotelImage(flight.flightsId, formData);
-
-            if (data.error) {
-                return alert(data.error);
-            }
-
-            // 5. Sikeres feltöltés után frissítjük a state-et az új kép URL-lel
-            setAllFlights(prev => 
-                prev.map(f => 
-                    f.flightsId === flight.flightsId 
-                    ? { ...f, imageUrl: data.imageUrl } // Feltételezzük, hogy a backend a frissített imageUrl-t adja vissza
-                    : f
-                )
-            );
-            alert('Kép sikeresen feltöltve!');
-        };
-
-        // 6. "Rákattintunk" a rejtett inputra, hogy megnyíljon a fájlválasztó ablak
-        input.click();
     }
 
     return (
@@ -105,7 +67,7 @@ export default function CityManager() {
             <h2>City Management</h2>
             {errorAllFlights && <div className="alert alert-danger">{errorAllFlights}</div>}
 
-            <FlightTable allFlights={allFlights} onEdit={'handleEdit'} onDelete={'handleDelete'} onUploadImage={'handleImageUpload'} />
+            <FlightTable allFlights={allFlights} onEdit={handleEdit} onDelete={handleDelete}/>
 
             {/* Modal */}
             {showFlightModal && selectedFlight && (
@@ -129,12 +91,12 @@ export default function CityManager() {
                             <input type="text" className="form-control mb-3" defaultValue={selectedFlight.price} onChange={(e) => setPrice(e.target.value)} />
                             
                             <label>DepartureCity: </label>
-                            <input type="text" className="form-control mb-3" defaultValue={selectedFlight.departureCity} onChange={(e) => setDepartureCity(e.target.value)} />
+                            <input type="text" className="form-control mb-3" defaultValue={selectedFlight.depCity} onChange={(e) => setDepartureCityID(e.target.value)} />
                             
                             <label>DestinationCity: </label>
-                            <input type="text" className="form-control mb-3" defaultValue={selectedFlight.destinationCity} onChange={(e) => setDestinationCity(e.target.value)} />
+                            <input type="text" className="form-control mb-3" defaultValue={selectedFlight.destCity} onChange={(e) => setDestinationCityID(e.target.value)} />
 
-                            <button type="button" className="btn btn-primary mb-2" onClick={() => edit(selectedFlight.flightsId)}>Modify</button>
+                            <button type="button" className="btn btn-primary mb-2" onClick={() => editFlight(selectedFlight.flightsId)}>Modify</button>
                             <button type="button" className="btn btn-secondary" onClick={() => setShowFlightModal(false)}>Close</button>
                         </div>
                     </div>

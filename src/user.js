@@ -4,7 +4,7 @@ const BACKEND_FLIGHTS_URL = '/flights'
 const BACKEND_CITIES_URL = '/cities'
 const BACKEND_HOTELS_URL = '/hotels'
 const BACKEND_ATTRACTIONS_URL = '/attractions'
-
+const BACKEND_ROOMS_URL = '/rooms'
 
 export async function register(email, username, psw) {
     const res = await fetch(`${BACKEND_URL}/register`, {
@@ -413,7 +413,7 @@ export async function deleteHotel(hotelID) {
     return await res.json()
 }
 
-// Új függvény a kép feltöltéséhez
+// Új függvény a hotel kép feltöltéséhez
 export async function uploadHotelImage(hotelID, formData) {
     const res = await fetch(`${BACKEND_HOTELS_URL}/upload-image/${hotelID}`, {
         method: 'POST',                    // POST ajánlott képfeltöltésnél
@@ -521,6 +521,87 @@ export async function deleteAttraction(attractionID) {
     if (!res.ok) {
         const data = await res.json()
         return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+// flights lekerese adminhoz
+export async function getAdFlights() {
+    const res = await fetch(`${BACKEND_FLIGHTS_URL}/adgetflights`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return {error: data?.error}
+    }
+
+    return await res.json()
+}
+
+// flights modositasa adminhoz
+export async function flightEdit(flightsId, airlineId, starting, arivval, price, departureCityID, destinationCityID) {
+    try {
+        const res = await fetch(`${BACKEND_FLIGHTS_URL}/updateflight/${flightsId}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                flightsId, 
+                airlineId, 
+                starting, 
+                arivval, 
+                price, 
+                departureCityID, 
+                destinationCityID
+            })
+        })
+
+        if (!res.ok) {
+            // Ha nem, megpróbáljuk kiolvasni a szerver hibaüzenetét és hibát dobunk vele.
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(`Hiba a flight módosítása közben: ${errorData.message || res.statusText}`);
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error("flightEdit hiba:", error);
+        throw error;
+    }
+}
+
+//flight torlese 
+
+export async function deleteFlight(flightsId) {
+    const res = await fetch(`${BACKEND_FLIGHTS_URL}/deleteflight/${flightsId}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+//admin szobak lekerese
+export async function getAdRooms() {
+    const res = await fetch(`${BACKEND_ROOMS_URL}/adgetroom`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return {error: data?.error}
     }
 
     return await res.json()
