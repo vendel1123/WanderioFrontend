@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import RoomTable from '../components/RoomTable'
-import { deleteHotel, getAdHotels, hotelEdit, uploadHotelImage } from '../user';
+import { getAdRooms } from '../user';
 
 export default function RoomManager() {
     const [allRooms, setAllRooms] = useState(null);
@@ -22,7 +22,9 @@ export default function RoomManager() {
 
     useEffect(() => {
         async function loadRooms() {
-            const data = await getAdHotels()
+            const data = await getAdRooms()
+            console.log(data);
+            
             if (!data.error) setAllRooms(data)
             else setErrorallRooms(data)
         }
@@ -110,7 +112,7 @@ export default function RoomManager() {
 
     return (
         <div>
-            <h2>Hotel Management</h2>
+            <h2>Room Management</h2>
             {errorAllRooms && <div className="alert alert-danger">{errorAllRooms}</div>}
 
             <RoomTable allRooms={allRooms} onEdit={'handleEdit'} onDelete={'handleDelete'} onUploadImage={'handleImageUpload'} />

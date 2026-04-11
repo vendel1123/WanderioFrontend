@@ -1,4 +1,4 @@
-export default function TableAttraction({ allAttraction, onEdit,onDelete, onUploadImage }) {
+export default function TableAttraction({ allAttraction, onEdit, onDelete, onUploadImage }) {
     // 1. Eset: Ha az adatok még töltenek (null)
     if (!allAttraction) {
         return (
@@ -22,6 +22,7 @@ export default function TableAttraction({ allAttraction, onEdit,onDelete, onUplo
                 <thead className="table-dark">
                     <tr>
                         <th>ID</th>
+                        <th>City</th>
                         <th>Attracion name</th>
                         <th>Description</th>
                         <th>Address</th>
@@ -34,18 +35,20 @@ export default function TableAttraction({ allAttraction, onEdit,onDelete, onUplo
                     {allAttraction?.map((attraction) => (
                         <tr key={attraction.attractionID}>
                             <td>{attraction.attractionID}</td>
+                            <td>{attraction.cName}</td>
                             <td className="fw-bold">{attraction.name}</td>
-                            <td>{attraction.address}</td>
-                            <td>{attraction.price}</td>
                             {/* A description szöveg lehet nagyon hosszú, ezért levágjuk 40 karakternél, hogy szép maradjon a táblázat */}
                             <td>
                                 {attraction.description && attraction.description.length > 40
                                     ? attraction.description.substring(0, 40) + '...'
                                     : attraction.description}
                             </td>
-                             <td className="text-center"> 
+                            <td>{attraction.address}</td>
+                            <td>{attraction.price}</td>
+
+                            <td className="text-center">
                                 {attraction.attractionImages && attraction.attractionImages.length > 0 ? (
-                                     <div className="d-flex flex-wrap justify-content-center gap-2">
+                                    <div className="d-flex flex-wrap justify-content-center gap-2">
                                         {/* 3. Végigmegyünk a cityImages tömbön, és minden URL-re létrehozunk egy képet */}
                                         {attraction.attractionImages.map((imageUrl, index) => (
                                             <img
@@ -72,7 +75,7 @@ export default function TableAttraction({ allAttraction, onEdit,onDelete, onUplo
                                     Upload
                                 </button>
 
-                                
+
                             </td>
                             <td className="text-center" style={{ minWidth: '180px' }}>
                                 {/* Szerkesztés gomb */}

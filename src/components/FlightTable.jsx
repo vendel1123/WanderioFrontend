@@ -1,4 +1,4 @@
-export default function TableFlights({ allFlights }) {
+export default function TableFlights({ allFlights , onEdit, onDelete }) {
     // 1. Eset: Ha az adatok még töltenek (null)
     if (!allFlights) {
         return (
@@ -25,9 +25,9 @@ export default function TableFlights({ allFlights }) {
                         <th>Airline name</th>
                         <th>Starting</th>
                         <th>Arivval</th>
-                        <th>price</th>
-                        <th>departureCity</th>
-                        <th>destinationCity</th>
+                        <th>Price</th>
+                        <th>Departure City</th>
+                        <th>Destination City</th>
                         <th className="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -35,12 +35,12 @@ export default function TableFlights({ allFlights }) {
                     {allFlights?.map((flight) => (
                         <tr key={flight.flightsId}>
                             <td>{flight.flightsId}</td>
-                            <td>{flight.airlineId}</td>
+                            <td>{flight.airline}</td>
                             <td>{flight.starting}</td>
                             <td>{flight.arivval}</td>
                             <td>{flight.price}</td>
-                            <td>{flight.departureCity}</td>
-                            <td>{flight.destinationCity}</td>
+                            <td>{flight.depCity}</td>
+                            <td>{flight.destCity}</td>
                             <td className="text-center" style={{ minWidth: '180px' }}>
                                 {/* Szerkesztés gomb */}
                                 <button
