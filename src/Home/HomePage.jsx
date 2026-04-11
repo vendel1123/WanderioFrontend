@@ -5,6 +5,8 @@ import './HomePage.css'
 import slide1 from '../assets/rome1.jpg';
 import slide2 from '../assets/budapestAttraction3.jpg';
 import slide3 from '../assets/paris2.jpg';
+import slide4 from '../assets/tokyo1.jpg';
+import slide5 from '../assets/berlin3.jpg';
 
 import logo from '../assets/world.png'
 
@@ -16,15 +18,26 @@ const slides = [
   },
   {
     image: slide2,
-     text1: "Lausanne is a Swiss city on Lake Geneva, known for its Olympic spirit, historic old town, lively lakeside, and stunning Alpine views.",
-     text2: "Travel is proof that the unknown can be beautiful."
+    text1: "Budapest, the capital of Hungary, is known for its stunning architecture, thermal baths, historic bridges, and picturesque setting along the Danube River.",
+    text2: "Travel is proof that the unknown can be beautiful."
   },
   {
     image: slide3,
-     text1: "Paris, the capital of France, is famed for its art, fashion, cuisine, and landmarks",
-     text2: "Travel is proof that the unknown can be beautiful."
-  }
-];
+    text1: "Paris, the capital of France, is famed for its art, fashion, cuisine, and landmarks",
+    text2: "Travel is proof that the unknown can be beautiful."
+  },
+  {
+    image: slide4,
+    text1: "Tokyo, the capital of Japan, is renowned for its cutting-edge technology, bustling city life, traditional culture, and world-class cuisine.",
+    text2: "Travel is proof that the unknown can be beautiful."
+  },
+  {
+    image: slide5,
+    text1: "Berlin, the capital of Germany, is famed for its rich history, vibrant cultural scene, diverse art communities, and iconic landmarks such as the Brandenburg Gate and remnants of the Berlin Wall.",
+    text2: "Travel is proof that the unknown can be beautiful."
+  },
+
+  ];
 export default function HomePage() {
 
   const [index, setIndex] = useState(0);
@@ -53,7 +66,7 @@ export default function HomePage() {
           <div className="hero-overlay">
 
             <div className="dropdown">
-              
+
               <a className="btn btn-secondary dropdown-toggle bg-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Menu
               </a>
@@ -62,21 +75,23 @@ export default function HomePage() {
                 <img src={logo} alt="WanderioLogo" title='WanderioLogo' />
                 <p>Wanderio</p>
               </div>
-                
+
               <ul className="dropdown-menu p-0">
                 <li><a className="dropdown-item" onClick={handleClick}>Roma</a></li>
-                <li><a className="dropdown-item" onClick={handleClick} href="#">Eiffel Tower</a></li>
-                <li><a className="dropdown-item" onClick={handleClick} href="#">Lausanne</a></li>
+                <li><a className="dropdown-item" onClick={handleClick} href="#">Paris</a></li>
+                <li><a className="dropdown-item" onClick={handleClick} href="#">Budapest</a></li>
+                <li><a className="dropdown-item" onClick={handleClick} href="#">Berlin</a></li>
+                <li><a className="dropdown-item" onClick={handleClick} href="#">Tokyo</a></li>
               </ul>
             </div>
 
             <div className="slide-text2">
-              <p style={{marginTop:'90%'}}>{slide.text2}</p>
+              <p style={{ marginTop: '90%' }}>{slide.text2}</p>
             </div>
           </div>
           <div className="slide-text1">
-              <p >{slide.text1}</p>
-            </div>
+            <p >{slide.text1}</p>
+          </div>
         </div>
       ))}
     </div>
