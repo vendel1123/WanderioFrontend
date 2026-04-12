@@ -1,4 +1,4 @@
-export default function TableRooms({ allRooms }) {
+export default function TableRooms({ allRooms,onEdit,onDelete, onUploadImage }) {
     // 1. Eset: Ha az adatok még töltenek (null)
     if (!allRooms) {
         return (
@@ -55,11 +55,23 @@ export default function TableRooms({ allRooms }) {
                             </td>
                             <td>{room.size}</td>
                             <td className="text-center">
-                                {room.hotelImg && room.hotelImg.length > 0 ? (
-                                    <img
-                                        src={room.hotelImg}
-                                        style={{ width: '80px', height: 'auto', objectFit: 'cover' }}
-                                    />
+                                {room.roomImages && room.roomImages.length > 0 ? (
+                                    <div className="d-flex flex-wrap justify-content-center gap-2">
+                                        {/* 3. Végigmegyünk a cityImages tömbön, és minden URL-re létrehozunk egy képet */}
+                                        {room.roomImages.map((imageUrl, index) => (
+                                            <img
+                                                key={index} // Fontos a 'key' prop a listaelemeknél!
+                                                src={imageUrl}
+                                                alt={`${room.name} - kép ${index + 1}`}
+                                                style={{
+                                                    width: '60px',  // Kisebb méret, hogy több is elférjen
+                                                    height: '60px',
+                                                    objectFit: 'cover', // Levágja a képet, hogy kitöltse a négyzetet
+                                                    borderRadius: '4px' // Lekerekített sarkok a szebb kinézetért
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
                                 ) : (
                                     <span className="text-muted">No images</span>
                                 )}
@@ -73,7 +85,7 @@ export default function TableRooms({ allRooms }) {
 
 
                             </td>
-                            
+
                             {/* A description szöveg lehet nagyon hosszú, ezért levágjuk 40 karakternél, hogy szép maradjon a táblázat */}
 
                             <td className="text-center" style={{ minWidth: '180px' }}>
