@@ -1,4 +1,3 @@
-
 const BACKEND_URL = '/users'
 const BACKEND_FLIGHTS_URL = '/flights'
 const BACKEND_CITIES_URL = '/cities'
@@ -397,6 +396,44 @@ export async function attractionEdit(attractionID, cityID, name, description, ad
     }
 }
 
+export async function roomEdit(roomId,hotelID, typeId, available, price, guests, climate, arrival, starting, services, size) {
+    try {
+        const res = await fetch(`${BACKEND_ROOMS_URL}/updateroom/${roomId}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({
+                roomId,
+                hotelID,
+                typeId,
+                available,
+                price,
+                guests,
+                climate,
+                arrival,
+                starting,
+                services,
+                size
+            })
+        })
+
+        if (!res.ok) {
+            // Ha nem, megpróbáljuk kiolvasni a szerver hibaüzenetét és hibát dobunk vele.
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(`Hiba a felhasználó módosítása közben: ${errorData.message || res.statusText}`);
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error("citiesEdit hiba:", error);
+        throw error;
+    }
+}
+
 // egy hotel torlese(admin)
 
 export async function deleteHotel(hotelID) {
@@ -408,6 +445,20 @@ export async function deleteHotel(hotelID) {
     if (!res.ok) {
         const data = await res.json()
         return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+export async function deleteRoom(roomId) {
+    const res = await fetch(`${BACKEND_ROOMS_URL}/deleteroom/${roomId}`,{
+        method:'DELETE',
+        credentials:'include'
+    })
+
+    if(!res.ok){
+        const data = await res.json()
+        return {error: data?.error}
     }
 
     return await res.json()
@@ -428,6 +479,25 @@ export async function uploadHotelImage(hotelID, formData) {
     }
 
     return await res.json();
+}
+
+//kepfeltoltes roomhoz
+
+export async function uploadRoomImage(roomId, formData) {
+    const res = await fetch(`${BACKEND_ROOMS_URL}/upload-image/${roomId}`, {
+        method: 'POST',
+        credentials: 'include',
+        body: formData
+
+    })
+
+    if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        return { error: data?.error || 'Hiba történt a kép feltöltése közben' };
+    }
+
+    return await res.json();
+
 }
 
 //cities kepek feltoltese
@@ -535,7 +605,7 @@ export async function getAdFlights() {
 
     if (!res.ok) {
         const data = await res.json()
-        return {error: data?.error}
+        return { error: data?.error }
     }
 
     return await res.json()
@@ -553,12 +623,12 @@ export async function flightEdit(flightsId, airlineId, starting, arivval, price,
             },
 
             body: JSON.stringify({
-                flightsId, 
-                airlineId, 
-                starting, 
-                arivval, 
-                price, 
-                departureCityID, 
+                flightsId,
+                airlineId,
+                starting,
+                arivval,
+                price,
+                departureCityID,
                 destinationCityID
             })
         })
@@ -601,7 +671,7 @@ export async function getAdRooms() {
 
     if (!res.ok) {
         const data = await res.json()
-        return {error: data?.error}
+        return { error: data?.error }
     }
 
     return await res.json()

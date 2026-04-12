@@ -84,11 +84,10 @@ export default function Flights() {
             required
           >
             <option value="">Choose an airlines</option>
-            <option value="1">Wizz Air</option>
-            <option value="2">Ryanair</option>
-            <option value="3">Lufthansa</option>
-            <option value="4">KLM</option>
-            <option value="5">Emirates</option>
+            <option value="1">Lufthansa</option>
+            <option value="2">Air France</option>
+            <option value="3">Wizz Air</option>
+            <option value="4">Ryanair</option>
           </select>
 
           {/* Indulás */}
@@ -120,24 +119,36 @@ export default function Flights() {
           />
 
           {/* Indulási város */}
-          <input
-            type="text"
-            name="departure"
+          <select
+            name="departureCiy"
             value={formData.departure}
             onChange={handleChange}
-            placeholder="Departure city"
             required
-          />
+          >
+            <option value="">Choose your departure city</option>
+            <option value="1">Budapest</option>
+            <option value="2">Paris</option>
+            <option value="3">Rome</option>
+            <option value="4">Berlin</option>
+            <option value="5">Barcelona</option>
+            <option value="6">Toyko</option>
+          </select>
 
           {/* Célállomás */}
-          <input
-            type="text"
-            name="destination"
+          <select
+            name="airlineId"
             value={formData.destination}
             onChange={handleChange}
-            placeholder="Destination city"
             required
-          />
+          >
+            <option value="">Choose your destination</option>
+            <option value="1">Budapest</option>
+            <option value="2">Paris</option>
+            <option value="3">Rome</option>
+            <option value="4">Berlin</option>
+            <option value="5">Barcelona</option>
+            <option value="6">Toyko</option>
+          </select>
 
           {hiba && <div className='alert alert-danger'>{hiba}</div>}
           {uzenet && <div className='alert alert-success'>{uzenet}</div>}
