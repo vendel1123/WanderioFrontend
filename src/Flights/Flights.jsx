@@ -120,7 +120,7 @@ export default function Flights() {
 
           {/* Indulási város */}
           <select
-            name="departureCiy"
+            name="departure"
             value={formData.departure}
             onChange={handleChange}
             required
@@ -136,7 +136,7 @@ export default function Flights() {
 
           {/* Célállomás */}
           <select
-            name="airlineId"
+            name="destination"
             value={formData.destination}
             onChange={handleChange}
             required
@@ -153,7 +153,7 @@ export default function Flights() {
           {hiba && <div className='alert alert-danger'>{hiba}</div>}
           {uzenet && <div className='alert alert-success'>{uzenet}</div>}
 
-          <button type="submit" >Create</button>
+          <button type="submit" >Search</button>
         </form>
 
       </div>
