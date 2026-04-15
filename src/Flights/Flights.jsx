@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
-import { flight } from '../user.js'
+import { searchFlights, bookFlight } from '../user.js'
 
 import letter from "../assets/letter-i.png"
 import logo from "../assets/world.png"
@@ -14,14 +14,12 @@ export default function Flights() {
 
   const [hiba, setHiba] = useState('')
   const [uzenet, setUzenet] = useState('')
+  const [searchResults, setSearchResults] = useState([])
 
   const [formData, setFormData] = useState({
-    airlineId: "",
-    starting: "",
-    arivval: "",
-    price: "",
     departure: "",
-    destination: ""
+    destination: "",
+    date: ""
   })
 
   const handleChange = (e) => {
@@ -31,32 +29,42 @@ export default function Flights() {
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault()
-    await fl()
-  }
-
-  async function fl() {
     setHiba('')
     setUzenet('')
+    setSearchResults([])
     try {
-      const data = await flight(formData)
+      const data = await searchFlights(formData.departure, formData.destination, formData.date)
+
       if (data.error) {
         setHiba(data.error)
+      } else {
+        setSearchResults(data)
       }
-      setUzenet(data.message)
-      setTimeout(() => navigate('/cart'), 800)
-
-      setFormData({
-        airlineId: "",
-        starting: "",
-        arivval: "",
-        price: "",
-        departure: "",
-        destination: ""
-      })
     } catch (err) {
-      alert('Hiba:' + err.message)
+      setHiba('Hiba a kereses soran' + err.message)
+    }
+  }
+
+  const handleBooking = async (selectedFlight) => {
+    setHiba('');
+    setUzenet('');
+
+    try {
+      // Meghívjuk az új 'bookFlight' API függvényt a kiválasztott járat adataival
+      console.log("Foglalásra küldött adatok:", selectedFlight);
+      const bookingData = await bookFlight(selectedFlight);
+
+      if (bookingData.error) {
+        setHiba(bookingData.error);
+      } else {
+        setUzenet(bookingData.message);
+        // Átirányítás csak sikeres foglalás után
+        setTimeout(() => navigate('/cart'), 1500);
+      }
+    } catch (err) {
+      setHiba("Hiba a foglalás során: " + err.message);
     }
   }
 
@@ -75,50 +83,9 @@ export default function Flights() {
           fontWeight: 'bold'
 
         }}>Search a plane ticket</h2>
-        <form onSubmit={handleSubmit} >
-          {/* Légitársaság */}
-          <select
-            name="airlineId"
-            value={formData.airlineId}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Choose an airlines</option>
-            <option value="1">Lufthansa</option>
-            <option value="2">Air France</option>
-            <option value="3">Wizz Air</option>
-            <option value="4">Ryanair</option>
-          </select>
+        <form onSubmit={handleSearch} >
 
-          {/* Indulás */}
-          <input
-            type="datetime-local"
-            name="starting"
-            value={formData.starting}
-            onChange={handleChange}
-            required
-          />
 
-          {/* Érkezés */}
-          <input
-            type="datetime-local"
-            name="arivval"
-            value={formData.arivval}
-            onChange={handleChange}
-            required
-          />
-
-          {/* Ár */}
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            placeholder="Price (USD)"
-            required
-          />
-
-          {/* Indulási város */}
           <select
             name="departure"
             value={formData.departure}
@@ -150,17 +117,47 @@ export default function Flights() {
             <option value="6">Toyko</option>
           </select>
 
+          {/* Indulás */}
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+            required
+          />
+
           {hiba && <div className='alert alert-danger'>{hiba}</div>}
           {uzenet && <div className='alert alert-success'>{uzenet}</div>}
 
           <button type="submit" >Search</button>
         </form>
 
+        <div className="search-results" >
+          {searchResults.length > 0 && <h3 style={{
+            margin: '1rem auto',
+            fontStyle: 'italic',
+            color: 'white',
+            fontWeight: 'bold'
+          }}>Available Flights:</h3>}
+          {searchResults.map(flight => (
+            <div key={flight.id} className="flight-option">
+              <div className="flight-details">
+                <p><strong>{flight.airlineName}</strong></p>
+                <p>{new Date(flight.departureTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} → {new Date(flight.arrivalTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+              </div>
+              <div className="flight-booking">
+                <p className="price">${flight.price}</p>
+                <button onClick={() => handleBooking(flight)}>Select</button>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
 
       <div className="warning">
         <img src={letter} alt="information" style={{
-          marginBottom: '0px',
+          marginBottom: '0rem',
           marginRight: '0.5rem',
           height: '2rem'
         }} />

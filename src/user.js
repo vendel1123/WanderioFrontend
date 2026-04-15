@@ -67,13 +67,13 @@ export async function whoami() {
     return await res.json()
 }
 
-export async function flight(formData) {
-    const res = await fetch(`${BACKEND_FLIGHTS_URL}/createflight`, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData)
+export async function searchFlights(departure, destination, date) {
+
+    const url = `${BACKEND_FLIGHTS_URL}/search?departure=${departure}&destination=${destination}&date=${date}`
+
+    const res = await fetch(url, {
+        method: 'GET',
+        credentials:'include'
     })
     const data = await res.json()
     if (!res.ok) {
@@ -81,6 +81,20 @@ export async function flight(formData) {
     }
 
     return data
+}
+
+export async function bookFlight(flightData){
+    const res = await fetch(`${BACKEND_FLIGHTS_URL}/book`,{
+        method:'POST',
+        headers:{
+            "Content-Type": "application/json",
+
+        },
+        credentials:'include',
+        body:JSON.stringify(flightData)
+    })
+
+    return await res.json()
 }
 
 export async function pswchange(psw, newPsw) {
