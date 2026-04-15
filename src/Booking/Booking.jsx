@@ -5,7 +5,6 @@ import { getCityDetails } from '../user'
 
 import './Booking.css'
 
-
 import cart from "../assets/cart.png"
 import avatar from "../assets/avatar.png"
 import logo from "../assets/world.png"
@@ -75,8 +74,8 @@ export default function Booking() {
                 <div className='selectDiv'>
                     <li><img src={avatar} alt="" onClick={() => navigate("/profile")} /></li>
                     <li style={{ borderRight: "solid 2px grey", }}><img style={{ marginRight: "0.8rem", marginBottom: '5px' }} src={cart} alt="" onClick={() => navigate("/cart")} /></li>
-                    <li style={{ borderRight: "solid 2px grey", }}><a href='#description' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px', fontWeight:"bold" }}>Description</h3></a></li>
-                    <li style={{ borderRight: "solid 2px grey", }}><a href='#guide' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px', fontWeight:"bold" }}>Guide</h3></a></li>
+                    <li style={{ borderRight: "solid 2px grey", }}><a href='#description' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px', fontWeight: "bold" }}>Description</h3></a></li>
+                    <li style={{ borderRight: "solid 2px grey", }}><a href='#guide' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px', fontWeight: "bold" }}>Guide</h3></a></li>
                 </div>
             </ul>
 
@@ -114,25 +113,27 @@ export default function Booking() {
                     </div>
 
                     <button></button>
-                    <p>{cityData.description || "Nincsenek kepek ehez a varoshoz"}</p>
+                    <p>{cityData.description || "Nincsen leiras ehez a varoshoz"}</p>
                 </div>
 
                 <div className="right">
-                    <div className='description'>
-                        <img src={summary} alt="Summarry" />
-                        <h3>Summary</h3>
+                    <div className='summaryDiv'>
+                        <div className='description'>
+                            <img src={summary} alt="Summarry" />
+                            <h3>Summary</h3>
 
-                    </div>
-                    <button></button>
-                    <div className='summary'>
-                        <div className='flights' onClick={() => navigate('/flights')}>
-                            <img src={vip} alt="" />
-                            <p>Flights</p>
                         </div>
+                        <button></button>
+                        <div className='summary'>
+                            <div className='flights' onClick={() => navigate('/flights')}>
+                                <img src={vip} alt="" />
+                                <p>Flights</p>
+                            </div>
 
-                        <div className='hotels' onClick={() => navigate(`/hotels/${id}`)}>
-                            <img src={vip} alt="" />
-                            <p>Hotels</p>
+                            <div className='hotels' onClick={() => navigate(`/hotels/${id}`)}>
+                                <img src={vip} alt="" />
+                                <p>Hotels</p>
+                            </div>
                         </div>
                     </div>
 
@@ -183,7 +184,8 @@ export default function Booking() {
                 </div>
 
                 <div className="right">
-                    <div className='description'>
+                    <div className="rightDiv">
+                        <div className='description'>
                         <img src={summary} alt="Summarry" />
                         <h3>Get instant confirmation</h3>
                     </div>
@@ -191,6 +193,7 @@ export default function Booking() {
                     <p style={{ marginBottom: '1%' }}>
                         You'll receive your booking confirmation and a detailed summary immediately after checkout, including check-in time, property address, and contact details. Enjoy peace of mind and get exactly what you booked—or your money back. No surprises, no hidden fees.
                     </p>
+                    </div>
                 </div>
 
             </div>
@@ -207,24 +210,26 @@ export default function Booking() {
                 </div>
 
                 <div className="right">
-                    <div className='description'>
+                    <div className="rightDiv">
+                        <div className='description'>
                         <img src={summary} alt="Summarry" />
                         <h3>Stay with confidence</h3>
                     </div>
                     <button></button>
                     <p style={{ marginBottom: '3%' }}>From check-in to check-out, we're here to support your stay. Whatever you need, whenever you need it, we're just seconds away, 24/7—ready to help you enjoy every moment of your time in Paris.</p>
 
+                    </div>
                 </div>
 
             </div>
 
             <div className='guarantee'>
-                <div style={{ marginBottom: '2%' }}>
+                <div className='guaranteeDiv' style={{ marginBottom: '2%' }}>
                     <img src={summary} alt="" />
                     <h2 style={{
-                        color: '#336699',
+                        color: 'white',
                         ontStyle: 'italic',
-                        fontWeight:"bold"
+                        fontWeight: "bold"
                     }}>We guarantee</h2>
                 </div>
                 <p>Your trip is protected, personalized, and priced right. No surprises, no stress.</p>
@@ -261,7 +266,7 @@ export default function Booking() {
                 justifyContent: 'left',
                 marginLeft: '3%',
                 fontStyle: 'italic',
-                fontWeight:"bold",
+                fontWeight: "bold",
                 marginTop: '5%',
                 marginBottom: '2%',
                 color: '#336699',
@@ -305,7 +310,7 @@ export default function Booking() {
 
                 {cityData.hotels && cityData.hotels.map(hotel => (
                     <div key={hotel.hotelID} className="card mb-3" style={{ maxWidth: "540px", borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', borderBottomRightRadius: '2rem', borderEndStartRadius: '2rem  ' }}>
-                        <div className="row g-0" style={{ maxWidth: "540px", height: '400px', overflow:'hidden' }}><img style={{ borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', height:'200px' }} src={hotel.images && hotel.images.length > 0 ? hotel.images[0] : test} alt="" />
+                        <div className="row g-0" style={{ maxWidth: "540px", height: '400px', overflow: 'hidden' }}><img style={{ borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', height: '200px' }} src={hotel.images && hotel.images.length > 0 ? hotel.images[0] : test} alt="" />
                             <div className="col-md-18">
 
                                 <div className="card-body">
@@ -324,7 +329,7 @@ export default function Booking() {
             </div>
 
             <div className='footers'>
-                <div className="selectorLogos" style={{ marginLeft: '5%' }}>
+                <div className="selectorLogos" style={{ marginLeft: '5%', color:'black' }}>
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
                     <li><p>Wanderio</p></li>
                 </div>
