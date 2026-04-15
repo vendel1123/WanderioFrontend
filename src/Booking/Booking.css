@@ -37,8 +37,13 @@
     height: 70px;
 }
 
+.description img{
+    filter: brightness(0) invert(1);
+}
+
 .nav{
-    background-color: white;
+    color: black;
+    background: linear-gradient(-180deg, #1a2e4a 0%, #336699 100%);
     box-shadow:0 4px 15px rgba(0,0,0,0.5);
 }
 
@@ -47,7 +52,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border-top: #000D5E 5px solid;
+    background: linear-gradient(-135deg, #294c7d 0%, #336699 100%);
+    color: white;
+}
+
+.left img{
+    filter: brightness(0) invert(1);
 }
 
 .right {
@@ -57,17 +71,24 @@
     justify-content: center;
     margin: 0 auto;
 }
+.rightDiv{
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border-top: #000D5E 5px solid;
+    background: linear-gradient(-135deg, #294c7d 0%, #336699 100%);
+    color: white;
+}
 
 .right button {
     width: 100%;
-    background-color: #0E9C39;
+    background: linear-gradient(135deg, #1a2e4a 0%, #336699 100%);
     padding: 1.5px;
     margin-bottom: 2%;
 }
 
 .left button {
     width: 100%;
-    background-color: #0E9C39;
+    background: linear-gradient(-180deg, #1a2e4a 0%, #336699 100%);
     padding: 1.5px;
     margin-bottom: 2%;
 }
@@ -90,8 +111,7 @@
     color: #ffffff;
     font-weight: bold;
     margin: 0;
-    -webkit-text-stroke: 0.5px black;
-    /* text-shadow: 1px 1px 3px rgba(0,0,0,1); */
+    text-shadow: 1px 1px 3px rgba(0,0,0,1);
 }
 
 .summary {
@@ -111,13 +131,14 @@
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    background-color: white;
+    background: linear-gradient(135deg, #EFF6FF, #dbeafe);
     padding: 1.5rem;
     border-radius: 1rem;
     box-shadow:0 4px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s ease,
                 border-color 0.3s ease,
-                background-color 0.3s ease;
+                background-color 0.3s ease,
+                background 0.3s ease;
     border: 2px solid transparent;
 }
 
@@ -125,6 +146,7 @@
     transform: translateY(-8px);
     border-color: #336699;
     background-color: rgb(236, 233, 233);
+    background: linear-gradient(-135deg, #202e43, #dbeafe);
 }
 
 .flights p{
@@ -138,13 +160,14 @@
     align-items: center;
     gap: 10px;
     cursor: pointer;
-    background-color: white;
+    background: linear-gradient(135deg, #EFF6FF, #dbeafe);
     padding: 1.5rem;
     border-radius: 1rem;
     box-shadow:0 4px 15px rgba(0,0,0,0.5);
     transition: transform 0.3s ease,
                 border-color 0.3s ease,
-                background-color 0.3s ease;
+                background-color 0.3s ease,
+                background 0.3s ease;
     border: 2px solid transparent;
 }
 
@@ -152,6 +175,7 @@
     transform: translateY(-8px);
     border-color: #336699;
     background-color: rgb(236, 233, 233);
+    background: linear-gradient(-135deg, #202e43, #dbeafe);
 }
 
 .hotels p{
@@ -166,14 +190,15 @@
     background-color: white;
     border: 1px solid rgb(95, 89, 89);
     padding: 8px;
+    background: linear-gradient(-180deg, #1a2e4a 0%, #336699 100%);
     transition: transform 0.3s ease,
-                background-color 0.3s ease,
+                background 0.3s ease,
                 box-shadow 0.3s ease;
 }
 
 .bookNowDiv button:hover{
     transform: translateY(-8px);
-    background-color: rgb(236, 226, 226);
+    background: linear-gradient(180deg, #1a2e4a 0%, #336699 70%);
     box-shadow:0 4px 15px rgba(0,0,0,0.5);
 }
 
@@ -230,6 +255,8 @@
     box-shadow:0 4px 15px rgba(0,0,0,0.5);
     padding: 2rem;
     border-radius: 1rem;
+    background: linear-gradient(-135deg, #1a2e4a 0%, #336699 100%);
+    color: white;
 }
 
 .guarantee img {
@@ -391,7 +418,7 @@
 }
 
 .footers{
-    background-color: #336699;
+    background: linear-gradient(-135deg, #1a2e4a 0%, #336699 100%);
 }
 
 .selectorLogos{
@@ -432,6 +459,7 @@
 
 .travels {
     display: flex;
+    color: black;
     margin-bottom: 3%;
 }
 
@@ -465,4 +493,24 @@
     margin-top: 3%;
 }
 
+.selectDiv h3{
+    transition: text-shadow 0.3s ease;
+}
+
+.selectDiv h3:hover{
+    text-shadow: 1px 1px 3px rgb(255, 255, 255);
+}
+
+.selectDiv img:hover{
+    filter: brightness(0) invert(1);
+}
+
+.summaryDiv{
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border-top: #000D5E 5px solid;
+    background: linear-gradient(-0, #294c7d 0%, #336699 100%);
+}
 
