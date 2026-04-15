@@ -15,6 +15,10 @@ import summary from "../assets/BookingImgs/summary.png"
 import support from "../assets/BookingImgs/support.png"
 import vip from "../assets/BookingImgs/vip.png"
 import verified from '../assets/verified.png'
+import bestprice from '../assets/best-price.png'
+import cashback from '../assets/cashback.png'
+import customerSupp from '../assets/customer-support.png'
+import nomoney from '../assets/no-money.png'
 
 import test from '../assets/signInImg.jpg'
 
@@ -71,8 +75,8 @@ export default function Booking() {
                 <div className='selectDiv'>
                     <li><img src={avatar} alt="" onClick={() => navigate("/profile")} /></li>
                     <li style={{ borderRight: "solid 2px grey", }}><img style={{ marginRight: "0.8rem", marginBottom: '5px' }} src={cart} alt="" onClick={() => navigate("/cart")} /></li>
-                    <li style={{ borderRight: "solid 2px grey", }}><a href='#description' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px' }}>Description</h3></a></li>
-                    <li style={{ borderRight: "solid 2px grey", }}><a href='#guide' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px' }}>Guide</h3></a></li>
+                    <li style={{ borderRight: "solid 2px grey", }}><a href='#description' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px', fontWeight:"bold" }}>Description</h3></a></li>
+                    <li style={{ borderRight: "solid 2px grey", }}><a href='#guide' style={{ textDecoration: 'none', color: 'inherit' }}><h3 style={{ marginRight: "0.5rem", marginTop: '10px', fontWeight:"bold" }}>Guide</h3></a></li>
                 </div>
             </ul>
 
@@ -220,6 +224,7 @@ export default function Booking() {
                     <h2 style={{
                         color: '#336699',
                         ontStyle: 'italic',
+                        fontWeight:"bold"
                     }}>We guarantee</h2>
                 </div>
                 <p>Your trip is protected, personalized, and priced right. No surprises, no stress.</p>
@@ -228,25 +233,25 @@ export default function Booking() {
             <div className='guaranteeDice'>
 
                 <div className='guaranteeDiceItem' >
-                    <img src={summary} alt="" />
+                    <img src={cashback} alt="" />
                     <p>Free cancellation & full refund
                     </p>
                 </div>
 
                 <div className='guaranteeDiceItem'>
-                    <img src={summary} alt="" />
+                    <img src={bestprice} alt="" />
                     <p>Best price always guaranteed</p>
                 </div>
 
 
 
                 <div className='guaranteeDiceItem' >
-                    <img src={summary} alt="" />
+                    <img src={customerSupp} alt="" />
                     <p>Unlimited changes and support</p>
                 </div>
 
                 <div className='guaranteeDiceItem'>
-                    <img src={summary} alt="" />
+                    <img src={nomoney} alt="" />
                     <p>0% booking & credit card fees</p>
                 </div>
 
@@ -256,6 +261,7 @@ export default function Booking() {
                 justifyContent: 'left',
                 marginLeft: '3%',
                 fontStyle: 'italic',
+                fontWeight:"bold",
                 marginTop: '5%',
                 marginBottom: '2%',
                 color: '#336699',
