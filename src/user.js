@@ -690,3 +690,24 @@ export async function getAdRooms() {
 
     return await res.json()
 }
+
+
+//
+
+export async function createHotelBooking(bookingData){
+    const res = await fetch(`${BACKEND_HOTELS_URL}/book`,{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(bookingData)
+    })
+
+    if(!res.ok){
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}

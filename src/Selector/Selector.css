@@ -16,10 +16,26 @@
     margin: 10px 10px 0px 10px;
     cursor: pointer;
 }
-
-.selectorLogo{
+.selectorLogoNav div{
+    margin-top: 1rem;
+    display: flex;
     font-size: 2rem;
     font-weight: 650;
+}
+
+.selectorLogoNav{
+    font-size: 2rem;
+    font-weight: 650;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selectorLogoNav li{
+    list-style-type: none;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .selector{

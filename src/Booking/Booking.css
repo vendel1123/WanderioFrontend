@@ -16,6 +16,10 @@
     color: #336699;
 }
 
+.selectorLogo{
+    font-size: 2rem;
+    font-weight: 650;
+}
 
 .carousel-item img {
     height: 500px;
@@ -494,11 +498,11 @@
 }
 
 .selectDiv h3{
-    transition: text-shadow 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .selectDiv h3:hover{
-    text-shadow: 1px 1px 3px rgb(255, 255, 255);
+   color: white;
 }
 
 .selectDiv img:hover{
