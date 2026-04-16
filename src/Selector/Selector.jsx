@@ -25,17 +25,17 @@ export default function Selector() {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
 
-    useEffect(()=> {
+    useEffect(() => {
         getAllCities()
-        .then(data=> {
-            setCities(data)
-            setIsLoading(false)
-        })
-        .catch(err=> {
-            console.error("Hiba a varosok lekeresekor")
-            setError("A varosok listajat nem sikerult betolteni", err)
-            setIsLoading(false)
-        })
+            .then(data => {
+                setCities(data)
+                setIsLoading(false)
+            })
+            .catch(err => {
+                console.error("Hiba a varosok lekeresekor")
+                setError("A varosok listajat nem sikerult betolteni", err)
+                setIsLoading(false)
+            })
     }, [])
 
     const handleSearch = () => {
@@ -49,10 +49,10 @@ export default function Selector() {
 
     return (
         <>
-            <ul className="nav" style={{ borderBottom: "2px solid gray" }}>
+            <ul className="selectorLogoNav" style={{ borderBottom: "2px solid gray" }}>
                 <div className="selectorLogo">
-                    <li><p>Wanderio</p></li>
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
+                    <li><p>Wanderio</p></li>
                 </div>
                 <div>
                     <li><img src={avatar} alt="" onClick={() => navigate("/profile")} /></li>
@@ -71,8 +71,8 @@ export default function Selector() {
 
                     <div className="field">
                         <label style={{ fontWeight: 'bold' }}>Select Destination</label>
-                        <select style={{width:'200%'}} value={selectedCity} onChange={(e)=> setSelectedCity(e.target.value)} className="fieldSelector" disabled= {isLoading || error}>
-                            <option  value="">{isLoading ? "Cities loading...": "Choose a city"}</option>
+                        <select style={{ width: '200%' }} value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} className="fieldSelector" disabled={isLoading || error}>
+                            <option value="">{isLoading ? "Cities loading..." : "Choose a city"}</option>
                             {error && <option disabled>{error}</option>}
                             {!isLoading && !error && cities.map(city => (
                                 <option key={city.cityID} value={city.cityID}>
@@ -112,7 +112,7 @@ export default function Selector() {
                 </div>
 
             </div>
-            <button className="Line" style={{marginTop:'2rem', marginBottom:'2rem'}}></button>
+            <button className="Line" style={{ marginTop: '2rem', marginBottom: '2rem' }}></button>
         </>
     )
 }

@@ -6,7 +6,9 @@ import test from '../assets/signInImg.jpg'
 import './HotelBook.css'
 
 import { useNavigate, useParams } from 'react-router-dom'
-import { getHotelDetails } from '../user'
+import { getHotelDetails, createHotelBooking } from '../user'
+
+
 
 export default function HotelBook() {
 
@@ -15,6 +17,11 @@ export default function HotelBook() {
 
     const [selectedRoom, setSelectedRoom] = useState(null)
     const [hotelData, setHotelData] = useState(null)
+
+    const [startDate, setStartDate] = useState('')
+    const [endDate, setEndDate] = useState('')
+    const [numberOfNights, setNumberOfNights] = useState(0)
+    const [bookingStatus, setBookingStatus] = useState({ message: "type:" })
 
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -44,9 +51,50 @@ export default function HotelBook() {
 
     }, [hotelID])
 
-    // const handleBooking = () => {
+    useEffect(() => {
+        if (startDate && endDate) {
+            const start = new Date(startDate)
+            const end = new Date(endDate)
+            if (end > start) {
+                const diffTime = Math.abs(end - start)
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+                setNumberOfNights(diffDays)
+            }
+            else {
+                setNumberOfNights(0)
+            }
+        }
+    }, [startDate, endDate])
 
-    // }
+    const handleBooking = async () => {
+        if (!selectedRoom) {
+            setBookingStatus({ message: "Please select a room first", type: 'error' })
+            return
+        }
+        if (numberOfNights <= 0) {
+            setBookingStatus({ message: "Please select a valid date.", type: 'error' })
+            return
+        }
+
+        const bookingData = {
+            hotelID: hotelData.hotelID,
+            roomId: selectedRoom.roomId,
+            days: numberOfNights
+        }
+
+        setBookingStatus({ message: "Booking in progress", type: 'loading' })
+
+        try {
+            const result = await createHotelBooking(bookingData)
+            setBookingStatus({ message: result.message || 'Booking successfull!', type: 'succes' })
+            setTimeout(() => {
+                navigate('/cart')
+            }, 2000);
+        } catch (err) {
+            console.log('Booking failed', err);
+        }
+
+    }
 
     if (isLoading) {
         return <div>Loading hotel details...</div>
@@ -56,8 +104,8 @@ export default function HotelBook() {
         return <div>Error: {error}</div>
     }
 
-    if (!hotelData) {
-        return <div>Hotel not found or data is missing</div>
+    if (!hotelData || !selectedRoom) {
+        return <div>Hotel or room data is not found </div>
     }
 
     return (
@@ -115,8 +163,8 @@ export default function HotelBook() {
 
                 <div>
                     <p className='grayP'>ROOM Type</p>
-                    <p>{selectedRoom.typeName}</p>               
-                 </div>
+                    <p>{selectedRoom.typeName}</p>
+                </div>
                 <div>
                     <p className='grayP'>CAPACITY</p>
                     <p>{selectedRoom.guests} person</p>
@@ -130,11 +178,32 @@ export default function HotelBook() {
             <div className="bookNow">
                 <h2>${selectedRoom.price}</h2>
                 <small>per night</small>
+                {numberOfNights > 0 && <h4>Total: ${selectedRoom.price * numberOfNights}</h4>}
 
-                <input type="date" />
-                <input type="date" />
+                <label htmlFor="start-date">Check-in</label>
+                <input
+                    type="date"
+                    id="start-date"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    min={new Date().toString().split('T')[0]}
+                />
+                <label htmlFor="end-date">Check-out</label>
+                <input
+                    type="date"
+                    id='end-date'
+                    value={endDate}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    min={startDate}
+                />
 
-                <button className='bookNowBtn'>Book Now</button>
+                <button className='bookNowBtn' onClick={handleBooking} disabled={bookingStatus.type === 'loading'}>{bookingStatus.type === 'loading' ? 'Processing..' : ` ${numberOfNights} night(s)`}</button>
+
+                {bookingStatus.message && (
+                    <div className={`booking-status ${bookingStatus.type}`}>
+                        {bookingStatus.message}
+                    </div>
+                )}
 
                 <button className='grayLineH'></button>
                 <div className="info">
