@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { Navigate } from "react-router-dom";
 import UsersManager from "./UserManager";
 import HotelManager from "./HotelManager";
 import CityManager from "./CityManager";
@@ -91,8 +92,7 @@ export default function Admin() {
             {activeTab === 'rooms' && <RoomManager />}
             {activeTab === 'flights' && <FlightManager />}
             {activeTab === 'attractions' && <AttractionManager />}
-            {/* {activeTab === 'orders' && <OrdersManager />} 
-            {activeTab === 'categories' && <CategoriesManager />}*/}
+            {activeTab === 'orders' && <OrdersManager />} 
 
         </div>
     );
