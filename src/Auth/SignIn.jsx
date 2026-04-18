@@ -20,7 +20,9 @@ function SignIn({}) {
 
   const [user,setUser] = useState(null)
 
-  async function onLogin() {
+  async function onLogin(event) {
+
+    event.preventDefault()
     setHiba('')
     setUzenet('')
     if (!email || !psw) {
@@ -49,7 +51,7 @@ function SignIn({}) {
   return (
     <div className='containerLogin'>
 
-      <div className='signIn'>
+      <form className='signIn'>
         <div className='signInLogo'>
           <img src={logo} alt="WanderioLogo" title='WanderioLogo' />
           <p>Wanderio</p>
@@ -57,19 +59,18 @@ function SignIn({}) {
 
         <h2>Sign in</h2>
 
-        {hiba && <div className='alert alert-danger'>{hiba}</div>}
-        {uzenet && <div className='alert alert-success'>{uzenet}</div>}
+        {hiba && <div className='alert alert-danger' style={{border:'1px solid black'}}>{hiba}</div>}
+        {uzenet && <div className='alert alert-success' style={{border:'1px solid black'}}>{uzenet}</div>}
 
         <InputMezo label='Email' type='email' placeholder='example@example.hu' value={email} setValue={setEmail} />
-        <InputMezo label='Jelszo' type='password' placeholder='*****' value={psw} setValue={setPsw} />
+        <InputMezo label='Password' type='password' placeholder='*****' value={psw} setValue={setPsw} />
 
         <p>Forgot password?</p>
 
-        <button className='signInBtn' onClick={onLogin}>Sign in</button>
-        <button className='signInBtn'>Admin</button>
+        <button className='signInBtn' type='submit' onClick={onLogin}>Sign in</button>
 
         <p>Don't have an account? <button className='signBtn' onClick={handleClick}>Sign up</button></p>
-      </div>
+      </form>
 
       <div className='pictureBg'  >
         <p>"Traveling opens your mind, connects you with new cultures, and fills life with unforgettable experiences."</p>
