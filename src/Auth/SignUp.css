@@ -1,19 +1,19 @@
-    *{
+    * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
 
-    .containerSignUp{
+    .containerSignUp {
         background-image: url('../assets/signUpimg.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         display: flex;
         justify-content: start;
         align-items: center;
-        height: 100vh; 
+        height: 100vh;
         color: #fff;
-        font-weight: bold; 
+        font-weight: bold;
         font-family: "Open Sans", sans-serif;
         margin: 0;
         padding: 0;
@@ -21,30 +21,33 @@
 
     }
 
-    .signUp{ 
+    .signUp {
         display: flex;
         flex-direction: column;
         width: 30%;
         height: 100%;
         padding: 2.5rem;
-        background-color: #00A63E;
+        background: linear-gradient(-135deg, #003D1A, #00A63E);
         font-size: clamp(0.5rem, 2vw, 1rem);
     }
 
-    .signUp h2{
+    .signUp h2 {
         margin-bottom: 10%;
         margin-top: 20%;
     }
-    .signUp input{
-        border:solid 1px black;
+
+    .signUp input {
+        border: solid 1px black;
         border-radius: 0.5rem;
-        background-color: #00A63E;
+        background: linear-gradient(180deg, #003D1A 30%, #00A63E);
         padding: 1rem;
         margin-bottom: 5%;
         margin-top: 1%;
+        color: white;
     }
 
-    .signUpLogo, img{
+    .signUpLogo,
+    img {
         display: flex;
         gap: 0.5rem;
         flex-direction: row;
@@ -57,8 +60,8 @@
         font-size: 2rem;
     }
 
-    .signUpBtn{
-        background-color: #016630;
+    .signUpBtn {
+        background: linear-gradient(0, #016630, #03A65A);
         border: none;
         padding: 1rem;
         margin: 5% 0 3% 0;
@@ -66,12 +69,13 @@
         color: #fff;
         font-weight: bold;
         cursor: pointer;
+        transition: all 0.5s ease;
     }
 
-    .signUpBtn:hover{
-        background-color: #1A5D1A   ;
-        transition: 1s;
+    .signUpBtn:hover {
+        background: linear-gradient(180deg, #016630, #03A65A);
         transform: scale(1.02);
+        color: black;
     }
 
     .pictureBg {
@@ -85,9 +89,9 @@
         right: 5%;
         max-width: 400px;
         font-size: clamp(0.5rem, 2vw, 1rem);
-    } 
+    }
 
-    .signBtn{
+    .signBtn {
         border: none;
         background-color: #00A63E;
         cursor: pointer;
@@ -96,21 +100,23 @@
         font-weight: bold;
     }
 
-    .signBtn:hover{
+    .signBtn:hover {
         color: black;
         transition: 0.5s;
     }
 
     @media (max-width: 768px) {
-    .container {
-        background-image: none;
-    }
-    .signUp{
-        width: 100%;
-        font-size: 1rem;
-    }
-    .pictureBg{
-        display: none;
-    }
+        .container {
+            background-image: none;
+        }
+
+        .signUp {
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .pictureBg {
+            display: none;
+        }
 
     }

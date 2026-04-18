@@ -48,8 +48,8 @@ export default function Selector() {
     }
 
     return (
-        <>
-            <ul className="selectorLogoNav" style={{ borderBottom: "2px solid gray" }}>
+        <div className="selectorDiv">
+            <ul className="selectorLogoNav" style={{ margin: '0' }}>
                 <div className="selectorLogo">
                     <li><img src={logo} alt="WanderioLogo" title='WanderioLogo' /></li>
                     <li><p>Wanderio</p></li>
@@ -60,29 +60,41 @@ export default function Selector() {
                 </div>
             </ul>
 
-            <div className="selector">
+            <div className="selectorTop">
+                <div className="selector">
 
-                <div className="selectorWords">
-                    <p> Best Hotels & Accomodation In All Around The World - Biggest Selection & </p>
-                    <p>Lowest Prices Guaranteed</p>
-                </div>
-
-                <div className="destination">
-
-                    <div className="field">
-                        <label style={{ fontWeight: 'bold' }}>Select Destination</label>
-                        <select style={{ width: '200%' }} value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} className="fieldSelector" disabled={isLoading || error}>
-                            <option value="">{isLoading ? "Cities loading..." : "Choose a city"}</option>
-                            {error && <option disabled>{error}</option>}
-                            {!isLoading && !error && cities.map(city => (
-                                <option key={city.cityID} value={city.cityID}>
-                                    {city.name}
-                                </option>
-                            ))}
-                        </select>
+                    <div className="selectorWords">
+                        <p> Best Hotels & Accomodation In All Around The World - Biggest Selection & </p>
+                        <p>Lowest Prices Guaranteed</p>
                     </div>
 
-                    <button onClick={handleSearch} disabled={!selectedCity}> Search Now</button>
+                    <div className="destination">
+
+                        <div className="field">
+                            <label style={{ fontWeight: 'bold', }}>Select Destination</label>
+                            <select style={{ width: '150%', border: '2px solid lightgray' }} value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)} className="fieldSelector" disabled={isLoading || error}>
+                                <option value="">{isLoading ? "Cities loading..." : "Choose a city"}</option>
+                                {error && <option disabled>{error}</option>}
+                                {!isLoading && !error && cities.map(city => (
+                                    <option key={city.cityID} value={city.cityID}>
+                                        {city.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <button onClick={handleSearch} disabled={!selectedCity}> Search Now</button>
+                    </div>
+
+                </div>      
+                <h3 style={{color:'white', fontWeight:'bold', marginTop:'1rem'}}>Popular destinatins</h3>              
+                <div className="destinationBottom">
+                    
+                    <p>Paris</p>
+                    <p>Rome</p>
+                    <p>Budapest</p>
+                    <p>Tokyo</p>
+
                 </div>
             </div>
 
@@ -112,7 +124,6 @@ export default function Selector() {
                 </div>
 
             </div>
-            <button className="Line" style={{ marginTop: '2rem', marginBottom: '2rem' }}></button>
-        </>
+        </div>
     )
 }
