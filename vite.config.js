@@ -35,6 +35,14 @@ export default defineConfig({
       '/rooms':{
         target:'http://127.0.0.1:4000/api',
         changeOrigin:true
+      },
+      '/hotelorders':{
+        target:'http://127.0.0.1:4000/api',
+        changeOrigin:true
+      },
+      '/ticketorders':{
+        target:'http://127.0.0.1:4000/api',
+        changeOrigin:true
       }
 
     }

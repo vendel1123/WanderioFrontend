@@ -4,6 +4,8 @@ const BACKEND_CITIES_URL = '/cities'
 const BACKEND_HOTELS_URL = '/hotels'
 const BACKEND_ATTRACTIONS_URL = '/attractions'
 const BACKEND_ROOMS_URL = '/rooms'
+const BACKEND_HOTELORDER_URL = '/hotelorders'
+const BACKEND_FlightORDER_URL = '/ticketorders'
 
 export async function register(email, username, psw) {
     const res = await fetch(`${BACKEND_URL}/register`, {
@@ -705,6 +707,120 @@ export async function createHotelBooking(bookingData){
     })
 
     if(!res.ok){
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+//getHotelOrders
+export async function getHotelOrders() {
+    const res= await fetch(`${BACKEND_HOTELORDER_URL}/gethotelord`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    if(!res.ok){
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+//hotel order status update
+export async function updateHotelOrderStatus(orderID, status) {
+    try {
+        const res = await fetch(`${BACKEND_HOTELORDER_URL}/updatehotordstat/${orderID}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({ status })
+        })
+
+        if (!res.ok) {
+            // Ha nem, megpróbáljuk kiolvasni a szerver hibaüzenetét és hibát dobunk vele.
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(`Hiba a flight módosítása közben: ${errorData.message || res.statusText}`);
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error("flightEdit hiba:", error);
+        throw error;
+    }
+}
+
+//hotel order delete
+export async function deleteHotelOrder(orderID) {
+    const res = await fetch(`${BACKEND_HOTELORDER_URL}/deletehotelord/${orderID}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+//getFlightOrders
+export async function getFlightOrders() {
+    const res= await fetch(`${BACKEND_FlightORDER_URL}/getticketorders`, {
+        method: 'GET',
+        credentials: 'include'
+    })
+
+    if(!res.ok){
+        const data = await res.json()
+        return { error: data?.error }
+    }
+
+    return await res.json()
+}
+
+//flight order status update
+export async function updateFlightOrderStatus(orderID, status) {
+    try {
+        const res = await fetch(`${BACKEND_FlightORDER_URL}/updateticketstatus/${orderID}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {
+
+                'Content-Type': 'application/json'
+            },
+
+            body: JSON.stringify({ status })
+        })
+
+        if (!res.ok) {
+            // Ha nem, megpróbáljuk kiolvasni a szerver hibaüzenetét és hibát dobunk vele.
+            const errorData = await res.json().catch(() => ({ message: res.statusText }));
+            throw new Error(`Hiba a flight módosítása közben: ${errorData.message || res.statusText}`);
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error("flightEdit hiba:", error);
+        throw error;
+    }
+}
+
+//hotel order delete
+export async function deleteFlightOrder(orderID) {
+    const res = await fetch(`${BACKEND_FlightORDER_URL}/deleteticketorder/${orderID}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+
+    if (!res.ok) {
         const data = await res.json()
         return { error: data?.error }
     }

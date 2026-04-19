@@ -7,6 +7,7 @@ import CityManager from "./CityManager";
 import RoomManager from "./RoomManager";
 import FlightManager from "./FlightManager";
 import AttractionManager from './AttractionManager'
+import OrderManager from "./OrderManager";
 
 import './Admin.css'
 
@@ -92,7 +93,7 @@ export default function Admin() {
             {activeTab === 'rooms' && <RoomManager />}
             {activeTab === 'flights' && <FlightManager />}
             {activeTab === 'attractions' && <AttractionManager />}
-            {activeTab === 'orders' && <OrdersManager />} 
+            {activeTab === 'orders' && <OrderManager />} 
 
         </div>
     );

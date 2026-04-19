@@ -1,5 +1,5 @@
-export default function HotelOrderTable(orders, onEdit, onDelete) {
-    if (!orders) {
+export default function HotelOrderTable({hotelOrders, onEdit, onDelete}) {
+    if (!hotelOrders) {
         return (
             <div className="text-center my-4">
                 <div className="spinner-border text-primary" role="status">
@@ -9,7 +9,7 @@ export default function HotelOrderTable(orders, onEdit, onDelete) {
         )
     }
 
-    if (orders.length === 0) {
+    if (hotelOrders.length === 0) {
         return <div className="alert alert-info mt-3">There are no hotel orders.</div>
     }
 
@@ -29,7 +29,7 @@ export default function HotelOrderTable(orders, onEdit, onDelete) {
                     </tr>
                 </thead>
                 <tbody>
-                    {orders?.map((order) => {
+                    {hotelOrders?.map((order) => (
                         <tr key={order.orderID}>
                             <td>{order.orderID}</td>
                             <td>{order.username}</td>
@@ -51,7 +51,7 @@ export default function HotelOrderTable(orders, onEdit, onDelete) {
                                 </button>
                             </td>
                         </tr>
-                    })}
+                    ))}
                 </tbody>
             </table>
         </div>

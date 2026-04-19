@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import HotelOrderTable from '../components/HotelOrderTable'
 import FlightOrderTable from '../components/FlightOrderTable'
-import {getHotelOrders, getFlightOrders, deleteHotelOrder, deleteFlightOrder} from '../user'
+import {getHotelOrders, getFlightOrders, updateHotelOrderStatus, deleteHotelOrder , updateFlightOrderStatus, deleteFlightOrder} from '../user'
 
 export default function OrderManager() {
     const [hotelOrders, setHotelOrders] = useState(null)
@@ -21,6 +21,8 @@ export default function OrderManager() {
                     getHotelOrders(),
                     getFlightOrders()
                 ])
+                //console.log(hotelData, flightData);
+                
                 if (Array.isArray(hotelData)) setHotelOrders(hotelData)
                 else setError(hotelData.error)
 
@@ -37,7 +39,7 @@ export default function OrderManager() {
     }, [])
 
     //torles
-    async function handleDelete() {
+    async function handleDelete(order, type) {
         setError('')
         const id = type === 'hotel' ? order.orderID : order.orderID
         if (!window.confirm(`Biztosan torolni szeretned ezt a rendelest: ID ${id}`)) return
@@ -91,10 +93,10 @@ export default function OrderManager() {
 
             <hr />
             <h3>Hotel Orders</h3>
-            <HotelOrderTable orders={hotelOrders} onEdit={(order)=> {handleEdit(order, 'hotel')}} onDelete={(order)=> {handleDelete(order, 'hotel')}}/>
+            <HotelOrderTable hotelOrders={hotelOrders} onEdit={(order)=> {handleEdit(order, 'hotel')}} onDelete={(order)=> {handleDelete(order, 'hotel')}}/>
 
             <h3>Flight Orders</h3>
-            <FlightOrderTable orders={hotelOrders} onEdit={(order)=> {handleEdit(order, 'flight')}} onDelete={(order)=> {handleDelete(order, 'flight')}}/>
+            <FlightOrderTable flightOrders={flightOrders} onEdit={(order)=> {handleEdit(order, 'flight')}} onDelete={(order)=> {handleDelete(order, 'flight')}}/>
 
             {showModal && selectedOrder && (
                 <div className="modal d-block" tabIndex='-1' style={{ background: 'rgba(0,0,0,0.5'}}>
