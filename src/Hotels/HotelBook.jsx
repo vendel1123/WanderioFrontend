@@ -176,26 +176,41 @@ export default function HotelBook() {
             </div>
 
             <div className="bookNow">
-                <h2>${selectedRoom.price}</h2>
-                <small>per night</small>
-                {numberOfNights > 0 && <h4>Total: ${selectedRoom.price * numberOfNights}</h4>}
+                <h1>Complete Your Booking</h1>
+                <div className='bookNowDiv'>
+                    <div style={{marginRight:'1rem'}}>
+                        <label htmlFor="start-date">Check-in</label>
+                        <input
+                            type="date"
+                            id="start-date"
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                            min={new Date().toString().split('T')[0]}
+                        />
+                    </div>
+                    <div style={{marginLeft:'1rem'}}>
+                        <label htmlFor="end-date">Check-out</label>
+                        <input
+                            type="date"
+                            id='end-date'
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
+                            min={startDate}
+                        />
+                    </div>
 
-                <label htmlFor="start-date">Check-in</label>
-                <input
-                    type="date"
-                    id="start-date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    min={new Date().toString().split('T')[0]}
-                />
-                <label htmlFor="end-date">Check-out</label>
-                <input
-                    type="date"
-                    id='end-date'
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                    min={startDate}
-                />
+                </div>
+
+                <div className="bookPrice">
+                    <div className="total">
+                        <p>Per night:</p>
+                        <h2>${selectedRoom.price}</h2>
+                    </div>
+                    <button className='linePrice'></button>
+                    <div className='total'>
+                        <p >Total: </p> {numberOfNights > 0 && <h4><div style={{ color: '#378ADD', fontWeight: 'bold' }}> ${selectedRoom.price * numberOfNights}</div></h4>}
+                    </div>
+                </div>
 
                 <button className='bookNowBtn' onClick={handleBooking} disabled={bookingStatus.type === 'loading'}>{bookingStatus.type === 'loading' ? 'Processing..' : ` ${numberOfNights} night(s)`}</button>
 

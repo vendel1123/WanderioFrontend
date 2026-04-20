@@ -106,8 +106,8 @@ export default function Booking() {
             </div>
 
             <div className='whole' >
-                <div className="left">
-                    <div id='description' className='description'>
+                <div className="left" style={{margin:"2rem auto"}}>
+                    <div id='descrip    tion' className='description'>
                         <img src={information} alt="" />
                         <h3>Description</h3>
                     </div>
@@ -116,7 +116,7 @@ export default function Booking() {
                     <p>{cityData.description || "Nincsen leiras ehez a varoshoz"}</p>
                 </div>
 
-                <div className="right">
+                <div className="right" style={{margin:"2rem auto"}}>
                     <div className='summaryDiv'>
                         <div className='description'>
                             <img src={summary} alt="Summarry" />
@@ -172,7 +172,7 @@ export default function Booking() {
                 marginTop: '5%',
                 marginBottom: '5%'
             }}>How it works</h1>
-            <div className='whole'>
+            <div className='whole' style={{display:'flex'}}>
 
                 <div className="left">
                     <div className='description'>
@@ -198,7 +198,7 @@ export default function Booking() {
 
             </div>
 
-            <div className='whole' >
+            <div className='whole' style={{display:'flex'}}>
 
                 <div className="left">
                     <div className='description'>
@@ -279,7 +279,7 @@ export default function Booking() {
                 {cityData.attractions && cityData.attractions.map(attraction => (
                     <div key={attraction.attractionID} className="card" style={{ width: '50%', borderTopLeftRadius: '3rem', borderTopRightRadius: '3rem' }}>
                         {/* <img src={...} /> Itt lehetne az attrakció képe, ha lenne a DB-ben */}
-                        <img style={{ borderTopLeftRadius: '3rem', borderTopRightRadius: '3rem' }} src={attraction.images && attraction.images.length > 0 ? attraction.images[0] : test} className='card-img-top' alt={attraction.name} />
+                        <img style={{ borderTopLeftRadius: '3rem', borderTopRightRadius: '3rem',borderBottomRightRadius:'2rem', borderBottomLeftRadius:'2rem' }} src={attraction.images && attraction.images.length > 0 ? attraction.images[0] : test} className='card-img-top' alt={attraction.name} />
                         <div className="card-body">
                             <p style={{ fontWeight: 'bold' }}>{attraction.name}</p>
                             <p>{attraction.description}</p>
@@ -310,11 +310,11 @@ export default function Booking() {
 
                 {cityData.hotels && cityData.hotels.map(hotel => (
                     <div key={hotel.hotelID} className="card mb-3" style={{ maxWidth: "540px", borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', borderBottomRightRadius: '2rem', borderEndStartRadius: '2rem  ' }}>
-                        <div className="row g-0" style={{ maxWidth: "540px", height: '400px', overflow: 'hidden' }}><img style={{ borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', height: '200px' }} src={hotel.images && hotel.images.length > 0 ? hotel.images[0] : test} alt="" />
+                        <div className="row g-0" style={{ maxWidth: "540px", height: '400px', overflow: 'hidden' }}><img style={{ borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem' , borderBottomRightRadius:'2rem', borderBottomLeftRadius:'2rem',height: '200px' }} src={hotel.images && hotel.images.length > 0 ? hotel.images[0] : test} alt="" />
                             <div className="col-md-18">
 
                                 <div className="card-body">
-                                    <h5 className="card-title" style={{ color: '#336699' }}>{hotel.name}</h5>
+                                    <h5 className="card-title" style={{ color: 'white' }}>{hotel.name}</h5>
                                     <p className="card-text">{hotel.details}</p>
                                 </div>
                             </div>
