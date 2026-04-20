@@ -5,8 +5,8 @@
     padding: 0;
 }
 
-.hole{
-    background-color: #f8f9fa;
+.hole {
+    background:#0D1B2A;
 }
 
 .hole h1 {
@@ -16,7 +16,7 @@
     color: #336699;
 }
 
-.selectorLogo{
+.selectorLogo {
     font-size: 2rem;
     font-weight: 650;
 }
@@ -26,11 +26,11 @@
     object-fit: cover;
 }
 
-.carousel-control-prev{
+.carousel-control-prev {
     margin-left: 20%;
 }
 
-.carousel-control-next{
+.carousel-control-next {
     margin-right: 20%;
 }
 
@@ -41,14 +41,14 @@
     height: 70px;
 }
 
-.description img{
+.description img {
     filter: brightness(0) invert(1);
 }
 
-.nav{
+.nav {
     color: black;
     background: linear-gradient(-180deg, #1a2e4a 0%, #336699 100%);
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 
 }
 
@@ -57,7 +57,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 2rem auto;
+    margin: 2rem 2rem;
     padding: 1.5rem;
     border-radius: 1.5rem;
     border-top: #000D5E 5px solid;
@@ -65,7 +65,7 @@
     color: white;
 }
 
-.left img{
+.left img {
     filter: brightness(0) invert(1);
 }
 
@@ -75,8 +75,10 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
+    margin: 2rem 2rem;
 }
-.rightDiv{
+
+.rightDiv {
     padding: 1.5rem;
     border-radius: 1.5rem;
     border-top: #000D5E 5px solid;
@@ -103,6 +105,7 @@
     margin-top: 2%;
 }
 
+
 .whole img {
     height: 35px;
     width: 35px;
@@ -116,7 +119,7 @@
     color: #ffffff;
     font-weight: bold;
     margin: 0;
-    text-shadow: 1px 1px 3px rgba(0,0,0,1);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
 }
 
 .summary {
@@ -125,7 +128,7 @@
     gap: 2rem;
 }
 
-.summary img{
+.summary img {
     margin: 0;
 }
 
@@ -139,22 +142,22 @@
     background: linear-gradient(135deg, #EFF6FF, #dbeafe);
     padding: 1.5rem;
     border-radius: 1rem;
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease,
-                border-color 0.3s ease,
-                background-color 0.3s ease,
-                background 0.3s ease;
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        background 0.3s ease;
     border: 2px solid transparent;
 }
 
-.flights:hover{
+.flights:hover {
     transform: translateY(-8px);
     border-color: #336699;
     background-color: rgb(236, 233, 233);
     background: linear-gradient(-135deg, #202e43, #dbeafe);
 }
 
-.flights p{
+.flights p {
     margin: 0;
 }
 
@@ -168,51 +171,52 @@
     background: linear-gradient(135deg, #EFF6FF, #dbeafe);
     padding: 1.5rem;
     border-radius: 1rem;
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease,
-                border-color 0.3s ease,
-                background-color 0.3s ease,
-                background 0.3s ease;
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        background 0.3s ease;
     border: 2px solid transparent;
 }
 
-.hotels:hover{
+.hotels:hover {
     transform: translateY(-8px);
     border-color: #336699;
     background-color: rgb(236, 233, 233);
     background: linear-gradient(-135deg, #202e43, #dbeafe);
 }
 
-.hotels p{
+.hotels p {
     margin: 0;
 }
 
-.bookNowDiv{
+.bookNowDiv {
     margin-top: 5%;
 }
 
-.bookNowDiv button{
+.bookNowDiv button {
     background-color: white;
     border: 1px solid rgb(95, 89, 89);
     padding: 8px;
     background: linear-gradient(-180deg, #1a2e4a 0%, #336699 100%);
     transition: transform 0.3s ease,
-                background 0.3s ease,
-                box-shadow 0.3s ease;
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.bookNowDiv button:hover{
+.bookNowDiv button:hover {
     transform: translateY(-8px);
     background: linear-gradient(180deg, #1a2e4a 0%, #336699 70%);
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 
-.summaryChoices{
+.summaryChoices {
     padding: 10px;
-    border-left: 5px solid #336699;
+    border-left: 5px solid #1a2e4a;
     border-radius: 1rem;
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    background: #336699;
 }
 
 .summaryChoices div {
@@ -257,7 +261,7 @@
     width: 80%;
     margin: 0 auto;
     margin-top: 2%;
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     padding: 2rem;
     border-radius: 1rem;
     background: linear-gradient(-135deg, #1a2e4a 0%, #336699 100%);
@@ -298,25 +302,26 @@
     flex-direction: column;
 }
 
-.guaranteeDiceItem{
+.guaranteeDiceItem {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 1rem;
-    background-color: #d3d8dbfb ;
+    background-color: #d3d8dbfb;
     border-radius: 1rem;
     margin-bottom: 1rem;
     transition: transform 0.3s ease,
-                box-shadow 0.3s ease;
-    border-left: 5px solid #336699;;
+        box-shadow 0.3s ease;
+    border-left: 5px solid #336699;
+    ;
 }
 
-.guaranteeDiceItem:hover{
+.guaranteeDiceItem:hover {
     transform: translateY(-8px);
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.guaranteeDiceItem p{
+.guaranteeDiceItem p {
     margin-bottom: 0px;
     margin-left: 0.5rem;
     font-weight: 650;
@@ -327,28 +332,31 @@
     margin: 0;
 }
 
-.attractions{
+.attractions {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.attractions .card{
-    margin: 3% auto; 
+.attractions .card {
+    margin: 3% auto;
     border-radius: 1.5rem;
 }
 
-.card{
+.card {
     transition: transform 0.3s ease,
-                box-shadow 0.3s ease;
+        box-shadow 0.3s ease;
+    padding: 1rem;
+    background: linear-gradient(-135deg, #1a2e4a 0%, #336699 100%); 
+    color:black;
 }
 
-.card:hover{
+.card:hover {
     transform: translateY(-8px);
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
-}
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}   
 
-.grayLine{
+.grayLine {
     width: 100%;
     padding: 1px;
     background-color: rgb(214, 212, 212);
@@ -365,7 +373,7 @@
 
 /* From Uiverse.io by cssbuttons-io */
 
-.divBtn{
+.divBtn {
     display: flex;
     justify-content: center;
 }
@@ -422,34 +430,34 @@
     transition: background 0s;
 }
 
-.footers{
+.footers {
     background: linear-gradient(-135deg, #1a2e4a 0%, #336699 100%);
 }
 
-.selectorLogos{
+.selectorLogos {
     display: flex;
     flex-direction: row;
     margin-left: 1%;
     margin-bottom: 1%;
 }
 
-.selectorLogos li{
+.selectorLogos li {
     margin-top: 2%;
     list-style-type: none;
 }
 
-.selectorLogos p{
+.selectorLogos p {
     font-size: 2rem;
     font-weight: bold;
     align-items: center;
     margin: 0;
 }
 
-.texts{
+.texts {
     margin-left: 5%;
 }
 
-.texts p{
+.texts p {
     margin: 0;
     margin-left: 2%;
     color: black;
@@ -457,7 +465,7 @@
     margin-bottom: 5px;
 }
 
-.texts h4{
+.texts h4 {
     margin-left: 2%;
     font-weight: bold;
 }
@@ -468,11 +476,11 @@
     margin-bottom: 3%;
 }
 
-.contact{
+.contact {
     margin-left: 40%;
 }
 
-.contact p{
+.contact p {
     margin: 0;
     margin-left: 2%;
     color: black;
@@ -480,12 +488,12 @@
     margin-bottom: 5px;
 }
 
-.contact h4{
+.contact h4 {
     margin-left: 2%;
     font-weight: bold;
 }
 
-.footerBtn{
+.footerBtn {
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -494,23 +502,23 @@
     background-color: #000D5E;
 }
 
-.last{
+.last {
     margin-top: 3%;
 }
 
-.selectDiv h3{
+.selectDiv h3 {
     transition: color 0.3s ease;
 }
 
-.selectDiv h3:hover{
-   color: white;
+.selectDiv h3:hover {
+    color: white;
 }
 
-.selectDiv img:hover{
+.selectDiv img:hover {
     filter: brightness(0) invert(1);
 }
 
-.summaryDiv{
+.summaryDiv {
     width: 100%;
     margin: 2rem auto;
     padding: 1.5rem;
@@ -518,4 +526,3 @@
     border-top: #000D5E 5px solid;
     background: linear-gradient(-0, #294c7d 0%, #336699 100%);
 }
-

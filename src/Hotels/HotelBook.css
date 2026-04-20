@@ -1,96 +1,167 @@
-*{
+* {
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.hotelBookPage h3{
+.hotelBookPage{
+    background:#0D1B2A;
+    color: #E0E1DD;
+}
+
+.hotelBookPage h3 {
+
     font-weight: bold;
     margin-left: 2%;
 }
 
-.about ,.detail , .amenities {
-    margin-left: 2%;
+.about{
+    background: #1B263B;
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 80%;
+    border-radius: 2rem;
 }
 
-.about .detail .amenities, h5{
+
+
+.about .detail .amenities,
+h5 {
     font-weight: bold;
 }
 
-.about p{
+.about p {
     margin: 2% 0;
     text-align: justify;
 }
 
-.grayLineH{
+.grayLineH {
     display: flex;
     justify-content: center;
     width: 95%;
     padding: 1px;
-    background-color: lightgray;
+    background: #4193e5;
 }
 
+.detail{
+        background: #1B263B;
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 80%;
+    border-radius: 2rem;
+}
 
-.detail div{
+.detail div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 1rem auto;
     padding: 10px;
-    border-left: 5px solid #336699;
+    border-left: 5px solid #3A86FF;
     /* border-bottom: 5px solid #336699; */
     border-radius: 1rem;
-    background-color: rgb(244, 244, 244);
+    background: #336699;
     width: 50%;
 }
 
-.detail div p{
+.detail div p {
     margin: 0;
 }
 
-.bookNow{
+.bookNow {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 5% auto;
-    background-color: rgb(244,244,244);
+    margin: 5% auto 0 auto;
+    /* background-color: rgb(244,244,244); */
     padding: 2rem;
-    width: 60%;
+    background: #1B263B;
+    width: 55%;
     border-radius: 2rem;
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
-.bookNow h2{
+.bookNow h1 {
+    font-weight: bold;
+}
+
+.bookNowDiv {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem ;
+}
+
+
+.bookNowDiv div {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    width: 50%;
+}
+
+.bookNowDiv div input{
+    background:#0D1B2A;
+    color: white;
+    border-color: #0D1B2A;
+}
+
+.bookNow h2 {
     font-weight: bold;
 }
 
 
-.bookNow input{
+.bookNow input {
     padding: 0.5rem;
     border-radius: 0.5rem;
-    margin: 1rem 0;
     border: 1px solid;
 }
 
-.bookNowBtn{
+.bookNowBtn {
     padding: 0.5rem;
     margin: 1rem 0;
+    background: #378ADD;
     transition: transform 0.3s ease,
-                background-color 0.3s ease,
-                box-shadow 0.3s ease;
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.bookNowBtn:hover{
+.bookNowBtn:hover {
     transform: translateY(-5px);
-    background-color: rgb(244,244,244);
-    box-shadow:0 4px 15px rgba(0,0,0,0.5);
+    background: #4193e5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.info{
+.info {
     margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
 }
 
-.info p{
-    color: gray;
+.info p {
+    color: white;
+}
+
+.bookPrice{
+    padding: 1rem;
+    background: #0D1B2A;
+    display: flex;
+    border-radius: 1.5rem;
+    flex-direction: column;
+    align-items: end;
+}
+
+.total{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.linePrice{
+    padding: 1px;
+    width: 100%;
+    margin: 0.5rem auto;
+    background: #336699;
 }

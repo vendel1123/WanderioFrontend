@@ -174,13 +174,14 @@
         list-style-type: none;
     }
 
-    .destinationBottom{
+    .destinationBottom {
         display: flex;
         flex-direction: row;
         align-items: center;
         color: white;
     }
-    .destinationBottom p{
+
+    .destinationBottom p {
         border: 1px solid rgba(255, 255, 255, 0.15);
         background: rgba(255, 255, 255, 0.07);
         padding: 1rem;
@@ -190,8 +191,25 @@
         cursor: pointer;
     }
 
-    .destinationBottom p:hover{
+    .destinationBottom p:hover {
         transform: translateY(-8px);
+    }
+
+    .adminBtn {
+        display: flex;
+        justify-content: center;
+        border-radius: 1rem;
+        width: 100%;
+        color: white;
+        background: linear-gradient(135deg, #40956f, #1f5d3a);
+        transition: all 0.3s ease;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    .adminBtn:hover {
+        background: linear-gradient(0deg, #40956f, #1f5d3a);
+        color: black;
     }
 
     @media (max-width: 768px) {

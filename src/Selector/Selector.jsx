@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { useAuth } from "../context/AuthContext";
 
-import { getAllCities } from "../user"
+import { getAllCities, whoami } from "../user"
 
 import cart from "../assets/cart.png"
 import avatar from "../assets/avatar.png"
@@ -24,6 +25,17 @@ export default function Selector() {
 
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
+
+    const { user } = useAuth();
+
+    const handleAdmin = () => {
+        if (!user || user.role !== 'admin') {
+            return <Navigate to='/selector' />
+        }
+        else{
+            navigate(`/admin`)
+        }
+    }
 
     useEffect(() => {
         getAllCities()
@@ -55,6 +67,7 @@ export default function Selector() {
                     <li><p>Wanderio</p></li>
                 </div>
                 <div>
+                    <li><button className="adminBtn" onClick={handleAdmin}>Admin</button></li>
                     <li><img src={avatar} alt="" onClick={() => navigate("/profile")} /></li>
                     <li><img src={cart} alt="" onClick={() => navigate("/cart")} /></li>
                 </div>
@@ -86,10 +99,10 @@ export default function Selector() {
                         <button onClick={handleSearch} disabled={!selectedCity}> Search Now</button>
                     </div>
 
-                </div>      
-                <h3 style={{color:'white', fontWeight:'bold', marginTop:'1rem'}}>Popular destinatins</h3>              
+                </div>
+                <h3 style={{ color: 'white', fontWeight: 'bold', marginTop: '1rem' }}>Popular destinatins</h3>
                 <div className="destinationBottom">
-                    
+
                     <p>Paris</p>
                     <p>Rome</p>
                     <p>Budapest</p>

@@ -60,7 +60,7 @@ export default function Hotels() {
                 </div>
             </div>
 
-            <h3>Hotels in {cityName}</h3>
+            <h1 >Hotels in {cityName}</h1>
 
             <div className="attractions">
 
@@ -69,23 +69,21 @@ export default function Hotels() {
                         <img
                             style={{
                                 borderRadius: '1.5rem',
-                                borderEndStartRadius: '0',
-                                borderBottomRightRadius: '0',
+                                // borderEndStartRadius: '0',
+                                 borderBottomRightRadius: '1.5rem',
                                 height: '400px',
                                 objectFit: 'fill'
                             }}
-                            /* JAVÍTÁS: Mivel a backend már a kész URL-t küldi 'hotelImg' néven, 
-                               elég csak ezt használni. Ha nincs kép, a 'test' (signInImg.jpg) jelenik meg. */
+
                             src={hotel.hotelImg ? hotel.hotelImg : test}
                             className="card-img-top"
                             alt={hotel.name}
                         />
 
                         <div className="card-body">
-                            <p style={{ fontWeight: 'bold' }} className="card-text">{hotel.name}</p>
+                            <p style={{ fontWeight: 'bold', color:'white', fontSize:'1.5rem' }} className="card-text">{hotel.name}</p>
                             <p style={{ margin: '1rem 0' }}>{hotel.details}</p>
 
-                            {/* BIZTONSÁGI ELLENŐRZÉS: Csak akkor próbáljuk kiírni a szobaadatokat, ha léteznek */}
                             {hotel.cheapestRoom ? (
                                 <>
                                     <p className='grayP'>ROOM TYPE</p>
