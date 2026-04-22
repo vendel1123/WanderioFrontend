@@ -13,35 +13,35 @@ export default defineConfig({
   server: {
     proxy: {
       '/users':{
-        target: 'http://127.0.0.1:4000/api',
+        target: 'https://nodejs210.dszcbaross.edu.hu/api',
         changeOrigin: true
       },
       '/flights': {
-        target:'http://127.0.0.1:4000/api',
+        target:'https://nodejs210.dszcbaross.edu.hu/api',
         changeOrigin:true
       },
       '/cities':{
-        target:'http://127.0.0.1:4000/api',
+        target:'https://nodejs210.dszcbaross.edu.hu/api',
         changeOrigin:true
       },
       '/hotels':{
-        target:'http://127.0.0.1:4000/api',
+        target:'https://nodejs210.dszcbaross.edu.hu/api',
         changeOrigin:true
       },
       '/attractions':{
-        target:'http://127.0.0.1:4000/api',
+        target:'https://nodejs210.dszcbaross.edu.hu/api',
         changeOrigin:true
       },
       '/rooms':{
-        target:'http://127.0.0.1:4000/api',
+        target:'https://nodejs210.dszcbaross.edu.hu/api',
         changeOrigin:true
       },
       '/hotelorders':{
-        target:'http://127.0.0.1:4000/api',
+        target:'https://nodejs210.dszcbaross.edu.hu/api',
         changeOrigin:true
       },
       '/ticketorders':{
-        target:'http://127.0.0.1:4000/api',
+        target:'https://nodejs210.dszcbaross.edu.hu/api',
         changeOrigin:true
       }
 
