@@ -3,56 +3,8 @@
   publish = "dist"
 
 [[redirects]]
-  from = "/api/users/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/users/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/flights/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/flights/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/ticketorders/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/ticketorders/:splat"
-  status = 200
-  force = true
-  
-[[redirects]]
-  from = "/api/airlines/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/airlines/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/cities/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/cities/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/attractions/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/attractions/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/hotelorders/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/hotelorders/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/hotels/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/hotels/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/rooms/*"
-  to = "https://nodejs210.dszcbaross.edu.hu/api/rooms/:splat"
+  from = "/api/*"
+  to = "https://nodejs210.dszcbaross.edu.hu/api/:splat"
   status = 200
   force = true
 
