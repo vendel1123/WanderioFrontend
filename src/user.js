@@ -1,11 +1,11 @@
-const BACKEND_URL = '/users'
-const BACKEND_FLIGHTS_URL = '/flights'
-const BACKEND_CITIES_URL = '/cities'
-const BACKEND_HOTELS_URL = '/hotels'
-const BACKEND_ATTRACTIONS_URL = '/attractions'
-const BACKEND_ROOMS_URL = '/rooms'
-const BACKEND_HOTELORDER_URL = '/hotelorders'
-const BACKEND_FlightORDER_URL = '/ticketorders'
+const BACKEND_URL = '/api/users'
+const BACKEND_FLIGHTS_URL = '/api/flights'
+const BACKEND_CITIES_URL = '/api/cities'
+const BACKEND_HOTELS_URL = '/api/hotels'
+const BACKEND_ATTRACTIONS_URL = '/api/attractions'
+const BACKEND_ROOMS_URL = '/api/rooms'
+const BACKEND_HOTELORDER_URL = '/api/hotelorders'
+const BACKEND_FlightORDER_URL = '/api/ticketorders'
 
 export async function register(email, username, psw) {
     const res = await fetch(`${BACKEND_URL}/register`, {
