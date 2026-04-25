@@ -71,7 +71,7 @@ export default function Hotels() {
                                 borderRadius: '1.5rem',
                                 // borderEndStartRadius: '0',
                                  borderBottomRightRadius: '1.5rem',
-                                height: '400px',
+                                minHeightheight: '400px',
                                 objectFit: 'fill'
                             }}
 

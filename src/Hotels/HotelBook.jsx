@@ -125,7 +125,7 @@ export default function HotelBook() {
                     {selectedRoom && selectedRoom.images && selectedRoom.images.length > 0 ? (
                         selectedRoom.images.map((imgSrc, index) => (
                             <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                                <img src={imgSrc} className='d-block w-50 mx-auto mb-0 rounded-5' alt={`${selectedRoom.typeName} - kép ${index + 1}`} />
+                                <img src={imgSrc} className='d-block custem-width mx-auto mb-0 rounded-5' alt={`${selectedRoom.typeName} - kép ${index + 1}`} />
                             </div>
                         ))
                     ) : (
@@ -178,7 +178,7 @@ export default function HotelBook() {
             <div className="bookNow">
                 <h1>Complete Your Booking</h1>
                 <div className='bookNowDiv'>
-                    <div style={{marginRight:'1rem'}}>
+                    <div className='bookDivRight'>
                         <label htmlFor="start-date">Check-in</label>
                         <input
                             type="date"
@@ -188,7 +188,7 @@ export default function HotelBook() {
                             min={new Date().toString().split('T')[0]}
                         />
                     </div>
-                    <div style={{marginLeft:'1rem'}}>
+                    <div className='bookDivLeft'>
                         <label htmlFor="end-date">Check-out</label>
                         <input
                             type="date"

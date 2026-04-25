@@ -6,7 +6,7 @@
 }
 
 .hole {
-    background:#0D1B2A;
+    background: #0D1B2A;
 }
 
 .hole h1 {
@@ -103,6 +103,8 @@
 
 .whole {
     margin-top: 2%;
+    display: flex;
+    flex-direction: row;
 }
 
 
@@ -347,14 +349,14 @@
     transition: transform 0.3s ease,
         box-shadow 0.3s ease;
     padding: 1rem;
-    background: linear-gradient(-135deg, #1a2e4a 0%, #336699 100%); 
-    color:black;
+    background: linear-gradient(-135deg, #1a2e4a 0%, #336699 100%);
+    color: black;
 }
 
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}   
+}
 
 .grayLine {
     width: 100%;
@@ -525,4 +527,99 @@
     border-radius: 1.5rem;
     border-top: #000D5E 5px solid;
     background: linear-gradient(-0, #294c7d 0%, #336699 100%);
+}
+
+.hotel-list-container {
+    display: flex;
+    flex-wrap: wrap;         /* Tördelés engedélyezése kisebb képernyőn */
+    justify-content: center; /* A kártyák középre igazítása a sorban */
+    gap: 2rem;               /* Térköz a kártyák között */
+    padding: 2rem;           /* Párnázás a konténer körül */
+    width: 100%;             /* A konténer töltse ki a rendelkezésre álló helyet */
+}
+
+/* Egyetlen Hotel Kártya Stílusa */
+.hotel-card {
+    display: flex;
+    flex-direction: column; /* Kép és szöveg egymás alatt */
+    width: 320px;            /* Fix szélesség nagy képernyőn */
+    background: linear-gradient(160deg, #3a6a9e 0%, #2b4c7e 100%);
+    border-radius: 2rem;     /* Erősen lekerekített sarkok */
+    overflow: hidden;        /* A belső elemek nem lóghatnak ki */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.hotel-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.hotel-card-image-container {
+    width: 100%;
+    height: 200px;
+    padding: 1rem;
+    padding-bottom: 0;
+}
+
+.hotel-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.5rem;
+}
+
+.hotel-card-content {
+    padding: 1.5rem;
+    padding-top: 1rem;
+}
+
+.hotel-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    color: white;
+}
+
+@media (max-width:413px) {
+
+    .nav img {
+        width: 40px;
+    }
+
+    .selectorLogo li p {
+        font-size: 1.2rem;
+        margin-top: 0;
+    }
+
+    .nav div li h3 {
+        font-size: 1.2rem;
+    }
+
+    .whole {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .whole .left {
+        width: 85%;
+    }
+
+    .whole .right {
+        width: 85%;
+
+    }
+
+    .guaranteeDice {
+        width: 85%;
+    }
+
+    .contact {
+        margin-left: 5%;
+    }
+
+
 }

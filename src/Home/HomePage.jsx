@@ -10,6 +10,8 @@ import slide5 from '../assets/berlin3.jpg';
 
 import logo from '../assets/world.png'
 
+import { logout } from '../user'
+
 const slides = [
   {
     image: slide1,
@@ -37,9 +39,10 @@ const slides = [
     text2: "Travel is proof that the unknown can be beautiful."
   },
 
-  ];
+];
 export default function HomePage() {
 
+  const [user, setUser] = useState(null)
   const [index, setIndex] = useState(0);
 
   const navigate = useNavigate();
@@ -54,6 +57,16 @@ export default function HomePage() {
 
     return () => clearInterval(timer);
   }, []);
+
+  async function onLogout() {
+    const data = await logout()
+
+    if (data.error) {
+      return setUserError(data.error)
+    }
+    setUser(null)
+    navigate('/')
+  }
 
   return (
     <div className="hero-slider">
@@ -77,11 +90,9 @@ export default function HomePage() {
               </div>
 
               <ul className="dropdown-menu p-0">
-                <li><a className="dropdown-item" onClick={handleClick}>Roma</a></li>
-                <li><a className="dropdown-item" onClick={handleClick} href="#">Paris</a></li>
-                <li><a className="dropdown-item" onClick={handleClick} href="#">Budapest</a></li>
-                <li><a className="dropdown-item" onClick={handleClick} href="#">Berlin</a></li>
-                <li><a className="dropdown-item" onClick={handleClick} href="#">Tokyo</a></li>
+                <li><a className="dropdown-item" onClick={handleClick}>Next Page</a></li>
+                <li><a className="dropdown-item" onClick={() => navigate('/profile')} href="#">Profile</a></li>
+                <li><a className="dropdown-item" onClick={onLogout} href="#">Log out</a></li>
               </ul>
             </div>
 

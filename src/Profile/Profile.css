@@ -135,12 +135,11 @@ body {
     width: 40%;
 }
 
-.profileBtn{
-    margin-left: 3%;
+.profileBtn button{
     transition: all 0.3s ease;
 }
 
-.profileBtn:hover{
+.profileBtn button:hover{
     background-color: black;
     color: white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 1);

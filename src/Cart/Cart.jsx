@@ -57,7 +57,7 @@ export default function Cart() {
                         <div>
                             <h3 style={{
                                 textAlign: 'center',
-                                color: '#336699',
+                                color: 'white',
                                 fontWeight: 'bold'
                             }}>Your Shopping Cart</h3>
                             <div className="paymentwhite">
@@ -71,7 +71,7 @@ export default function Cart() {
                                         }} />
                                         <div className="nameDiv">
                                             <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
-                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
+                                            <p style={{ color: 'white' }}>Hotel • Paris</p>
                                         </div>
                                     </div>
 
@@ -81,25 +81,6 @@ export default function Cart() {
                                     </div>
                                 </div>
 
-                                <div className="payment">
-                                    <div className="name">
-                                        <img src={test} alt="" style={{
-                                            height: '80px',
-                                            width: '80px',
-                                            borderRadius: '1rem',
-                                            margin:'0'
-                                        }} />
-                                        <div className="nameDiv">
-                                            <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
-                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="paymentDivBtn">
-                                        <p style={{ fontWeight: 'bold' }}>$17</p>
-                                        <button className="paymentButton" >Remove</button>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>
@@ -143,7 +124,7 @@ export default function Cart() {
                         <div>
                             <h3 style={{
                                 textAlign: 'center',
-                                color: '#336699',
+                                color: 'white',
                                 fontWeight: 'bold'
                             }}>Your Shopping Cart</h3>
                             <div className="paymentwhite">
@@ -159,7 +140,7 @@ export default function Cart() {
                                         }} />
                                         <div className="nameDiv">
                                             <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
-                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
+                                            <p style={{ color: 'white' }}>Hotel • Paris</p>
                                         </div>
                                     </div>
 
@@ -211,7 +192,7 @@ export default function Cart() {
                         <div>
                             <h3 style={{
                                 textAlign: 'center',
-                                color: '#336699',
+                                color: 'white',
                                 fontWeight: 'bold'
                             }}>Your Shopping Cart</h3>
                             <div className="paymentwhite">
@@ -224,26 +205,7 @@ export default function Cart() {
                                         }} />
                                         <div className="nameDiv">
                                             <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
-                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="paymentDivBtn">
-                                        <p style={{ fontWeight: 'bold' }}>$17</p>
-                                        <button className="paymentButton" >Remove</button>
-                                    </div>
-                                </div>
-
-                                <div className="payment">
-                                    <div className="name">
-                                        <img src={test} alt="" style={{
-                                            height: '80px',
-                                            width: '80px',
-                                            borderRadius: '1rem'
-                                        }} />
-                                        <div className="nameDiv">
-                                            <p style={{ fontWeight: 'bold' }}>Versailles Palace</p>
-                                            <p style={{ color: 'gray' }}>Hotel • Paris</p>
+                                            <p style={{ color: 'white' }}>Hotel • Paris</p>
                                         </div>
                                     </div>
 
@@ -295,8 +257,8 @@ export default function Cart() {
 
             <div className="bottomButtons">
                 <div>
-                    <p>
-                        Total <strong style={{ fontSize: '1.5rem' }}>17</strong> USD
+                    <p style={{color:'white'}}>
+                        Total <strong style={{ fontSize: '1.5rem', color:'#378ADD' }}>17</strong> USD
                     </p>
                 </div>
                 <button className="purchaseBtn" onClick={() => setShowPayment(true)}>
@@ -308,7 +270,7 @@ export default function Cart() {
                 </button>
             </div>
 
-            <button className="grayLine"></button>
+            <button className="grayLineH" style={{margin:'1rem auto'}}></button>
 
             <div className="link">
                 <p style={{
