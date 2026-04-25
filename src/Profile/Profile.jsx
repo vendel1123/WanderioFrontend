@@ -201,7 +201,7 @@ export default function Profile() {
 
             </div>
 
-            <button className='profileBtn' onClick={()=>navigate('/selector')}>← Back</button>
+            <div  className='profileBtn'><button onClick={()=>navigate('/selector')}>← Back</button></div>
         </div>
     )
 }

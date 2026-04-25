@@ -238,12 +238,17 @@
             width: 100%;
             margin-top: 10px;
         }
-
-        .footer div {
+        
+        .footer{
             display: flex;
             flex-direction: column;
+            margin-top: 0px;
+        }
+        .footerDiv{
+            display: flex;
+            flex-direction: row;
             text-align: center;
-            margin-left: 0px;
+            margin-top: 0px;
         }
 
         .selectorLogo li p {
@@ -252,10 +257,17 @@
             align-items: center;
             margin-bottom: 0px;
             margin-top: 7%;
+            padding: 0;
         }
 
-        .Line {
-            margin-bottom: 10%;
+        .selectorLogoNav{
+            padding: 10px 0;
+        }
+
+        .adminBtn{
+            padding: 0.3rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
         }
 
     }

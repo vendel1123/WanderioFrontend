@@ -84,7 +84,7 @@ export default function Booking() {
                 <div className="carousel-inner">
                     {cityData.images && cityData.images.length > 0 ? cityData.images.map((imgSrc, index) => (
                         <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                            <img src={imgSrc} className='d-block w-50 mx-auto mb-0 rounded-5' alt={`${cityData.name} nezet ${index + 1}`} />
+                            <img src={imgSrc} className='d-block custem-width mx-auto mb-0 rounded-5' alt={`${cityData.name} nezet ${index + 1}`} />
                         </div>
                     ))
                         : (
@@ -105,9 +105,9 @@ export default function Booking() {
                 </button>
             </div>
 
-            <div className='whole' >
-                <div className="left" style={{margin:"2rem auto"}}>
-                    <div id='descrip    tion' className='description'>
+            <div className='whole'  style={{display:'flex',flexDirection:'column'   }}>
+                <div className="left"  style={{margin:'0 auto'}}>
+                    <div id='description' className='description'>
                         <img src={information} alt="" />
                         <h3>Description</h3>
                     </div>
@@ -116,7 +116,7 @@ export default function Booking() {
                     <p>{cityData.description || "Nincsen leiras ehez a varoshoz"}</p>
                 </div>
 
-                <div className="right" style={{margin:"2rem auto"}}>
+                <div className="right" style={{margin:'0 auto'}}>
                     <div className='summaryDiv'>
                         <div className='description'>
                             <img src={summary} alt="Summarry" />
@@ -172,7 +172,7 @@ export default function Booking() {
                 marginTop: '5%',
                 marginBottom: '5%'
             }}>How it works</h1>
-            <div className='whole' style={{display:'flex'}}>
+            <div className='whole' >
 
                 <div className="left">
                     <div className='description'>
@@ -180,7 +180,7 @@ export default function Booking() {
                         <h3>Secure your accommodation</h3>
                     </div>
                     <button></button>
-                    <p style={{ marginBottom: '3%' }}>Secure your place to stay instantly on Paris's most trusted travel marketplace. As soon as you reserve, we lock in your room to help you make the most of your trip.You'll get the best price and a secure payment system that protects your information.</p>
+                    <p style={{ marginBottom: '3%' }}>Secure your place to stay instantly on the world most trusted travel marketplace. As soon as you reserve, we lock in your room to help you make the most of your trip.You'll get the best price and a secure payment system that protects your information.</p>
                 </div>
 
                 <div className="right">
@@ -198,7 +198,7 @@ export default function Booking() {
 
             </div>
 
-            <div className='whole' style={{display:'flex'}}>
+            <div className='whole' >
 
                 <div className="left">
                     <div className='description'>
@@ -206,7 +206,7 @@ export default function Booking() {
                         <h3>Get access to the VIP Club</h3>
                     </div>
                     <button></button>
-                    <p style={{ marginBottom: '3%' }}>Booking with us gives you access to the Guide to Paris VIP Club, where you'll enjoy priority service, special perks, and exclusive discounts for amazing savings on your trip at Paris's top restaurants, shops, and local favorites.</p>
+                    <p style={{ marginBottom: '3%' }}>Booking with us gives you access to the Guide to the world VIP Club, where you'll enjoy priority service, special perks, and exclusive discounts for amazing savings on your trip anywhere in the world's top restaurants, shops, and local favorites.</p>
                 </div>
 
                 <div className="right">
@@ -216,7 +216,7 @@ export default function Booking() {
                         <h3>Stay with confidence</h3>
                     </div>
                     <button></button>
-                    <p style={{ marginBottom: '3%' }}>From check-in to check-out, we're here to support your stay. Whatever you need, whenever you need it, we're just seconds away, 24/7—ready to help you enjoy every moment of your time in Paris.</p>
+                    <p style={{ marginBottom: '3%' }}>From check-in to check-out, we're here to support your stay. Whatever you need, whenever you need it, we're just seconds away, 24/7—ready to help you enjoy every moment of your time in anywhere.</p>
 
                     </div>
                 </div>
@@ -304,25 +304,27 @@ export default function Booking() {
                 justifyContent: 'center'
             }}>Hotels</h2>
 
-            <div className='hotels' style={{
-                width: '50%', display: 'flex', gap: '1.5rem', margin: '0 auto', justifyContent: 'center'
-            }}>
-
-                {cityData.hotels && cityData.hotels.map(hotel => (
-                    <div key={hotel.hotelID} className="card mb-3" style={{ maxWidth: "540px", borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem', borderBottomRightRadius: '2rem', borderEndStartRadius: '2rem  ' }}>
-                        <div className="row g-0" style={{ maxWidth: "540px", height: '400px', overflow: 'hidden' }}><img style={{ borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem' , borderBottomRightRadius:'2rem', borderBottomLeftRadius:'2rem',height: '200px' }} src={hotel.images && hotel.images.length > 0 ? hotel.images[0] : test} alt="" />
-                            <div className="col-md-18">
-
-                                <div className="card-body">
-                                    <h5 className="card-title" style={{ color: 'white' }}>{hotel.name}</h5>
-                                    <p className="card-text">{hotel.details}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-
+            <div className="hotel-list-container">
+        {cityData.hotels && cityData.hotels.map(hotel => (
+        
+         <div key={hotel.hotelID} className="hotel-card" onClick={() => navigate(`/hotels/${id}`)}>
+            
+            <div className="hotel-card-image-container">
+                <img 
+                    src={hotel.images && hotel.images.length > 0 ? hotel.images[0] : test} 
+                    alt={hotel.name} 
+                    className="hotel-card-image"
+                />
             </div>
+
+             <div className="hotel-card-content">
+                <h5 className="hotel-card-title">{hotel.name}</h5>
+                <p className="hotel-card-text">{hotel.details}</p>
+            </div>
+
+        </div>
+    ))}
+</div>
 
             <div className='divBtn'>
                 <button onClick={() => navigate(`/hotels/${id}`)}>See More</button>

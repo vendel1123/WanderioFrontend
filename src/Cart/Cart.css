@@ -6,9 +6,9 @@
 }
 
 .cart {
-    background-color: rgb(244, 244, 244);
-    min-height: 100%;
-    width: 100vw;
+    background:#0D1B2A;
+    min-height: 100vh;
+    width: 100%;
     margin: 0;
     position: absolute;
     top: 0;
@@ -17,41 +17,57 @@
 
 .signUpLog {
     margin: 1%;
+        display: flex;
+    flex-direction: row;
 }
 
-.signUpLog, img {
-    display: flex;
-    flex-direction: row;
+.signUpLog p {
     gap: 0.5rem;
     font-weight: lighter;
-    color: black;
+    color: white;
     font-style: italic;
     font-weight: 650;
     font-size: 2rem;
-    margin-bottom: 3px;
+}
+
+.signUpLog img {
+    margin-bottom: 0;
+    filter: brightness(0) invert(1);
 }
 
 .cartNavbar {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    background-color: white;
+    background: linear-gradient(-180deg, #1a2e4a 0%, #336699 100%);
     padding: 1rem;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-.cartNavbar button {
-    border: 1px solid;
-    margin: 0 1%;
-    padding-bottom: 0.5rem;
-    padding-top: 0.5rem;
+
+.cartNavbar button{
+    padding-left: 1rem;
+    margin: 0 1rem;
+    background: linear-gradient(0deg, #1a2e4a 0%, #4293e5 100%); 
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border 0.3s ease;
+    border: 2px solid;
+}
+
+.cartNavbar button:hover{
+    background: linear-gradient(135deg, #1a2e4a 0%, #336699 100%); 
+    color: white;
+    border: 2px solid black;
 }
 
 .foot {
-    background-color: white;
+    background: #1B263B;
     padding: 3rem;
     width: 60%;
     border-radius: 2rem;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
     margin: 2rem auto;
@@ -61,9 +77,10 @@
 .foot h2 {
     display: flex;
     justify-content: center;
-    color: #336699;
+    color: white;
     font-weight: bold;
 }
+
 
 .Cartfooter {
     display: flex;
@@ -72,10 +89,13 @@
     gap: 20px;
     align-items: center;
     margin: 1rem 0;
-    background-color: rgb(244, 244, 244);
+    background:#0D1B2A;
     padding: 1rem;
-    border: 1px solid lightgray;
     border-radius: 1rem;
+    color: white;
+}
+.Cartfooter img {
+    filter: brightness(0) invert(1);
 }
 
 .Cartfooter li {
@@ -93,23 +113,15 @@
     margin: 3rem auto;
 }
 
-.paymentDt {
-    background-color: #C5C7BC;
-    border-radius: 18px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    width: 450px;
-    padding: 30px;
-    transition: transform 0.3s ease;
-}
-
-.adat,
-#kartyaSzam,
+.adat
+#kartyaSzam,    
 #kartyaNev {
     border-radius: 5px;
     padding: 5px;
     border: none;
     width: 100%;
+    background: #0D1B2A;
+    margin-bottom: 1rem;
 }
 
 #kettozes {
@@ -125,6 +137,7 @@
     padding: 5px;
     border: none;
     width: 100%;
+    background: #0D1B2A;
 }
 
 #kartyaMentese {
@@ -136,7 +149,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    background-color: white;
+    background: #1B263B;
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
@@ -150,21 +163,37 @@
 
 }
 
-.bottomButtons button{
-    background-color: rgb(244, 244, 244);
-    border: 1px solid lightgray;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    font-weight: bold;
+.bottomButtons .purchaseBtn{
+    padding: 0.5rem;
+    color: white;
+    background: #378ADD;
+    transition: transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
+.bottomButtons .purchaseBtn:hover{
+    transform: translateY(-5px);
+    background: #4193e5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
 
+.bottomButtons .backBtn{
+    color: white;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+    background-color: #DC2626;
+}
+
+.bottomButtons .backBtn:hover{
+    color: rgb(203, 195, 195);
+    background-color: #B90C1C; 
+}
 
 .link {
     display: flex;
     justify-content: center;
-    margin: 1rem auto;
-    background-color: rgb(244, 244, 244);
+    margin: 0rem auto;
 }
 
 .paymentOverlay {
@@ -182,38 +211,42 @@
 }
 
 .paymentDt {
-    background-color: #C5C7BC;
+    background: #1B263B;
     border-radius: 18px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     width: 450px;
     padding: 20px;
+    color: white;
 }
+
 
 .paymentBtn {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background: #378ADD;
     border: none;
-    color: grey;
+    color: white;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    padding: 10px 20px;
+    padding: 0.5rem;
     width: 100%;
     border-radius: 20px;
     transform: 0.3s;
     cursor: pointer;
     font-weight: bold;
-    font-size: 15px;
+    transition: transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .paymentBtn:hover {
-    background-color: #C5C7BC;
-    transition: 0.5s;
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    background: #4193e5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .paymentwhite{
-    background-color: white;
+    background: #1B263B;
     padding: 1rem;
     border-radius: 1rem;
     width: 100%;
@@ -224,14 +257,18 @@
     width: 40vw;
     justify-content: space-between;
     margin: 1rem auto;
-    background-color: rgb(244, 244, 244);
+    background: #336699; 
     padding: 1rem;
     border-radius: 1rem;
     transition: border-left 0.3s ease;
+    color: black;
+}
+.payment img {
+    margin-bottom: 0;
 }
 
 .payment:hover{
-    border-left:5px #336699 solid;
+    border-left: 5px solid #3A86FF;
 }
 
 .payment div{
@@ -242,6 +279,7 @@
     display: flex;
     margin: 0 5px 0 1rem;
     align-items: center;
+    color: black;
 }
 
 .name div{
@@ -259,14 +297,15 @@
 }
 
 .paymentButton{
-    border: 1px solid lightgray;
-    height: 50px;
+    color: white;
+    padding-left: 1rem;
     transition: all 0.3s ease;
+    background-color: #DC2626;
 }
 
 .paymentButton:hover{
-    background-color: gray;
-    color: white;
+    color: rgb(203, 195, 195);
+    background-color: #B90C1C; 
 }
 
 .cartNavbar button{
@@ -274,14 +313,42 @@
 }
 
 .cartNavbar button:focus{
-    background-color: black;
+    background: linear-gradient(135deg, #1a2e4a 0%, #336699 100%); 
     color: white;
-}
-.backBtn, .purchaseBtn{
-    transition: all 0.3s ease;
+    border: 2px solid black;
 }
 
-.backBtn:hover, .purchaseBtn:hover{
-    background-color: white;
-    border: 1px solid black;
+@media (max-width:768px){
+    .foot{
+        width: 95%;
+        padding: 1.5rem;
+        border-radius: 1rem;
+    }
+    .Cartfooter {
+        flex-direction: column; 
+        text-align: center;
+        gap: 15px;
+    }
+
+    .payment {
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 1rem; 
+        width: 95%;
+    }
+
+    .payment .paymentDivBtn {
+        width: 100%;
+        justify-content: space-between; 
+    }
+
+    .signUpLog p {
+        font-size: 1.5rem; 
+    }
+
+    .bottomButtons{
+        width: 80%;
+    }
+
+    
 }

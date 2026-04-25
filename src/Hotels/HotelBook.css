@@ -165,3 +165,40 @@ h5 {
     margin: 0.5rem auto;
     background: #336699;
 }
+
+.custem-width{
+    width: 50%;
+}
+
+.bookDivRight{
+    margin-right: 1rem;
+}
+
+.bookDivLeft{
+    margin-left: 1rem;
+}
+
+@media (max-width: 710px) {
+
+    .custem-width   {
+    width: 90%;
+   }
+   .bookNow{
+    width: 90%;
+   }
+
+   .bookNow .bookNowDiv div{
+     width: 100%;
+     margin: 0;
+   }
+
+   .bookNowDiv{
+    display: flex;
+    flex-direction: column;
+   }
+
+   .detail div{
+    width: 70%;
+   }
+
+}
