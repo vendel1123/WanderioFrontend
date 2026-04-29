@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/kpisti18/markdownCheatSheet/main/assets/world.png" alt="Wanderio Logo" width="120" height="120">
+  <img src="https://i.postimg.cc/WzYgszgY/world.png" alt="Wanderio Logo" width="120" height="120">
   <h1 align="center">Wanderio Utazásfoglaló Platform</h1>
   <p align="center">
     Egy teljes körű, React és Node.js alapú webalkalmazás utazások megtervezéséhez és lefoglalásához.
@@ -85,7 +85,7 @@ A frontend egy modern, komponens-alapú **Single Page Application (SPA)**, amely
 A felhasználói felület tervei a **Figma** szoftverben készültek, részletes wireframe-ek és vizuális prototípusok alapján.
 
 <p align="center">
-  <img src="https://via.placeholder.com/1200x600.png?text=Figma+Design+Képernyőkép" alt="Figma Design" width="85%">
+  <img src="https://i.postimg.cc/hGYJ568X/figma.png" alt="Figma Design" width="85%">
 </p>
 
 > **Figma Terv:** [Itt érhető el a Figma projekt](https://link.a.figma.projekthez)
@@ -127,7 +127,7 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
 </table>
 <br>
 <p align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=SignIn+Oldal" alt="SignIn oldal képe">
+  <img src="https://i.postimg.cc/jSx0pjv3/sign-In.png" alt="SignIn oldal képe">
 </p>
 </details>
 
@@ -162,7 +162,7 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
 </table>
 <br>
 <p align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=SignUp+Oldal" alt="SignUp oldal képe">
+  <img src="https://i.postimg.cc/52bbfg95/sign-Up.png" alt="SignUp oldal képe">
 </p>
 </details>
 
@@ -185,6 +185,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
     </tr>
   </tbody>
 </table>
+<br>
+<p align="center">
+  <img src="https://i.postimg.cc/FshBRBcc/home-Page.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
@@ -210,7 +214,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
       <td>A "hero" szekció és az információs kártyák stíluslapja.</td>
     </tr>
   </tbody>
-</table>
+</table><br>
+<p align="center">
+  <img src="https://i.postimg.cc/0NrgNHTB/selector.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
@@ -237,6 +244,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
     </tr>
   </tbody>
 </table>
+<br>
+<p align="center">
+  <img src="https://i.postimg.cc/qBx19xYt/booking.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
@@ -263,6 +274,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
     </tr>
   </tbody>
 </table>
+<br>
+<p align="center">
+  <img src="https://i.postimg.cc/3rj3VzYw/flights.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
@@ -289,6 +304,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
     </tr>
   </tbody>
 </table>
+<br>
+<p align="center">
+  <img src="https://i.postimg.cc/6QFPp6Lx/hotels.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
@@ -315,6 +334,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
     </tr>
   </tbody>
 </table>
+<br>
+<p align="center">
+  <img src="https://i.postimg.cc/2y79GQpq/hotel-Book.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
@@ -341,6 +364,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
     </tr>
   </tbody>
 </table>
+<br>
+<p align="center">
+  <img src="https://i.postimg.cc/mDQmZYgc/cart.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
@@ -367,6 +394,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
     </tr>
   </tbody>
 </table>
+<br>
+<p align="center">
+  <img src="https://i.postimg.cc/3NXV6Mvc/profile.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
@@ -393,6 +424,10 @@ Az alkalmazás a következő főbb oldalakra (komponensekre) tagolódik:
     </tr>
   </tbody>
 </table>
+<br>
+<p align="center">
+  <img src="https://i.postimg.cc/YCZR1n4b/admin.png" alt="SignUp oldal képe">
+</p>
 </details>
 
 <details>
